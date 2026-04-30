@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xét duyệt sáng kiến online - Ban KHCNCĐS EVNGENCO2</title>
+
+  <meta name="description"
+    content="Hệ thống xét duyệt sáng kiến online thuộc Ban Khoa học công nghệ và Chuyển đổi số - Tổng Công ty Phát điện 2 (EVNGENCO2)." />
+  <meta name="keywords" content="sáng kiến, EVNGENCO2, xét duyệt sáng kiến, chuyển đổi số, KHCNCĐS, phát điện 2" />
+  <meta name="author" content="Ban KHCNCĐS - EVNGENCO2" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hệ thống Xét duyệt Sáng kiến Online - EVNGENCO2" />
+  <meta property="og:description"
+    content="Số hóa quy trình nộp hồ sơ, kiểm tra và xét duyệt sáng kiến khoa học kỹ thuật tại Tổng Công ty Phát điện 2." />
+  <meta property="og:image" content="https://yourdomain.com/path-to-logo-evn.png" />
+  <meta property="og:url" content="https://sangkien.evngenco2.vn" />
+  <meta property="og:site_name" content="EVNGENCO2 Portal" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hệ thống Xét duyệt Sáng kiến Online - Ban KHCNCĐS" />
+  <meta name="twitter:description" content="Nền tảng quản lý sáng kiến khoa học công nghệ của EVNGENCO2." />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="theme-color" content="#DB0D0D" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            // Cấu hình để font-sans mặc định là Montserrat
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            evnRed: '#DB0D0D',
+            evnBlue: '#29348f',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-white font-sans x-hidden flex flex-col min-h-screen">
+  <header class="relative z-50 bg-white w-full flex-shrink-0">
+    <div class="max-w-[85vw] mx-auto">
+      <div class="flex justify-between items-center h-22">
+        <img src="/images/logo_evngenco2.png" alt="Logo EVNGENCO2" class="mt-4 h-24 w-auto object-contain" />
+
+        <div class="flex items-center w-[40%]">
+          <nav class="hidden lg:flex justify-between w-full text-sm font-semibold uppercase tracking-wide">
+            <a href="#" class="text-evnRed border-b-2 border-evnRed pb-1 transition-all">Trang chủ</a>
+            <a href="/news"
+              class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Tin
+              tức</a>
+            <a href="/notice"
+              class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Thông
+              báo</a>
+            <div class="relative group">
+              <button type="button"
+                class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
+                Nội bộ
+              </button>
+
+              <div
+                class="absolute right-0 mt-2 w-72 bg-white border border-evnRed shadow-xl rounded py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+                <a href="https://doffice.evngenco2.vn/sign-in?redirectURL=%2Fproject" target="_blank"
+                  rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Văn phòng điện tử
+                </a>
+                <a href="https://smartevn.evngenco2.vn/sign-in?redirectURL=%2Fdashboard" target="_blank"
+                  rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  SmartEVN
+                </a>
+                <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.office.com%2Fmail%2F&client-request-id=f020718d-77d8-7965-e630-7664d134e4f1&response_mode=fragment&client_info=1&prompt=select_account&nonce=019d972f-3e4d-7fd0-a77e-bd6ba9f7d827&state=eyJpZCI6IjAxOWQ5NzJmLTNlNGQtN2E1Ni1hNGExLTgxZWJiOTNiZTBjNCIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D%7CaHR0cHM6Ly9vdXRsb29rLm9mZmljZS5jb20vbWFpbC8&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D&x-client-SKU=msal.js.browser&x-client-VER=4.28.2&response_type=code&code_challenge=URuQGkeAZbCDVfQwTWSIXx_P02BNfm3mdXKfgbWXfJA&code_challenge_method=S256"
+                  target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Email - Thư điện tử
+                </a>
+                <a href="https://bcqt.evngenco2.vn/#/signin" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  BI - Báo cáo quản trị
+                </a>
+                <a href="https://home.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Web nội bộ
+                </a>
+                <a href="https://elearninglms.evn.com.vn/user/login" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  E-Learning 2.0
+                </a>
+                <a href="https://lichtuan.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Lịch tuần EVNGENCO2
+                </a>
+                <a href="https://lichxe.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Lịch xe
+                </a>
+                <a href="https://login.evn.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeoffice%3aevn&wctx=https%3a%2f%2fportal.evn.com.vn%2f_layouts%2f15%2fAuthenticate.aspx%3fSource%3d%252F"
+                  target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  EVN Portal
+                </a>
+
+                <a href="https://nhatruyenthong.evn.com.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Nhà truyền thống ngành điện
+                </a>
+              </div>
+            </div>
+            <a href="/login"
+              class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">
+              Đăng nhập
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow flex flex-col">
+    <section class="relative w-[85vw] mx-auto pt-8 pb-6">
+      <div class="w-full flex items-center justify-between gap-4">
+        <div class="z-30 flex flex-col max-w-2xl">
+          <h1 class="text-3xl md:text-5xl font-bold text-evnBlue leading-tight">
+            Tổng Công ty <span class="text-evnRed">Phát điện 2</span>
+          </h1>
+          <h2 class="text-xl md:text-2xl font-semibold mt-4 text-evnBlue opacity-90">
+            Ban Khoa học công nghệ chuyển đổi số
+          </h2>
+          <h3 class="text-lg md:text-xl font-medium mt-2 text-evnBlue opacity-90">
+            Hệ thống xét duyệt sáng kiến online
+          </h3>
+
+          <div class="flex gap-4 mt-10">
+            <button
+              class="bg-evnBlue border border-evnBlue text-white px-8 py-2.5 rounded shadow-lg hover:bg-white hover:text-evnBlue transition-all font-semibold">
+              Nộp hồ sơ
+            </button>
+            <button
+              class="bg-white border border-evnBlue text-evnBlue px-8 py-2.5 rounded shadow-sm hover:bg-evnBlue hover:text-white transition-all font-semibold">
+              Kiểm tra
+            </button>
+          </div>
+        </div>
+
+        <div id="image-slider" class="hidden lg:flex shrink-0">
+          <div
+            class="skew-item h-80 w-[550px] border border-evnBlue/30 overflow-hidden rounded-lg shadow-xl transition-all duration-700">
+            <div class="inner-image h-full w-full bg-no-repeat transition-all duration-700" style="
+                  background-image: url('/images/slide1.jpg');
+                  background-size: cover;
+                  background-position: center;
+                "></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full py-8">
+      <div class="max-w-[85vw] mx-auto flex flex-col md:flex-row items-start gap-10">
+        <div class="w-72 shrink-0 drop-shadow-xl">
+          <svg width="100%" viewBox="0 -2 100 100" xmlns="http://www.w3.org/2000/svg" class="overflow-visible">
+            <defs>
+              <clipPath id="myClip">
+                <path
+                  d="M 0 0 L 0 50 L 30 80 Q 37 87 45 87 L 50 87 Q 60 87 60 77 L 60 70 Q 60 60 70 60 L 80 60 Q 90 60 90 50 L 90 35 L 70 0" />
+              </clipPath>
+            </defs>
+            <image href="/images/pic1.jpg" x="0" y="0" width="130" height="90" preserveAspectRatio="xMidYMid slice"
+              clip-path="url(#myClip)" />
+            <path
+              d="M 0 0 L 0 50 L 30 80 Q 37 87 45 87 L 50 87 Q 60 87 60 77 L 60 70 Q 60 60 70 60 L 80 60 Q 90 60 90 50 L 90 35 L 70 0 Z"
+              fill="none" stroke="#29348f" stroke-width="0.8" />
+          </svg>
+        </div>
+
+        <div class="flex-grow flex flex-col space-y-4 pt-2">
+          <div
+            class="relative pl-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-evnRed">
+            <h4 class="text-xl md:text-2xl font-bold text-evnBlue leading-snug">
+              Bạn có sáng kiến muốn đóng góp cho đơn vị?
+            </h4>
+          </div>
+
+          <p class="text-lg text-gray-600 font-medium pl-4">
+            <a href="#" class="inline-flex items-center gap-2 text-evnBlue hover:text-evnRed transition-colors group"
+              onclick="
+                  document.getElementById('flowcharts-section').classList.toggle('hidden');
+                  return false;
+                ">
+              <span id="typing-text" class="border-r-2 border-evnBlue pr-1">Hướng dẫn lộ trình đăng ký và nộp hồ sơ sáng
+                kiến online</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+          </p>
+          <style>
+            #typing-text {
+              animation: blink-caret 0.75s step-end infinite;
+              display: inline-block;
+            }
+
+            @keyframes blink-caret {
+
+              from,
+              to {
+                border-color: transparent;
+              }
+
+              50% {
+                border-color: #29348f;
+              }
+            }
+
+            .animate-wipe-down {
+              animation: wipeDown 0.5s ease-in-out forwards !important;
+            }
+
+            @keyframes wipeDown {
+              0% {
+                clip-path: inset(0 0 0 0);
+              }
+
+              100% {
+                clip-path: inset(100% 0 0 0);
+              }
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+    <div id="flowcharts-section" class="w-full pb-16 hidden">
+      <div class="max-w-[85vw] mx-auto">
+        <div class="bg-white border border-gray-100 rounded-3xl shadow-2xl overflow-hidden p-2 md:p-4">
+          <div class="flex items-center gap-3 mb-4 pl-4 cursor-pointer select-none"
+            onclick="document.getElementById('flowchart-container-1').classList.toggle('hidden')">
+            <div class="w-2 h-8 bg-evnRed rounded-full"></div>
+            <span class="inline-flex items-center gap-2 text-evnBlue hover:text-evnRed transition-colors group">
+              Lưu đồ 1: TỔ CHỨC XÂY DỰNG ĐỀ XUẤT ĐẶT HÀNG NHIỆM VỤ KHCN CẤP EVNGENCO2/ĐƠN VỊ
+            </span>
+          </div>
+
+          <div id="flowchart-container-1"
+            class="relative group p-8 bg-white rounded-2xl border border-gray-200 overflow-x-auto hidden mb-6">
+            <img src="/diagram/flow1.png" alt="Lưu đồ 1"
+              class="w-full h-auto max-w-none cursor-pointer hover:opacity-90 transition-opacity" />
+          </div>
+
+          <div class="flex items-center gap-3 mb-4 pl-4 cursor-pointer select-none"
+            onclick="document.getElementById('flowchart-container-2').classList.toggle('hidden')">
+            <div class="w-2 h-8 bg-evnRed rounded-full"></div>
+            <span class="inline-flex items-center gap-2 text-evnBlue hover:text-evnRed transition-colors group">
+              Lưu đồ 2: QUY TRÌNH XÉT DUYỆT, TUYỂN CHỌN HỒ SƠ THỰC HIỆN NHIỆM VỤ KHCN CẤP
+              EVNGENCO2/ĐƠN VỊ (TH xác định được tổ chức chủ trì)
+            </span>
+          </div>
+
+          <div id="flowchart-container-2"
+            class="relative group p-8 bg-white rounded-2xl border border-gray-200 overflow-x-auto hidden mb-6">
+            <img src="/diagram/flow2.png" alt="Lưu đồ 2"
+              class="w-full h-auto max-w-none cursor-pointer hover:opacity-90 transition-opacity" />
+          </div>
+
+          <div class="flex items-center gap-3 mb-4 pl-4 cursor-pointer select-none"
+            onclick="document.getElementById('flowchart-container-3').classList.toggle('hidden')">
+            <div class="w-2 h-8 bg-evnRed rounded-full"></div>
+            <span class="inline-flex items-center gap-2 text-evnBlue hover:text-evnRed transition-colors group">
+              Lưu đồ 3: QUY TRÌNH TUYỂN CHỌN HỒ SƠ THỰC HIỆN NHIỆM VỤ KHCN
+            </span>
+          </div>
+
+          <div id="flowchart-container-3"
+            class="relative group p-8 bg-white rounded-2xl border border-gray-200 overflow-x-auto hidden mb-6">
+            <img src="/diagram/flow3.png" alt="Lưu đồ 3"
+              class="w-full h-auto max-w-none cursor-pointer hover:opacity-90 transition-opacity" />
+          </div>
+
+          <div class="flex items-center gap-3 mb-4 pl-4 cursor-pointer select-none"
+            onclick="document.getElementById('flowchart-container-4').classList.toggle('hidden')">
+            <div class="w-2 h-8 bg-evnRed rounded-full"></div>
+            <span class="inline-flex items-center gap-2 text-evnBlue hover:text-evnRed transition-colors group">
+              Lưu đồ 4: QUY TRÌNH ĐÁNH GIÁ, NGHIỆM THU NHIỆM VỤ KHCN
+            </span>
+          </div>
+
+          <div id="flowchart-container-4"
+            class="relative group p-8 bg-white rounded-2xl border border-gray-200 overflow-x-auto hidden mb-6">
+            <img src="/diagram/flow4.png" alt="Lưu đồ 4"
+              class="w-full h-auto max-w-none cursor-pointer hover:opacity-90 transition-opacity" />
+          </div>
+
+          <div class="flex items-center gap-3 mb-4 pl-4 cursor-pointer select-none"
+            onclick="document.getElementById('flowchart-container-5').classList.toggle('hidden')">
+            <div class="w-2 h-8 bg-evnRed rounded-full"></div>
+            <span class="inline-flex items-center gap-2 text-evnBlue hover:text-evnRed transition-colors group">
+              Lưu đồ 5: QUY TRÌNH THANH QUYẾT TOÁN NHIỆM VỤ KHCN CẤP (Đối với các đề tài được tổ
+              chức họp nghiệm thu)
+            </span>
+          </div>
+
+          <div id="flowchart-container-5"
+            class="relative group p-8 bg-white rounded-2xl border border-gray-200 overflow-x-auto hidden mb-6">
+            <img src="/diagram/flow5.png" alt="Lưu đồ 5"
+              class="w-full h-auto max-w-none cursor-pointer hover:opacity-90 transition-opacity" />
+          </div>
+
+          <div class="flex items-center gap-3 mb-4 pl-4 cursor-pointer select-none"
+            onclick="document.getElementById('flowchart-container-6').classList.toggle('hidden')">
+            <div class="w-2 h-8 bg-evnRed rounded-full"></div>
+            <span class="inline-flex items-center gap-2 text-evnBlue hover:text-evnRed transition-colors group">
+              Lưu đồ 6: QUY TRÌNH XÉT DUYỆT CÔNG NHẬN SÁNG KIẾN CẤP EVNGENCO2/ĐƠN VỊ
+            </span>
+          </div>
+
+          <div id="flowchart-container-6"
+            class="relative group p-8 bg-white rounded-2xl border border-gray-200 overflow-x-auto hidden">
+            <img src="/diagram/flow6.png" alt="Lưu đồ 6"
+              class="w-full h-auto max-w-none cursor-pointer hover:opacity-90 transition-opacity" />
+          </div>
+
+          <div class="mt-4 px-4 py-3 bg-gray-50 rounded-xl flex items-center justify-between">
+            <p class="text-xs text-gray-500 italic">
+              * Theo Quyết định số ...QĐ/EVNGENCO2, ngày .../.../2025 về việc Ban hành Quy định
+              Quản lý hoạt động khoa học và công nghệ trong Tổng công ty Phát điện 2 - Công ty cổ
+              phần
+            </p>
+            <button class="text-evnBlue font-bold text-xs flex items-center gap-1 hover:text-evnRed transition-colors">
+              TẢI VỀ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full pb-16">
+      <div class="max-w-[85vw] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="flex flex-col items-center">
+          <div
+            class="relative w-full aspect-square bg-white border border-gray-100 shadow-sm rounded-xl flex items-center justify-center">
+            <img src="/images/img1.png" alt="Biểu tượng đề tài đăng ký" class="w-full h-full object-cover rounded-xl" />
+
+            <div
+              class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-64 h-24 bg-evnRed shadow-2xl rounded-lg flex items-center justify-center z-20 p-2 text-center">
+              <span class="text-white text-lg font-semibold leading-tight">
+                Đề tài đăng ký<br />
+                <span class="text-5xl font-bold">00</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div
+            class="relative w-full aspect-square bg-white border border-gray-100 shadow-sm rounded-xl flex items-center justify-center">
+            <img src="/images/img2.png" alt="Biểu tượng đề tài đăng ký" class="w-full h-full object-cover rounded-xl" />
+
+            <div
+              class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-64 h-24 bg-evnRed shadow-2xl rounded-lg flex items-center justify-center z-20 p-2 text-center">
+              <span class="text-white text-lg font-semibold leading-tight">
+                Đề tài được duyệt<br />
+                <span class="text-5xl font-bold">00</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div
+            class="relative w-full aspect-square bg-white border border-gray-100 shadow-sm rounded-xl flex items-center justify-center">
+            <img src="/images/img3.png" alt="Biểu tượng đề tài đăng ký" class="w-full h-full object-cover rounded-xl" />
+
+            <div
+              class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-64 h-24 bg-evnRed shadow-2xl rounded-lg flex items-center justify-center z-20 p-2 text-center">
+              <span class="text-white text-lg font-semibold leading-tight">
+                Đề tài công bố<br />
+                <span class="text-5xl font-bold">00</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full pt-10 pb-20 space-y-16">
+      <div class="max-w-[85vw] mx-auto">
+        <div class="mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <h2 class="text-2xl font-bold text-evnBlue uppercase">Tin tức mới nhất</h2>
+            <div class="flex-grow h-px bg-gray-200"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="group cursor-pointer">
+              <div class="relative overflow-hidden rounded-xl aspect-video bg-gray-100 mb-4 shadow-md">
+                <img src="/images/slide1.jpg" alt="Tin nổi bật"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div class="absolute top-4 left-4 bg-evnRed text-white text-xs font-bold px-3 py-1 rounded">
+                  NỔI BẬT
+                </div>
+              </div>
+              <h4 class="text-xl font-bold text-evnBlue group-hover:text-evnRed transition-colors leading-tight">
+                EVNGENCO2 đẩy mạnh phong trào "Sáng kiến, cải tiến kỹ thuật" trong kỷ nguyên số
+                2026
+              </h4>
+              <p class="text-gray-600 mt-2 line-clamp-2 text-sm">
+                Tổng công ty Phát điện 2 tiếp tục khẳng định vị thế dẫn đầu trong việc ứng dụng
+                khoa học công nghệ vào sản xuất kinh doanh, tối ưu hóa quy trình...
+              </p>
+              <span class="text-sm text-gray-400 mt-3 block font-medium">16/04/2026</span>
+            </div>
+
+            <div class="flex flex-col bg-gray-50/50 border border-gray-100 rounded-xl overflow-hidden shadow-sm">
+              <div class="p-4 bg-white border-b border-gray-100 font-bold text-evnBlue text-sm uppercase">
+                Danh sách tin liên quan
+              </div>
+              <div class="flex-grow overflow-y-auto p-5 space-y-5 max-h-[350px] scrollbar-thin scroll-smooth">
+                <div class="flex gap-4 group cursor-pointer border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                  <div class="w-20 h-14 shrink-0 overflow-hidden rounded bg-gray-100">
+                    <img src="/images/img1.png"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="flex flex-col">
+                    <h5
+                      class="text-sm font-bold text-evnBlue group-hover:text-evnRed transition-colors line-clamp-2 leading-snug">
+                      Hội nghị chuyển đổi số và an toàn thông tin năm 2026
+                    </h5>
+                    <span class="text-[11px] text-gray-400 mt-1">14/04/2026</span>
+                  </div>
+                </div>
+                <div class="flex gap-4 group cursor-pointer border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                  <div class="w-20 h-14 shrink-0 overflow-hidden rounded bg-gray-100">
+                    <img src="/images/img2.png"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="flex flex-col">
+                    <h5
+                      class="text-sm font-bold text-evnBlue group-hover:text-evnRed transition-colors line-clamp-2 leading-snug">
+                      Vận hành ổn định nhà máy thủy điện mùa khô
+                    </h5>
+                    <span class="text-[11px] text-gray-400 mt-1">12/04/2026</span>
+                  </div>
+                </div>
+                <div class="flex gap-4 group cursor-pointer border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                  <div class="w-20 h-14 shrink-0 overflow-hidden rounded bg-gray-100">
+                    <img src="/images/img3.png"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div class="flex flex-col">
+                    <h5
+                      class="text-sm font-bold text-evnBlue group-hover:text-evnRed transition-colors line-clamp-2 leading-snug">
+                      Phát động phong trào Tuổi trẻ sáng tạo
+                    </h5>
+                    <span class="text-[11px] text-gray-400 mt-1">10/04/2026</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-4 mb-8">
+            <h2 class="text-2xl font-bold text-evnBlue uppercase">Quy định - Thông báo</h2>
+            <div class="flex-grow h-px bg-gray-200"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="flex flex-col bg-white border border-evnBlue/20 rounded-xl shadow-sm">
+              <div class="p-4 bg-evnBlue text-white font-bold text-sm uppercase rounded-t-xl">
+                Biểu mẫu công việc
+              </div>
+              <div class="flex-grow overflow-y-auto p-5 space-y-4 max-h-[350px] scrollbar-thin">
+                <a href="#"
+                  onclick="openDocxPreview(event, '/db/pl2.docx', 'Biểu mẫu hồ sơ nhiệm vụ KHCN', 'Bieu_mau_ho_so_nhiem_vu_KHCN.docx')"
+                  class="flex items-start gap-3 group">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z">
+                    </path>
+                  </svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu hồ
+                    sơ nhiệm vụ KHCN</span>
+                </a>
+                <a href="#"
+                  onclick="openDocxPreview(event, '/db/p2.docx', 'Biểu mẫu phiếu đề xuất đề tài nghiên cứu khoa học', 'Bieu_mau_phieu_de_xuat_NCKH.docx')"
+                  class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z">
+                    </path>
+                  </svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu
+                    phiếu đề xuất đề tài nghiên cứu khoa học</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p3.docx', 'Biểu mẫu phiếu đánh giá đề xuất nhiệm vụ KHCN', 'Bieu_mau_phieu_danh_gia_de_xuat_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z">
+                    </path>
+                  </svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu
+                    phiếu đánh giá đề xuất nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p4.docx', 'Biểu mẫu biên bản họp hội đồng tư vấn', 'Bieu_mau_bien_ban_hop_hoi_dong_tu_van.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu biên bản họp hội đồng tư vấn</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p5.docx', 'Biểu mẫu thuyết minh đề tài/nhiệm vụ KHCN', 'Bieu_mau_thuyet_minh_de_tai_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu thuyết minh đề tài/nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p6.docx', 'Biểu mẫu Phiếu xét duyệt/Tuyển chọn hồ sơ đăng ký nhiệm vụ KHCN', 'Bieu_mau_Phieu_xet_duyet_Tuyen_chon_ho_so_dang_ky_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu Phiếu xét duyệt/Tuyển chọn hồ sơ đăng ký nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p7.docx', 'Biểu mẫu Biên bản xét duyệt/tuyển chọn hồ sơ đăng ký', 'Bieu_mau_Bien_ban_xet_duyet_tuyen_chon_ho_so_dang_ky.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu Biên bản xét duyệt/tuyển chọn hồ sơ đăng ký</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p8.docx', 'Biểu mẫu biên bản họp tổ thẩm định', 'Bieu_mau_bien_ban_hop_to_tham_dinh.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu biên bản họp tổ thẩm định</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p9.docx', 'Biểu mẫu hợp đồng KHCN', 'Bieu_mau_hop_dong_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu hợp đồng KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p10.docx', 'Biểu mẫu báo cáo tổng kết thực hiện nhiệm vụ KHCN (các trang bìa, trang đầu, tài liệu tham khảo)', 'Bieu_mau_bao_cao_tong_ket_thuc_hien_nhiem_vu_KHCN_cac_trang_bia_trang_dau_tai_lieu_tham_khao.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu báo cáo tổng kết thực hiện nhiệm vụ KHCN (các trang bìa, trang đầu, tài liệu tham khảo)</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p11.docx', 'Biểu mẫu báo cáo tóm tắt kết quả nhiệm vụ KHCN', 'Bieu_mau_bao_cao_tom_tat_ket_qua_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu báo cáo tóm tắt kết quả nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p12.docx', 'Biểu mẫu ý kiến phản biện nhiệm vụ KHCN', 'Bieu_mau_y_kien_phan_bien_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu ý kiến phản biện nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p13.docx', 'Biểu mẫu đánh giá nghiệm thu KHCN', 'Bieu_mau_danh_gia_nghiem_thu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu đánh giá nghiệm thu KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p14.docx', 'Biểu mẫu biên bản nghiệm thu nhiệm vụ KHCN', 'Bieu_mau_bien_ban_nghiem_thu_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu biên bản nghiệm thu nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p15.docx', 'Biểu mẫu báo cáo đánh giá nghiệm thu cấp cơ sở', 'Bieu_mau_bao_cao_danh_gia_nghiem_thu_cap_co_so.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu báo cáo đánh giá nghiệm thu cấp cơ sở</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p16.docx', 'Biểu mẫu quyết định công nhận kết quả thực hiện nhiệm vụ KHCN', 'Bieu_mau_quyet_dinh_cong_nhan_ket_qua_thuc_hien_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu quyết định công nhận kết quả thực hiện nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p17.docx', 'Biểu mẫu giao nhận tài liệu và kết quả thực hiện nhiệm vụ KHCN', 'Bieu_mau_giao_nhan_tai_lieu_va_ket_qua_thuc_hien_nhiem_vu_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu giao nhận tài liệu và kết quả thực hiện nhiệm vụ KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p18.docx', 'Biểu mẫu thanh lý hợp đồng KHCN', 'Bieu_mau_thanh_ly_hop_dong_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu thanh lý hợp đồng KHCN</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p19.docx', 'Biểu mẫu Giấy uỷ quyền', 'Bieu_mau_Giay_uy_quyen.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu Giấy uỷ quyền</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p20.docx', 'Biểu mẫu hồ sơ hoạt động sáng kiến', 'Bieu_mau_ho_so_hoat_dong_sang_kien.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu hồ sơ hoạt động sáng kiến</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p21.docx', 'Biểu mẫu đánh giá công nhận sáng kiến', 'Bieu_mau_danh_gia_cong_nhan_sang_kien.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu đánh giá công nhận sáng kiến</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p22.docx', 'Biểu mẫu biên bản họp hội đồng sáng kiến', 'Bieu_mau_bien_ban_hop_hoi_dong_sang_kien.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu biên bản họp hội đồng sáng kiến</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p23.docx', 'Biểu mẫu báo cáo hoàn thiện sau xét duỵêt, công nhận', 'Bieu_mau_bao_cao_hoan_thien_sau_xet_duyet_cong_nhan.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu báo cáo hoàn thiện sau xét duỵêt, công nhận</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p24.docx', 'Biểu mẫu quyết định công nhận sáng kiến', 'Bieu_mau_quyet_dinh_cong_nhan_sang_kien.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu quyết định công nhận sáng kiến</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p25.docx', 'Biểu mẫu giấy chứng nhận sáng kiến', 'Bieu_mau_giay_chung_nhan_sang_kien.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu giấy chứng nhận sáng kiến</span>
+                </a>
+                <a href="#" onclick="openDocxPreview(event, '/db/p26.docx', 'Biểu mẫu báo cáo hoạt động KHCN', 'Bieu_mau_bao_cao_hoat_dong_KHCN.docx')" class="flex items-start gap-3 group border-t pt-3">
+                  <svg class="w-5 h-5 text-evnRed mt-1 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path></svg>
+                  <span class="text-sm font-semibold text-evnBlue group-hover:text-evnRed transition-colors">Biểu mẫu báo cáo hoạt động KHCN</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-col bg-white border border-gray-200 rounded-xl shadow-sm">
+              <div
+                class="p-4 bg-gray-100 text-evnBlue font-bold text-sm uppercase rounded-t-xl flex justify-between items-center">
+                <span>Sáng kiến được duyệt</span>
+                <span class="bg-evnRed text-white text-[10px] px-2 py-0.5 rounded-full">MỚI</span>
+              </div>
+              <div class="flex-grow overflow-y-auto p-5 space-y-4 max-h-[200px] scrollbar-thin">
+                <div class="flex items-center justify-between border-b pb-2">
+                  <h6 class="text-sm font-medium text-gray-700 line-clamp-1">
+                    SK-2026-001: Hệ thống làm mát tự động...
+                  </h6>
+                  <span class="text-xs font-bold text-green-600 shrink-0 ml-4">Đã duyệt</span>
+                </div>
+                <div class="flex items-center justify-between border-b pb-2">
+                  <h6 class="text-sm font-medium text-gray-700 line-clamp-1">
+                    SK-2026-002: Phần mềm quản lý thiết bị...
+                  </h6>
+                  <span class="text-xs font-bold text-green-600 shrink-0 ml-4">Đã duyệt</span>
+                </div>
+                <div class="flex items-center justify-between border-b pb-2">
+                  <h6 class="text-sm font-medium text-gray-700 line-clamp-1">
+                    SK-2026-003: Cải tiến vòi phun lò hơi...
+                  </h6>
+                  <span class="text-xs font-bold text-green-600 shrink-0 ml-4">Đã duyệt</span>
+                </div>
+              </div>
+              <div class="p-3 text-center border-t mt-auto">
+                <a href="#" class="text-xs font-bold text-evnBlue hover:text-evnRed uppercase">Xem tất cả danh sách</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-evnBlue text-white pt-12 pb-6 mt-auto">
+    <div class="max-w-[85vw] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-10">
+        <div class="lg:col-span-5 space-y-5">
+          <h4 class="text-lg font-bold uppercase border-l-4 border-evnRed pl-3 mb-6 leading-tight">
+            Tổng Công ty Phát điện 2 - CTCP (EVNGENCO2)
+          </h4>
+          <div class="space-y-4 text-sm opacity-90">
+            <p id="open-map" class="flex items-start gap-3 hover:text-evnRed transition-colors cursor-pointer group">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 shrink-0 text-evnRed mt-0.5 group-hover:scale-110 transition-transform" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span class="underline-offset-4">Số 01 đường Lê Hồng Phong, phường Thới An Đông, TP. Cần Thơ</span>
+            </p>
+            <p class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-evnRed" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              ĐT: 0292.246.1507 - Fax: 0292.6255.500
+            </p>
+            <p class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-evnRed" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Email: evngenco2@gmail.com
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 space-y-4">
+          <div>
+            <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white">Đơn vị thành viên</label>
+            <select id="don-vi-thanh-vien"
+              class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none">
+              <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+              <option value="https://evngenco2.vn/">Cơ quan Tổng Công ty Phát điện 2</option>
+              <option value="https://nhietdiencantho.vn/" class="text-evnBlue">
+                Công ty Nhiệt điện Cần Thơ
+              </option>
+              <option value="https://akhpc.vn/" class="text-evnBlue">
+                Công ty Thủy điện An Khê - Ka Nak
+              </option>
+              <option value="http://www.thuydienquangtri.vn/" class="text-evnBlue">
+                Công ty Thủy điện Quảng Trị
+              </option>
+              <option value="https://songbunghpc.vn/vi/home" class="text-evnBlue">
+                Công ty Thủy điện Sông Bung
+              </option>
+              <option value="https://trungsonhp.vn/" class="text-evnBlue">
+                Công ty TNHH MTV Thủy điện Trung Sơn
+              </option>
+              <option value="https://tmhpp.com.vn/" class="text-evnBlue">
+                Công ty Cổ phần Thủy điện Thác Mơ
+              </option>
+              <option value="https://avuong.com/" class="text-evnBlue">
+                Công ty Cổ phần Thủy điện A Vương
+              </option>
+              <option value="https://sbh.vn/" class="text-evnBlue">
+                Công ty Cổ phần Thủy điện Sông Ba Hạ
+              </option>
+              <option value="http://ppc.evn.vn/" class="text-evnBlue">
+                Công ty Cổ phần Nhiệt điện Phả Lại
+              </option>
+              <option value="https://www.ndhp.com.vn/" class="text-evnBlue">
+                Công ty Cổ phần Nhiệt điện Hải Phòng
+              </option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white">Đơn vị liên kết</label>
+            <select id="don-vi-lien-ket"
+              class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none">
+              <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+              <option value="https://evn.com.vn/" class="text-evnBlue">
+                Tập đoàn Điện lực Việt Nam
+              </option>
+              <option value="https://www.evngenco1.vn/en/home" class="text-evnBlue">
+                Tổng công ty Phát điện 1
+              </option>
+              <option value="https://www.genco3.com/" class="text-evnBlue">
+                Tổng công ty Phát điện 3
+              </option>
+              <option value="https://npc.com.vn/" class="text-evnBlue">
+                Tổng công ty Điện lực miền Bắc
+              </option>
+              <option value="https://cpc.vn/vi-vn/" class="text-evnBlue">
+                Tổng công ty Điện lực miền Trung
+              </option>
+              <option value="https://evnspc.vn/bai-viet/F02WEB-201905-00000012/tong-quan" class="text-evnBlue">
+                Tổng công ty Điện lực miền Nam
+              </option>
+              <option value="https://evnhanoi.vn/" class="text-evnBlue">
+                Tổng công ty Điện lực TP. Hà Nội
+              </option>
+              <option value="https://www.evnhcmc.vn/" class="text-evnBlue">
+                Tổng công ty Điện lực TP. HCM
+              </option>
+              <option value="https://www.npt.com.vn/" class="text-evnBlue">
+                Tổng công ty Truyền tải điện Quốc gia
+              </option>
+              <option value="https://www.nsmo.vn/" class="text-evnBlue">
+                Trung tâm Điều độ hệ thống điện Quốc gia
+              </option>
+              <option class="text-evnBlue">Công ty Viễn thông điện lực và CNTT</option>
+              <option value="https://www.congdoandlvn.org.vn/" class="text-evnBlue">
+                Công đoàn Điện lực Việt Nam
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3 space-y-5">
+          <div>
+            <label class="block text-sm font-bold uppercase mb-6 tracking-widest text-white">
+              Thống kê truy cập
+            </label>
+
+            <div class="w-full text-sm space-y-3">
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80 font-medium text-white">Đang truy cập</span>
+                <span class="font-bold">31</span>
+              </div>
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80">Hôm nay</span>
+                <span class="font-semibold">6,162</span>
+              </div>
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80">Tháng hiện tại</span>
+                <span class="font-semibold">143,294</span>
+              </div>
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80">Tổng truy cập</span>
+                <span class="font-semibold">443,224</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-2">
+        <div class="flex flex-col md:flex-col items-start gap-2 text-xs opacity-80">
+          <p>Trưởng ban biên tập: <strong class="text-white">Họ tên</strong></p>
+          <p>
+            Chịu trách nhiệm nội dung:
+            <strong class="text-white not-italic">Họ tên</strong>
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="pt-2 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] opacity-50 uppercase tracking-[0.2em] font-medium">
+        <p>© 2026 - BẢN QUYỀN THUỘC VỀ EVNGENCO2</p>
+        <p class="mt-2 md:mt-0">Thiết kế và Phát triển bởi Ban KHCNCĐS</p>
+      </div>
+    </div>
+  </footer>
+  <div id="map-overlay"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div
+      class="relative w-full max-w-4xl bg-white rounded-2xl overflow-hidden shadow-2xl transition-all scale-95 opacity-0"
+      id="map-modal">
+      <div class="flex justify-between items-center p-4 border-b border-gray-100">
+        <h3 class="font-bold text-evnBlue">
+          Địa chỉ Trụ sở Tổng công ty Phát điện 2 - CTCP EVNGENCO2
+        </h3>
+        <button id="close-map" class="text-gray-500 hover:text-evnRed transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="aspect-video w-full">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4751.469808457514!2d105.71685797577128!3d10.097593071346312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a087b43cede8af%3A0x465c2bf04ca9dfe7!2zVOG7lW5nIEPDtG5nIFR5IFBow6F0IMSQaeG7h24gMiAoRVZOIEdFTkNPIDIp!5e1!3m2!1svi!2s!4v1776313226144!5m2!1svi!2s"
+          width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+  <div
+    class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4 p-2 bg-white/10 backdrop-blur-md border border-evnBlue rounded-l-2xl shadow-2xl">
+    <a href="https://www.facebook.com/TongcongtyPhatdien2" target="_blank"
+      class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+        <path fill="rgb(0, 92, 255)"
+          d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5l0-170.3-52.8 0 0-78.2 52.8 0 0-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4l0 70.8c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2l0 27.8 83.6 0-14.4 78.2-69.3 0 0 175.9C413.8 494.8 512 386.9 512 256z" />
+      </svg>
+      <span
+        class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold">Facebook</span>
+    </a>
+
+    <a href="https://www.youtube.com/@evngenco2" target="_blank"
+      class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+        <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+        <path fill="rgb(250, 1, 1)"
+          d="M549.7 124.1C543.5 100.4 524.9 81.8 501.4 75.5 458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5C51.2 81.8 32.7 100.4 26.4 124.1 15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8 42.6 11.5 213.4 11.5 213.4 11.5s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6l0-162.4 142.7 81.2-142.7 81.2z" />
+      </svg>
+      <span
+        class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold">Youtube</span>
+    </a>
+
+    <a href="https://www.tiktok.com/@evngenco2" target="_blank"
+      class="w-8 h-8 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path fill="rgb(0, 0, 0)"
+          d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2l0 178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16l0 89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8l0-349.4 88 0c-.1 7.4 .6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1l0 87.4z" />
+      </svg>
+      <span
+        class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold">Tiktok</span>
+    </a>
+  </div>
+  <div id="docx-modal"
+    class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div
+      class="relative w-full max-w-5xl h-[90vh] bg-white rounded-2xl flex flex-col overflow-hidden shadow-2xl transition-all scale-95 opacity-100"
+      id="docx-modal-content">
+      <div class="flex justify-between items-center p-4 border-b border-gray-100">
+        <h3 class="font-bold text-evnBlue" id="docx-modal-title">Xem trước: Biểu mẫu hồ sơ nhiệm vụ KHCN</h3>
+        <div class="flex items-center gap-3">
+          <a href="/db/pl2.docx" download="Bieu_mau_ho_so_nhiem_vu_KHCN.docx" id="docx-download-btn"
+            class="px-4 py-2 bg-evnBlue text-white rounded font-semibold text-sm hover:bg-evnRed transition-colors flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Tải về
+          </a>
+          <button id="close-docx-modal" class="text-gray-500 hover:text-evnRed transition-colors" onclick="
+                document.getElementById('docx-modal').classList.add('hidden');
+                document.getElementById('docx-modal').classList.remove('flex');
+              ">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <style>
+        #docx-container .docx-wrapper {
+          background: #f3f4f6 !important;
+          padding: 24px !important;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        #docx-container .docx-wrapper>section.docx {
+          width: 100% !important;
+          max-width: 850px !important;
+          /* Giới hạn chiều rộng như trang A4 */
+          min-height: 1050px !important;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+          margin-bottom: 24px !important;
+          padding: 60px 80px !important;
+          /* Tạo lề cho nội dung */
+          background-color: white !important;
+          /* Đảm bảo nền trắng */
+          border-radius: 4px !important;
+        }
+
+        @media (max-width: 768px) {
+          #docx-container .docx-wrapper>section.docx {
+            padding: 30px 20px !important;
+          }
+        }
+      </style>
+      <div class="flex-grow overflow-auto" id="docx-container">
+        <!-- docx preview goes here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/index.js"></script>
+
+  <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
+  <script src="https://unpkg.com/docx-preview/dist/docx-preview.min.js"></script>
+  <script>
+    function openDocxPreview(e, url, title, downloadFilename) {
+      e.preventDefault();
+      const modal = document.getElementById('docx-modal');
+      const container = document.getElementById('docx-container');
+      const titleEl = document.getElementById('docx-modal-title');
+      const downloadBtn = document.getElementById('docx-download-btn');
+
+      if (titleEl) titleEl.textContent = 'Xem trước: ' + title;
+      if (downloadBtn) {
+        downloadBtn.href = url;
+        downloadBtn.download = downloadFilename || url.split('/').pop();
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+
+      // Add a simple animation effect
+      setTimeout(() => {
+        document.getElementById('docx-modal-content').classList.remove('scale-95');
+        document.getElementById('docx-modal-content').classList.add('scale-100');
+      }, 10);
+
+      container.innerHTML =
+        '<div class="flex items-center justify-center h-full"><div class="animate-spin rounded-full h-12 w-12 border-b-2 border-evnBlue"></div></div>';
+
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.blob();
+        })
+        .then((blob) => {
+          container.innerHTML = '';
+          docx.renderAsync(blob, container, null, {
+            className: 'docx-wrapper',
+            inWrapper: true,
+            ignoreWidth: true,
+            ignoreHeight: true,
+            ignoreFonts: false,
+            breakPages: true,
+            ignoreLastRenderedPageBreak: true,
+            experimental: false,
+            trimXmlDeclaration: true,
+            debug: false,
+          });
+        })
+        .catch((error) => {
+          container.innerHTML =
+            '<div class="text-red-500 text-center p-4">Lỗi khi tải file. Vui lòng kiểm tra lại đường dẫn file (' +
+            url +
+            ').</div>';
+          console.error('Error rendering docx:', error);
+        });
+    }
+  </script>
+</body>
+
+</html>

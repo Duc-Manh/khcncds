@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xét duyệt sáng kiến online - Ban KHCNCĐS EVNGENCO2</title>
+
+    <meta
+      name="description"
+      content="Hệ thống xét duyệt sáng kiến online thuộc Ban Khoa học công nghệ và Chuyển đổi số - Tổng Công ty Phát điện 2 (EVNGENCO2)."
+    />
+    <meta
+      name="keywords"
+      content="sáng kiến, EVNGENCO2, xét duyệt sáng kiến, chuyển đổi số, KHCNCĐS, phát điện 2"
+    />
+    <meta name="author" content="Ban KHCNCĐS - EVNGENCO2" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Hệ thống Xét duyệt Sáng kiến Online - EVNGENCO2" />
+    <meta
+      property="og:description"
+      content="Số hóa quy trình nộp hồ sơ, kiểm tra và xét duyệt sáng kiến khoa học kỹ thuật tại Tổng Công ty Phát điện 2."
+    />
+    <meta property="og:image" content="https://yourdomain.com/path-to-logo-evn.png" />
+    <meta property="og:url" content="https://sangkien.evngenco2.vn" />
+    <meta property="og:site_name" content="EVNGENCO2 Portal" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hệ thống Xét duyệt Sáng kiến Online - Ban KHCNCĐS" />
+    <meta
+      name="twitter:description"
+      content="Nền tảng quản lý sáng kiến khoa học công nghệ của EVNGENCO2."
+    />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#DB0D0D" />
+    <meta name="robots" content="index, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              // Cấu hình để font-sans mặc định là Montserrat
+              sans: ['Montserrat', 'sans-serif'],
+            },
+            colors: {
+              evnRed: '#DB0D0D',
+              evnBlue: '#29348f',
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white font-sans x-hidden flex flex-col min-h-screen">
+    <header class="relative z-50 bg-white w-full flex-shrink-0">
+      <div class="max-w-[85vw] mx-auto">
+        <div class="flex justify-between items-center h-22">
+          <img
+            src="/images/logo_evngenco2.png"
+            alt="Logo EVNGENCO2"
+            class="mt-4 h-24 w-auto object-contain"
+          />
+
+          <div class="flex items-center w-[40%]">
+            <nav
+              class="hidden lg:flex justify-between w-full text-sm font-semibold uppercase tracking-wide"
+            >
+              <a
+                href="/index"
+                class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all"
+                >Trang chủ</a
+              >
+              <a
+                href="/news"
+                class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all"
+                >Tin tức</a
+              >
+              <a
+                href="/notice"
+                class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all"
+                >Thông báo</a
+              >
+              <a href="/internal" class="text-evnRed border-b-2 border-evnRed pb-1 transition-all"
+                >Nội bộ</a
+              >
+              <a
+                href="/login"
+                class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all"
+              >
+                Đăng nhập
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow flex flex-col"></main>
+    <footer class="bg-evnBlue text-white pt-12 pb-6 mt-auto">
+      <div class="max-w-[85vw] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-10">
+          <div class="lg:col-span-5 space-y-5">
+            <h4
+              class="text-lg font-bold uppercase border-l-4 border-evnRed pl-3 mb-6 leading-tight"
+            >
+              Tổng Công ty Phát điện 2 - CTCP (EVNGENCO2)
+            </h4>
+            <div class="space-y-4 text-sm opacity-90">
+              <p
+                id="open-map"
+                class="flex items-start gap-3 hover:text-evnRed transition-colors cursor-pointer group"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 shrink-0 text-evnRed mt-0.5 group-hover:scale-110 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+                <span class="underline-offset-4"
+                  >Số 01 đường Lê Hồng Phong, phường Thới An Đông, TP. Cần Thơ</span
+                >
+              </p>
+              <p class="flex items-center gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 shrink-0 text-evnRed"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+                ĐT: 0292.246.1507 - Fax: 0292.6255.500
+              </p>
+              <p class="flex items-center gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 shrink-0 text-evnRed"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                Email: evngenco2@gmail.com
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 space-y-4">
+            <div>
+              <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white"
+                >Đơn vị thành viên</label
+              >
+              <select
+                id="don-vi-thanh-vien"
+                class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none"
+              >
+                <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+                <option value="https://evngenco2.vn/">Cơ quan Tổng Công ty Phát điện 2</option>
+                <option value="https://nhietdiencantho.vn/" class="text-evnBlue">
+                  Công ty Nhiệt điện Cần Thơ
+                </option>
+                <option value="https://akhpc.vn/" class="text-evnBlue">
+                  Công ty Thủy điện An Khê - Ka Nak
+                </option>
+                <option value="http://www.thuydienquangtri.vn/" class="text-evnBlue">
+                  Công ty Thủy điện Quảng Trị
+                </option>
+                <option value="https://songbunghpc.vn/vi/home" class="text-evnBlue">
+                  Công ty Thủy điện Sông Bung
+                </option>
+                <option value="https://trungsonhp.vn/" class="text-evnBlue">
+                  Công ty TNHH MTV Thủy điện Trung Sơn
+                </option>
+                <option value="https://tmhpp.com.vn/" class="text-evnBlue">
+                  Công ty Cổ phần Thủy điện Thác Mơ
+                </option>
+                <option value="https://avuong.com/" class="text-evnBlue">
+                  Công ty Cổ phần Thủy điện A Vương
+                </option>
+                <option value="https://sbh.vn/" class="text-evnBlue">
+                  Công ty Cổ phần Thủy điện Sông Ba Hạ
+                </option>
+                <option value="http://ppc.evn.vn/" class="text-evnBlue">
+                  Công ty Cổ phần Nhiệt điện Phả Lại
+                </option>
+                <option value="https://www.ndhp.com.vn/" class="text-evnBlue">
+                  Công ty Cổ phần Nhiệt điện Hải Phòng
+                </option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white"
+                >Đơn vị liên kết</label
+              >
+              <select
+                id="don-vi-lien-ket"
+                class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none"
+              >
+                <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+                <option value="https://evn.com.vn/" class="text-evnBlue">
+                  Tập đoàn Điện lực Việt Nam
+                </option>
+                <option value="https://www.evngenco1.vn/en/home" class="text-evnBlue">
+                  Tổng công ty Phát điện 1
+                </option>
+                <option value="https://www.genco3.com/" class="text-evnBlue">
+                  Tổng công ty Phát điện 3
+                </option>
+                <option value="https://npc.com.vn/" class="text-evnBlue">
+                  Tổng công ty Điện lực miền Bắc
+                </option>
+                <option value="https://cpc.vn/vi-vn/" class="text-evnBlue">
+                  Tổng công ty Điện lực miền Trung
+                </option>
+                <option
+                  value="https://evnspc.vn/bai-viet/F02WEB-201905-00000012/tong-quan"
+                  class="text-evnBlue"
+                >
+                  Tổng công ty Điện lực miền Nam
+                </option>
+                <option value="https://evnhanoi.vn/" class="text-evnBlue">
+                  Tổng công ty Điện lực TP. Hà Nội
+                </option>
+                <option value="https://www.evnhcmc.vn/" class="text-evnBlue">
+                  Tổng công ty Điện lực TP. HCM
+                </option>
+                <option value="https://www.npt.com.vn/" class="text-evnBlue">
+                  Tổng công ty Truyền tải điện Quốc gia
+                </option>
+                <option value="https://www.nsmo.vn/" class="text-evnBlue">
+                  Trung tâm Điều độ hệ thống điện Quốc gia
+                </option>
+                <option class="text-evnBlue">Công ty Viễn thông điện lực và CNTT</option>
+                <option value="https://www.congdoandlvn.org.vn/" class="text-evnBlue">
+                  Công đoàn Điện lực Việt Nam
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3 space-y-5">
+            <div>
+              <label class="block text-sm font-bold uppercase mb-6 tracking-widest text-white">
+                Thống kê truy cập
+              </label>
+
+              <div class="w-full text-sm space-y-3">
+                <div class="flex justify-between pb-1">
+                  <span class="opacity-80 font-medium text-white">Đang truy cập</span>
+                  <span class="font-bold">31</span>
+                </div>
+                <div class="flex justify-between pb-1">
+                  <span class="opacity-80">Hôm nay</span>
+                  <span class="font-semibold">6,162</span>
+                </div>
+                <div class="flex justify-between pb-1">
+                  <span class="opacity-80">Tháng hiện tại</span>
+                  <span class="font-semibold">143,294</span>
+                </div>
+                <div class="flex justify-between pb-1">
+                  <span class="opacity-80">Tổng truy cập</span>
+                  <span class="font-semibold">443,224</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pb-2">
+          <div class="flex flex-col md:flex-col items-start gap-2 text-xs opacity-80">
+            <p>Trưởng ban biên tập: <strong class="text-white">Họ tên</strong></p>
+            <p>
+              Chịu trách nhiệm nội dung:
+              <strong class="text-white not-italic">Họ tên</strong>
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="pt-2 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] opacity-50 uppercase tracking-[0.2em] font-medium"
+        >
+          <p>© 2026 - BẢN QUYỀN THUỘC VỀ EVNGENCO2</p>
+          <p class="mt-2 md:mt-0">Thiết kế và Phát triển bởi Ban KHCNCĐS</p>
+        </div>
+      </div>
+    </footer>
+    <div
+      id="map-overlay"
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+    >
+      <div
+        class="relative w-full max-w-4xl bg-white rounded-2xl overflow-hidden shadow-2xl transition-all scale-95 opacity-0"
+        id="map-modal"
+      >
+        <div class="flex justify-between items-center p-4 border-b border-gray-100">
+          <h3 class="font-bold text-evnBlue">
+            Địa chỉ Trụ sở Tổng công ty Phát điện 2 - CTCP EVNGENCO2
+          </h3>
+          <button id="close-map" class="text-gray-500 hover:text-evnRed transition-colors">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="aspect-video w-full">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4751.469808457514!2d105.71685797577128!3d10.097593071346312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a087b43cede8af%3A0x465c2bf04ca9dfe7!2zVOG7lW5nIEPDtG5nIFR5IFBow6F0IMSQaeG7h24gMiAoRVZOIEdFTkNPIDIp!5e1!3m2!1svi!2s!4v1776313226144!5m2!1svi!2s"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4 p-2 bg-white/10 backdrop-blur-md border border-evnBlue rounded-l-2xl shadow-2xl"
+    >
+      <a
+        href="https://www.facebook.com/TongcongtyPhatdien2"
+        target="_blank"
+        class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+          <path
+            fill="rgb(0, 92, 255)"
+            d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5l0-170.3-52.8 0 0-78.2 52.8 0 0-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4l0 70.8c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2l0 27.8 83.6 0-14.4 78.2-69.3 0 0 175.9C413.8 494.8 512 386.9 512 256z"
+          />
+        </svg>
+        <span
+          class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold"
+          >Facebook</span
+        >
+      </a>
+
+      <a
+        href="https://www.youtube.com/@evngenco2"
+        target="_blank"
+        class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+          <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+          <path
+            fill="rgb(250, 1, 1)"
+            d="M549.7 124.1C543.5 100.4 524.9 81.8 501.4 75.5 458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5C51.2 81.8 32.7 100.4 26.4 124.1 15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8 42.6 11.5 213.4 11.5 213.4 11.5s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6l0-162.4 142.7 81.2-142.7 81.2z"
+          />
+        </svg>
+        <span
+          class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold"
+          >Youtube</span
+        >
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@evngenco2"
+        target="_blank"
+        class="w-8 h-8 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+          <path
+            fill="rgb(0, 0, 0)"
+            d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2l0 178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16l0 89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8l0-349.4 88 0c-.1 7.4 .6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1l0 87.4z"
+          />
+        </svg>
+        <span
+          class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold"
+          >Tiktok</span
+        >
+      </a>
+    </div>
+    <script src="/js/index.js"></script>
+  </body>
+</html>

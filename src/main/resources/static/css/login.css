@@ -1,0 +1,67 @@
+/* 1. Cấu hình hiệu ứng Biến hình (Morphing) cho Container */
+#auth-container {
+  transition: max-width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: max-width; /* Tối ưu hiệu năng render trên trình duyệt */
+  overflow: hidden; /* Ngăn nội dung bị nhảy trong lúc co dãn khung */
+}
+
+/* 2. Hiệu ứng chuyển cảnh cho các Form nội bộ */
+#login-form,
+#register-form {
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  width: 100%;
+}
+
+/* 3. Hiệu ứng xuất hiện mượt mà (Fade In Up) */
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 4. Hiệu ứng biến mất nhẹ nhàng */
+.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none; /* Ngăn người dùng tương tác khi đang ẩn */
+}
+
+/* 5. Ghi đè class Hidden của Tailwind để đảm bảo layout không bị vỡ */
+.hidden {
+  display: none !important;
+}
+
+/* 6. Tùy chỉnh thanh cuộn cho Khung hướng dẫn (nếu nội dung dài) */
+#register-form .bg-slate-50::-webkit-scrollbar {
+  width: 4px;
+}
+#register-form .bg-slate-50::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+/* 7. Hiệu ứng rung nhẹ cho nút Gửi đăng ký để tạo điểm nhấn */
+button[type='submit']:active,
+#register-form button:active {
+  transform: scale(0.97);
+}
+
+/* 8. Tối ưu hiển thị cho Select (Dropdown) */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
