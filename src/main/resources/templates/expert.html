@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Mạng lưới chuyên gia | EVNGENCO2</title>
+   <!-- Tailwind CSS CDN -->
+   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <script>
+      tailwind.config = {
+         theme: {
+            extend: {
+               colors: {
+                  evnBlue: '#0d1e50',
+                  evnRed: '#ed1c24',
+               }
+            }
+         }
+      }
+   </script>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+   <!-- HEADER KHÔI PHỤC -->
+   <header class="relative z-50 bg-white w-full flex-shrink-0">
+      <div class="max-w-[85vw] mx-auto">
+         <div class="flex justify-between items-center py-4">
+            <!-- Bên trái: Logo và 2 dòng chữ -->
+            <div class="flex items-center gap-6">
+               <img src="/images/logo_evngenco2.png" alt="Logo EVNGENCO2" class="h-24 w-auto object-contain" />
+               <div class="flex flex-col">
+                  <h1 class="text-evnRed text-2xl md:text-3xl font-extrabold tracking-wide uppercase drop-shadow-sm">
+                     CỔNG SÁNG KIẾN KH, CN, ĐMST & CĐS</h1>
+                  <p class="text-evnBlue text-lg md:text-xl font-bold italic mt-1 drop-shadow-sm">"Kết nối sáng tạo -
+                     Kiến tạo tương lai"</p>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="w-full border-t border-b border-gray-100 mt-2 shadow-sm bg-white">
+         <div class="max-w-[85vw] mx-auto">
+            <div class="flex items-center justify-center py-3 w-full">
+               <nav class="hidden lg:flex justify-center gap-48 w-full text-sm font-semibold uppercase tracking-wide">
+                  <a href="#" class="text-evnRed border-b-2 border-evnRed pb-1 transition-all">Trang chủ</a>
+                  <a href="/news"
+                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Tin
+                     tức</a>
+                  <a href="/notice"
+                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Thông
+                     báo</a>
+                  <div class="relative group">
+                     <button type="button"
+                        class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
+                        Nội bộ
+                     </button>
+
+                     <div
+                        class="absolute right-0 mt-2 w-72 bg-white border border-evnRed shadow-xl rounded py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+                        <a href="https://doffice.evngenco2.vn/sign-in?redirectURL=%2Fproject" target="_blank"
+                           rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           Văn phòng điện tử
+                        </a>
+                        <a href="https://smartevn.evngenco2.vn/sign-in?redirectURL=%2Fdashboard" target="_blank"
+                           rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           SmartEVN
+                        </a>
+                        <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.office.com%2Fmail%2F&client-request-id=f020718d-77d8-7965-e630-7664d134e4f1&response_mode=fragment&client_info=1&prompt=select_account&nonce=019d972f-3e4d-7fd0-a77e-bd6ba9f7d827&state=eyJpZCI6IjAxOWQ5NzJmLTNlNGQtN2E1Ni1hNGExLTgxZWJiOTNiZTBjNCIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D%7CaHR0cHM6Ly9vdXRsb29rLm9mZmljZS5jb20vbWFpbC8&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D&x-client-SKU=msal.js.browser&x-client-VER=4.28.2&response_type=code&code_challenge=URuQGkeAZbCDVfQwTWSIXx_P02BNfm3mdXKfgbWXfJA&code_challenge_method=S256"
+                           target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           Email - Thư điện tử
+                        </a>
+                        <a href="https://bcqt.evngenco2.vn/#/signin" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           BI - Báo cáo quản trị
+                        </a>
+                        <a href="https://home.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           Web nội bộ
+                        </a>
+                        <a href="https://elearninglms.evn.com.vn/user/login" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           E-Learning 2.0
+                        </a>
+                        <a href="https://lichtuan.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           Lịch tuần EVNGENCO2
+                        </a>
+                        <a href="https://lichxe.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           Lịch xe
+                        </a>
+                        <a href="https://login.evn.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeoffice%3aevn&wctx=https%3a%2f%2fportal.evn.com.vn%2f_layouts%2f15%2fAuthenticate.aspx%3fSource%3d%252F"
+                           target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           EVN Portal
+                        </a>
+
+                        <a href="https://nhatruyenthong.evn.com.vn/" target="_blank" rel="noopener noreferrer"
+                           class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                           Nhà truyền thống ngành điện
+                        </a>
+                     </div>
+                  </div>
+                  <a href="/login"
+                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">
+                     Đăng nhập
+                  </a>
+               </nav>
+            </div>
+         </div>
+      </div>
+   </header>
+
+   <!-- MAIN CONTENT: EXPERT NETWORK -->
+   <main class="flex-grow max-w-[85vw] mx-auto w-full py-10">
+
+      <!-- Toolbar -->
+      <h2 class="text-2xl font-bold text-evnBlue mb-6">Mạng lưới Chuyên gia Việt Nam</h2>
+      <div
+         class="flex flex-col md:flex-row items-start md:items-center justify-start mb-4 gap-4">
+
+         <div class="flex flex-wrap items-center gap-3 w-full">
+            <button
+               class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Tham
+               vấn của tôi
+            </button>
+            <a href="/expert-regis"
+               class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all inline-block text-center">Đăng
+               ký tham gia mạng lưới chuyên gia
+            </a>
+            <button
+               class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Tham
+               vấn chuyên gia
+            </button>
+            <button
+               class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Mời
+               chuyên gia trao đổi giảng dạy, đào tạo
+            </button>
+         </div>
+      </div>
+
+      <!-- Search Tools -->
+      <div class="flex flex-wrap items-center gap-3 w-full mb-8 pb-4 border-b border-gray-300">
+         <select class="border border-gray-300 rounded px-3 py-1.5 text-sm outline-none focus:border-evnBlue">
+            <option>Lĩnh vực chuyên môn</option>
+            <option>Công nghệ thông tin</option>
+            <option>Điện & Tự động hóa</option>
+            <option>Năng lượng</option>
+         </select>
+         <select class="border border-gray-300 rounded px-3 py-1.5 text-sm outline-none focus:border-evnBlue">
+            <option>Khu vực</option>
+            <option>Hà Nội</option>
+            <option>Đà Nẵng</option>
+            <option>TP. Hồ Chí Minh</option>
+         </select>
+         <button class="bg-evnBlue text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Tìm kiếm</button>
+      </div>
+
+      <!-- Expert Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+
+         <!-- CARD 1 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">GS.TS Lê Quốc Cường</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Mạng máy tính và TT</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Nghiên cứu khoa học, chuyển giao công nghệ trong các lĩnh vực: Mạng máy tính, Điện toán đám mây, An
+                  ninh mạng, Trí tuệ nhân tạo. Tham gia tư vấn và thiết kế các hệ thống thông tin quy mô lớn...
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 2 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">PGS.TS Nguyễn Thanh Tùng</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Kỹ thuật Phần mềm</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Phát triển các phương pháp luận Kỹ thuật phần mềm. Đảm bảo chất lượng phần mềm, phân tích dữ liệu lớn
+                  (Big Data). Ứng dụng kỹ thuật AI/ML trong tối ưu hóa quy trình nghiệp vụ...
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 3 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">PGS.TS Hoàng Vĩnh Diện</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Hệ thống điện</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Nghiên cứu về độ tin cậy và tối ưu hóa hệ thống điện, lưới điện thông minh (Smart Grid), và tích hợp
+                  năng lượng tái tạo. Tham gia tư vấn các dự án truyền tải điện cấp quốc gia.
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 4 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">TS Trần Lợi Cường</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Chuyển đổi số</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Cố vấn chiến lược Chuyển đổi số cho các doanh nghiệp Nhà nước. Chuyên sâu về tái cấu trúc quy trình,
+                  tích hợp hệ thống ERP/EAM và xây dựng văn hóa đổi mới sáng tạo...
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 5 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">TS Nguyễn Bá Định</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Cơ điện & Tự động hóa</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="far fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Chuyên môn thiết kế, chế tạo máy và tự động hóa dây chuyền sản xuất. Ứng dụng robot công nghiệp và hệ
+                  thống SCADA trong quản lý vận hành nhà máy nhiệt điện...
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 6 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">TS Võ Hoàng Diên</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Khoa học Dữ liệu</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Xây dựng mô hình Data Warehouse và Data Lake. Áp dụng các thuật toán dự báo rủi ro (Predictive
+                  Maintenance) dựa trên dữ liệu vận hành theo thời gian thực...
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 7 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">ThS Lê Văn Hùng</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Quản lý Dự án</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="far fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Tư vấn giám sát, quản lý đấu thầu và điều hành các dự án đầu tư xây dựng công trình năng lượng. Đạt
+                  chứng chỉ PMP quốc tế và có hơn 15 năm kinh nghiệm thực tiễn.
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 8 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">ThS Phạm Thu Thủy</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia An toàn thông tin</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Đánh giá rủi ro an ninh mạng, xây dựng chính sách ISMS theo tiêu chuẩn ISO 27001. Triển khai các giải
+                  pháp phòng chống tấn công mạng (SOC, SIEM) cho hệ thống trọng yếu.
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 9 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">PGS.TS Nguyễn Trung Dũng</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Tự động hóa điều khiển</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Nghiên cứu về điều khiển thông minh, ứng dụng thuật toán di truyền, mạng nơ ron nhân tạo vào việc tinh
+                  chỉnh tham số bộ điều khiển PID trong nhà máy nhiệt điện...
+               </p>
+            </div>
+         </div>
+
+         <!-- CARD 10 -->
+         <div
+            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
+            <div
+               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
+               <i class="fas fa-user-tie text-3xl"></i>
+            </div>
+            <div class="flex-1">
+               <h3 class="text-evnBlue text-lg font-bold">TS Đinh Văn Quyết</h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Đổi mới Sáng tạo</p>
+               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                     class="fas fa-star"></i><i class="fas fa-star"></i>
+               </div>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
+                  Thiết kế mô hình quản trị sáng kiến từ cấp cơ sở đến cấp Tập đoàn. Đánh giá tính khả thi và tư vấn
+                  thương mại hóa các đề tài NCKH, sáng chế công nghệ...
+               </p>
+            </div>
+         </div>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex justify-center items-center mt-8 gap-1">
+         <button
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 hover:bg-gray-100 transition-colors disabled:opacity-50"><i
+               class="fas fa-chevron-left text-xs"></i></button>
+         <button
+            class="w-8 h-8 flex items-center justify-center border border-evnBlue bg-evnBlue text-white rounded font-bold shadow-sm">1</button>
+         <button
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-600 hover:bg-gray-100 transition-colors font-semibold">2</button>
+         <button
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-600 hover:bg-gray-100 transition-colors font-semibold">3</button>
+         <span class="px-2 text-gray-500">...</span>
+         <button
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-600 hover:bg-gray-100 transition-colors font-semibold">9</button>
+         <button
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 hover:bg-gray-100 transition-colors"><i
+               class="fas fa-chevron-right text-xs"></i></button>
+      </div>
+
+   </main>
+
+   <!-- FOOTER -->
+   <footer class="bg-evnBlue text-white pt-12 pb-6 mt-auto">
+      <div class="max-w-[85vw] mx-auto">
+         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-10">
+            <div class="lg:col-span-5 space-y-5">
+               <h4 class="text-lg font-bold uppercase border-l-4 border-evnRed pl-3 mb-6 leading-tight">
+                  Tổng Công ty Phát điện 2 - CTCP (EVNGENCO2)
+               </h4>
+               <div class="space-y-4 text-sm opacity-90">
+                  <p id="open-map"
+                     class="flex items-start gap-3 hover:text-evnRed transition-colors cursor-pointer group">
+                     <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5 shrink-0 text-evnRed mt-0.5 group-hover:scale-110 transition-transform"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                     </svg>
+                     <span class="underline-offset-4">Số 01 đường Lê Hồng Phong, phường Thới An Đông, TP. Cần Thơ</span>
+                  </p>
+                  <p class="flex items-center gap-3">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-evnRed" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                     </svg>
+                     ĐT: 0292.246.1507 - Fax: 0292.6255.500
+                  </p>
+                  <p class="flex items-center gap-3">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-evnRed" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                     </svg>
+                     Email: evngenco2@gmail.com
+                  </p>
+               </div>
+            </div>
+
+            <div class="lg:col-span-4 space-y-4">
+               <div>
+                  <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white">Đơn vị thành
+                     viên</label>
+                  <select id="don-vi-thanh-vien"
+                     class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none">
+                     <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+                     <option value="https://evngenco2.vn/">Cơ quan Tổng Công ty Phát điện 2</option>
+                     <option value="https://nhietdiencantho.vn/" class="text-evnBlue">
+                        Công ty Nhiệt điện Cần Thơ
+                     </option>
+                     <option value="https://akhpc.vn/" class="text-evnBlue">
+                        Công ty Thủy điện An Khê - Ka Nak
+                     </option>
+                     <option value="http://www.thuydienquangtri.vn/" class="text-evnBlue">
+                        Công ty Thủy điện Quảng Trị
+                     </option>
+                     <option value="https://songbunghpc.vn/vi/home" class="text-evnBlue">
+                        Công ty Thủy điện Sông Bung
+                     </option>
+                     <option value="https://trungsonhp.vn/" class="text-evnBlue">
+                        Công ty TNHH MTV Thủy điện Trung Sơn
+                     </option>
+                     <option value="https://tmhpp.com.vn/" class="text-evnBlue">
+                        Công ty Cổ phần Thủy điện Thác Mơ
+                     </option>
+                     <option value="https://avuong.com/" class="text-evnBlue">
+                        Công ty Cổ phần Thủy điện A Vương
+                     </option>
+                     <option value="https://sbh.vn/" class="text-evnBlue">
+                        Công ty Cổ phần Thủy điện Sông Ba Hạ
+                     </option>
+                     <option value="http://ppc.evn.vn/" class="text-evnBlue">
+                        Công ty Cổ phần Nhiệt điện Phả Lại
+                     </option>
+                     <option value="https://www.ndhp.com.vn/" class="text-evnBlue">
+                        Công ty Cổ phần Nhiệt điện Hải Phòng
+                     </option>
+                  </select>
+               </div>
+               <div>
+                  <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white">Đơn vị liên
+                     kết</label>
+                  <select id="don-vi-lien-ket"
+                     class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none">
+                     <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+                     <option value="https://evn.com.vn/" class="text-evnBlue">
+                        Tập đoàn Điện lực Việt Nam
+                     </option>
+                     <option value="https://www.evngenco1.vn/en/home" class="text-evnBlue">
+                        Tổng công ty Phát điện 1
+                     </option>
+                     <option value="https://www.genco3.com/" class="text-evnBlue">
+                        Tổng công ty Phát điện 3
+                     </option>
+                     <option value="https://npc.com.vn/" class="text-evnBlue">
+                        Tổng công ty Điện lực miền Bắc
+                     </option>
+                     <option value="https://cpc.vn/vi-vn/" class="text-evnBlue">
+                        Tổng công ty Điện lực miền Trung
+                     </option>
+                     <option value="https://evnspc.vn/bai-viet/F02WEB-201905-00000012/tong-quan" class="text-evnBlue">
+                        Tổng công ty Điện lực miền Nam
+                     </option>
+                     <option value="https://evnhanoi.vn/" class="text-evnBlue">
+                        Tổng công ty Điện lực TP. Hà Nội
+                     </option>
+                     <option value="https://www.evnhcmc.vn/" class="text-evnBlue">
+                        Tổng công ty Điện lực TP. HCM
+                     </option>
+                     <option value="https://www.npt.com.vn/" class="text-evnBlue">
+                        Tổng công ty Truyền tải điện Quốc gia
+                     </option>
+                     <option value="https://www.nsmo.vn/" class="text-evnBlue">
+                        Trung tâm Điều độ hệ thống điện Quốc gia
+                     </option>
+                     <option class="text-evnBlue">Công ty Viễn thông điện lực và CNTT</option>
+                     <option value="https://www.congdoandlvn.org.vn/" class="text-evnBlue">
+                        Công đoàn Điện lực Việt Nam
+                     </option>
+                  </select>
+               </div>
+            </div>
+
+            <div class="lg:col-span-3 space-y-5">
+               <div>
+                  <label class="block text-sm font-bold uppercase mb-6 tracking-widest text-white">
+                     Thống kê truy cập
+                  </label>
+
+                  <div class="w-full text-sm space-y-3">
+                     <div class="flex justify-between pb-1">
+                        <span class="opacity-80 font-medium text-white">Đang truy cập</span>
+                        <span class="font-bold">31</span>
+                     </div>
+                     <div class="flex justify-between pb-1">
+                        <span class="opacity-80">Hôm nay</span>
+                        <span class="font-semibold">6,162</span>
+                     </div>
+                     <div class="flex justify-between pb-1">
+                        <span class="opacity-80">Tháng hiện tại</span>
+                        <span class="font-semibold">143,294</span>
+                     </div>
+                     <div class="flex justify-between pb-1">
+                        <span class="opacity-80">Tổng truy cập</span>
+                        <span class="font-semibold">443,224</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="pb-2">
+            <div class="flex flex-col md:flex-col items-start gap-2 text-xs opacity-80">
+               <p>Trưởng ban biên tập: <strong class="text-white">Họ tên</strong></p>
+               <p>
+                  Chịu trách nhiệm nội dung:
+                  <strong class="text-white not-italic">Họ tên</strong>
+               </p>
+            </div>
+         </div>
+
+         <div
+            class="pt-2 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] opacity-50 uppercase tracking-[0.2em] font-medium">
+            <p>© 2026 - BẢN QUYỀN THUỘC VỀ EVNGENCO2</p>
+            <p class="mt-2 md:mt-0">Thiết kế và Phát triển bởi Ban KHCNCĐS</p>
+         </div>
+      </div>
+   </footer>
+
+</body>
+
+</html>

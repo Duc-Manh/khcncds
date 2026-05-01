@@ -32,4 +32,14 @@ public class HomeController {
         // Trả về file internal.html trong thư mục templates
         return "internal"; 
     }
+    @GetMapping("/expert")
+    public String expert() {
+        // Trả về file expert.html trong thư mục templates
+        return "expert"; 
+    }
+    @GetMapping("/expert-regis")
+    public String expertRegis() {
+        // Trả về file expert-regis.html trong thư mục templates
+        return "expert-regis"; 
+    }
 }
