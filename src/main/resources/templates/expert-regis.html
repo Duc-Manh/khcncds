@@ -1,56 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Đăng ký chuyên gia | EVNGENCO2</title>
-   <!-- Tailwind CSS CDN -->
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Xét duyệt sáng kiến online - Ban KHCNCĐS EVNGENCO2</title>
+
+   <meta name="description"
+      content="Hệ thống xét duyệt sáng kiến online thuộc Ban Khoa học công nghệ và Chuyển đổi số - Tổng Công ty Phát điện 2 (EVNGENCO2)." />
+   <meta name="keywords" content="sáng kiến, EVNGENCO2, xét duyệt sáng kiến, chuyển đổi số, KHCNCĐS, phát điện 2" />
+   <meta name="author" content="Ban KHCNCĐS - EVNGENCO2" />
+
+   <meta property="og:type" content="website" />
+   <meta property="og:title" content="Hệ thống Xét duyệt Sáng kiến Online - EVNGENCO2" />
+   <meta property="og:description"
+      content="Số hóa quy trình nộp hồ sơ, kiểm tra và xét duyệt sáng kiến khoa học kỹ thuật tại Tổng Công ty Phát điện 2." />
+   <meta property="og:image" content="https://yourdomain.com/path-to-logo-evn.png" />
+   <meta property="og:url" content="https://sangkien.evngenco2.vn" />
+   <meta property="og:site_name" content="EVNGENCO2 Portal" />
+
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:title" content="Hệ thống Xét duyệt Sáng kiến Online - Ban KHCNCĐS" />
+   <meta name="twitter:description" content="Nền tảng quản lý sáng kiến khoa học công nghệ của EVNGENCO2." />
+
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="theme-color" content="#DB0D0D" />
+   <meta name="robots" content="index, follow" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
    <script src="https://cdn.tailwindcss.com"></script>
-   <!-- Font Awesome -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
    <script>
       tailwind.config = {
          theme: {
             extend: {
+               fontFamily: {
+                  // Cấu hình để font-sans mặc định là Montserrat
+                  sans: ['Montserrat', 'sans-serif'],
+               },
                colors: {
-                  evnBlue: '#0d1e50',
-                  evnRed: '#ed1c24',
-               }
-            }
-         }
-      }
+                  evnRed: '#DB0D0D',
+                  evnBlue: '#29348f',
+               },
+            },
+         },
+      };
    </script>
 </head>
 
-<body class="bg-gray-50 flex flex-col min-h-screen">
-   <!-- HEADER -->
-   <header class="relative z-50 bg-white w-full flex-shrink-0">
+<body class="bg-white font-sans x-hidden flex flex-col min-h-screen">
+   <header class="relative z-50 bg-white w-full flex-shrink-0 bg-no-repeat bg-right"
+      style="background-image: url('/images/header.png'); background-size: auto 100%;">
       <div class="max-w-[85vw] mx-auto">
-         <div class="flex justify-between items-center py-4">
+         <div class="flex justify-between items-center py-4 md:py-6 relative">
             <!-- Bên trái: Logo và 2 dòng chữ -->
-            <div class="flex items-center gap-6">
-               <img src="/images/logo_evngenco2.png" alt="Logo EVNGENCO2" class="h-24 w-auto object-contain" />
-               <div class="flex flex-col">
-                  <h1 class="text-evnRed text-2xl md:text-3xl font-extrabold tracking-wide uppercase drop-shadow-sm">
-                     CỔNG SÁNG KIẾN KH, CN, ĐMST & CĐS</h1>
-                  <p class="text-evnBlue text-lg md:text-xl font-bold italic mt-1 drop-shadow-sm">"Kết nối sáng tạo -
+            <div
+               class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-6 w-full text-center md:text-left pr-10 md:pr-0">
+               <img src="/images/logo_evngenco2.png" alt="Logo EVNGENCO2" class="h-16 md:h-24 w-auto object-contain" />
+               <div class="flex flex-col justify-center">
+                  <h1
+                     class="text-evnRed text-sm sm:text-base md:text-2xl font-extrabold tracking-wide uppercase drop-shadow-sm leading-tight">
+                     CỔNG SÁNG KIẾN KHCN, ĐMST & CĐS</h1>
+                  <p class="text-evnBlue text-xs md:text-xl font-bold md:mt-1 drop-shadow-sm">"Kết nối sáng tạo -
                      Kiến tạo tương lai"</p>
                </div>
+            </div>
+
+            <!-- Nút Mobile Menu Hamburger -->
+            <div class="block lg:hidden absolute right-0 top-1/2 -translate-y-1/2">
+               <button id="mobile-menu-btn" class="text-evnBlue focus:outline-none p-2 rounded hover:bg-gray-100">
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                     </path>
+                  </svg>
+               </button>
             </div>
          </div>
       </div>
 
-      <div class="w-full border-t border-b border-gray-100 mt-2 shadow-sm bg-white">
+      <div class="hidden lg:block w-full border-t border-b border-gray-100 mt-2 shadow-sm bg-white">
          <div class="max-w-[85vw] mx-auto">
             <div class="flex items-center justify-center py-3 w-full">
                <nav class="hidden lg:flex justify-center gap-48 w-full text-sm font-semibold uppercase tracking-wide">
-                  <a href="#" class="text-evnRed border-b-2 border-evnRed pb-1 transition-all">Trang chủ</a>
+                  <a href="/"
+                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Trang
+                     chủ</a>
                   <a href="/news"
                      class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Tin
                      tức</a>
                   <a href="/notice"
-                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Thông
+                     class="text-evnBlue border-b-2 border-transparent hover:border-evnRed hover:text-evnRed pb-1 transition-all">Thông
                      báo</a>
                   <div class="relative group">
                      <button type="button"
@@ -115,6 +157,18 @@
             </div>
          </div>
       </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu"
+         class="hidden lg:hidden w-full bg-white border-t border-b border-gray-200 shadow-xl absolute left-0 top-full z-40">
+         <div class="flex flex-col px-6 py-2 text-[13px] font-bold uppercase tracking-wide">
+            <a href="/" class="text-evnBlue block py-3 border-b border-gray-100">Trang chủ</a>
+            <a href="/news" class="text-evnBlue block py-3 border-b border-gray-100">Tin tức</a>
+            <a href="/notice" class="text-evnRed block py-3 border-b border-gray-100">Thông báo</a>
+            <a href="/expert" class="text-evnBlue block py-3 border-b border-gray-100">Mạng lưới chuyên gia</a>
+            <a href="/login" class="text-evnBlue block py-3">Đăng nhập</a>
+         </div>
+      </div>
    </header>
 
    <!-- MAIN CONTENT: REGISTRATION FORM -->
@@ -142,7 +196,13 @@
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
             </div>
-
+            <!-- CCCD -->
+            <div>
+               <label class="block text-evnBlue font-bold text-sm mb-2">CCCD <span class="text-red-500">*</span></label>
+               <input type="text" placeholder="Nhập số CCCD"
+                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
+                  required>
+            </div>
             <!-- Email -->
             <div>
                <label class="block text-evnBlue font-bold text-sm mb-2">Email <span
@@ -152,13 +212,7 @@
                   required>
             </div>
 
-            <!-- CCCD -->
-            <div>
-               <label class="block text-evnBlue font-bold text-sm mb-2">CCCD <span class="text-red-500">*</span></label>
-               <input type="text" placeholder="Nhập số CCCD"
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
+
 
             <!-- Học hàm/Học vị -->
             <div>
@@ -202,8 +256,8 @@
             <div class="md:col-span-2">
                <label class="block text-evnBlue font-bold text-sm mb-2">
                   Lĩnh vực/Chuyên ngành <span class="text-red-500">*</span>
-                  <span class="text-evnBlue/70 text-xs font-normal ml-1">(Học máy Machine Learning, Hệ thống
-                     điện,...)</span>
+                  <span class="text-evnBlue/70 text-xs font-normal ml-1">(Học máy Machine Learning, Học sâu - Deep
+                     Learning, Trí tuệ nhân tạo - AI,...)</span>
                </label>
                <input type="text" placeholder="Nhập Lĩnh vực ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
@@ -214,7 +268,7 @@
             <div class="md:col-span-2">
                <label class="block text-evnBlue font-bold text-sm mb-2">
                   Hướng nghiên cứu <span class="text-evnBlue/70 text-xs font-normal ml-1">(5 năm gần nhất liên
-                     quan)</span> <span class="text-red-500">*</span>
+                     quan đến AI)</span> <span class="text-red-500">*</span>
                </label>
                <textarea rows="4" placeholder="Nhập hướng nghiên cứu ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors resize-none"
@@ -232,8 +286,8 @@
 
             <!-- Orcid -->
             <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">Orcid:</label>
-               <input type="text" placeholder="Nhập link Orcid..."
+               <label class="block text-evnBlue font-bold text-sm mb-2">ORCID:</label>
+               <input type="text" placeholder="Nhập link ORCID..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors">
             </div>
 

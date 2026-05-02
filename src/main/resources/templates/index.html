@@ -52,23 +52,36 @@
 </head>
 
 <body class="bg-white font-sans x-hidden flex flex-col min-h-screen">
-   <header class="relative z-50 bg-white w-full flex-shrink-0">
+   <header class="relative z-50 bg-white w-full flex-shrink-0 bg-no-repeat bg-right"
+      style="background-image: url('/images/header.png'); background-size: auto 100%;">
       <div class="max-w-[85vw] mx-auto">
-         <div class="flex justify-between items-center py-4">
+         <div class="flex justify-between items-center py-4 md:py-6 relative">
             <!-- Bên trái: Logo và 2 dòng chữ -->
-            <div class="flex items-center gap-6">
-               <img src="/images/logo_evngenco2.png" alt="Logo EVNGENCO2" class="h-24 w-auto object-contain" />
-               <div class="flex flex-col">
-                  <h1 class="text-evnRed text-2xl md:text-3xl font-extrabold tracking-wide uppercase drop-shadow-sm">
-                     CỔNG SÁNG KIẾN KH, CN, ĐMST & CĐS</h1>
-                  <p class="text-evnBlue text-lg md:text-xl font-bold italic mt-1 drop-shadow-sm">"Kết nối sáng tạo -
+            <div
+               class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-6 w-full text-center md:text-left pr-10 md:pr-0">
+               <img src="/images/logo_evngenco2.png" alt="Logo EVNGENCO2" class="h-16 md:h-24 w-auto object-contain" />
+               <div class="flex flex-col justify-center">
+                  <h1
+                     class="text-evnRed text-sm sm:text-base md:text-2xl font-extrabold tracking-wide uppercase drop-shadow-sm leading-tight">
+                     CỔNG SÁNG KIẾN KHCN, ĐMST & CĐS</h1>
+                  <p class="text-evnBlue text-xs md:text-xl font-bold md:mt-1 drop-shadow-sm">"Kết nối sáng tạo -
                      Kiến tạo tương lai"</p>
                </div>
+            </div>
+
+            <!-- Nút Mobile Menu Hamburger -->
+            <div class="block lg:hidden absolute right-0 top-1/2 -translate-y-1/2">
+               <button id="mobile-menu-btn" class="text-evnBlue focus:outline-none p-2 rounded hover:bg-gray-100">
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                     </path>
+                  </svg>
+               </button>
             </div>
          </div>
       </div>
 
-      <div class="w-full border-t border-b border-gray-100 mt-2 shadow-sm bg-white">
+      <div class="hidden lg:block w-full border-t border-b border-gray-100 mt-2 shadow-sm bg-white">
          <div class="max-w-[85vw] mx-auto">
             <div class="flex items-center justify-center py-3 w-full">
                <nav class="hidden lg:flex justify-center gap-48 w-full text-sm font-semibold uppercase tracking-wide">
@@ -142,6 +155,18 @@
             </div>
          </div>
       </div>
+
+      <!-- Mobile Menu Dropdown -->
+      <div id="mobile-menu"
+         class="hidden lg:hidden w-full bg-white border-t border-b border-gray-200 shadow-xl absolute left-0 top-full z-40">
+         <div class="flex flex-col px-6 py-2 text-[13px] font-bold uppercase tracking-wide">
+            <a href="/" class="text-evnRed block py-3 border-b border-gray-100">Trang chủ</a>
+            <a href="/news" class="text-evnBlue block py-3 border-b border-gray-100">Tin tức</a>
+            <a href="/notice" class="text-evnBlue block py-3 border-b border-gray-100">Thông báo</a>
+            <a href="/expert" class="text-evnBlue block py-3 border-b border-gray-100">Mạng lưới chuyên gia</a>
+            <a href="/login" class="text-evnBlue block py-3">Đăng nhập</a>
+         </div>
+      </div>
    </header>
 
    <main class="flex-grow flex flex-col">
@@ -193,17 +218,17 @@
       </style>
 
       <!-- HERO SECTION -->
-      <section id="vanta-bg" class="relative w-full h-[550px] hero-bg flex items-center">
+      <section id="vanta-bg" class="relative w-full min-h-[550px] py-16 lg:py-0 hero-bg flex items-center">
          <div class="relative z-10 w-full max-w-[85vw] mx-auto flex flex-col items-start justify-center gap-12">
 
             <div class="w-full">
-               <h2 class="text-white text-4xl md:text-5xl font-bold leading-tight drop-shadow-lg">
+               <h2 class="text-white text-4xl md:text-3xl font-bold leading-tight drop-shadow-lg">
                   Tôi có một sáng kiến ...
                </h2>
             </div>
 
             <div class="w-full">
-               <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
+               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 lg:gap-12">
                   <!-- Button 1 -->
                   <a href="#"
                      class="glass-btn rounded-md text-center py-6 px-4 text-white text-sm font-semibold transition-all shadow-lg flex items-center justify-center h-24">
@@ -329,7 +354,7 @@
       </section>
 
       <!-- STATISTICS SECTION -->
-      <section class="relative bg-evnBlue py-20 overflow-hidden w-full">
+      <section class="relative bg-gradient-to-r from-[#1a2366] to-[#212c7d] py-20 overflow-hidden w-full">
          <!-- Rocket background illustration placeholder -->
          <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 pointer-events-none w-full h-full flex justify-center items-center">
@@ -395,6 +420,120 @@
                <h4 class="text-5xl font-extrabold tracking-tight">8.471</h4>
             </div>
 
+         </div>
+      </section>
+
+      <!-- NEWS AND NOTICES SECTION -->
+      <section class="py-16 bg-gray-50 w-full border-t border-gray-200">
+         <div class="max-w-[85vw] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <!-- Biểu mẫu -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+               <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-3">
+                  <h3 class="text-xl font-bold text-evnBlue uppercase flex items-center gap-2">
+                     <svg class="w-6 h-6 text-evnRed" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                     </svg>
+                     Biểu mẫu
+                  </h3>
+                  <a href="#" class="text-sm text-evnRed font-semibold hover:underline">Xem tất cả &raquo;</a>
+               </div>
+               <div class="space-y-4">
+                  <!-- Form item 1 -->
+                  <div class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0" onclick="openDocxPreview(event, '/db/pl2.docx', 'Biểu mẫu hồ sơ nhiệm vụ KHCN')">
+                     <div class="bg-red-50 text-evnRed rounded-lg p-3 text-center border border-red-100 shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                     </div>
+                     <div>
+                        <h4 class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                           Biểu mẫu hồ sơ đăng ký nhiệm vụ KHCN cấp Tổng công ty</h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">Định dạng: .DOCX - Cập nhật: 15/10/2025</p>
+                     </div>
+                  </div>
+                  <!-- Form item 2 -->
+                  <div class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
+                     <div class="bg-red-50 text-evnRed rounded-lg p-3 text-center border border-red-100 shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                     </div>
+                     <div>
+                        <h4 class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                           Biểu mẫu báo cáo kết quả thực hiện sáng kiến</h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">Định dạng: .DOCX - Cập nhật: 10/09/2025</p>
+                     </div>
+                  </div>
+                  <!-- Form item 3 -->
+                  <div class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
+                     <div class="bg-red-50 text-evnRed rounded-lg p-3 text-center border border-red-100 shrink-0">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                     </div>
+                     <div>
+                        <h4 class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                           Đơn đề nghị hỗ trợ kinh phí thực hiện giải pháp</h4>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">Định dạng: .DOCX - Cập nhật: 05/08/2025</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Tin tức & Thông báo -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+               <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-3">
+                  <h3 class="text-xl font-bold text-evnBlue uppercase flex items-center gap-2">
+                     <svg class="w-6 h-6 text-evnRed" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                        </path>
+                     </svg>
+                     Tin tức, thông báo
+                  </h3>
+                  <a href="/news" class="text-sm text-evnRed font-semibold hover:underline">Xem tất cả &raquo;</a>
+               </div>
+               <div class="space-y-5">
+                  <!-- News item -->
+                  <div class="flex gap-4 group cursor-pointer">
+                     <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=150&h=100&fit=crop"
+                        class="w-28 h-20 object-cover rounded-lg group-hover:opacity-90 transition-opacity" alt="News">
+                     <div>
+                        <div class="flex items-center gap-2 mb-1">
+                           <span class="bg-evnRed text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tin tức</span>
+                           <span class="text-xs text-gray-500">20/10/2025</span>
+                        </div>
+                        <h4
+                           class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                           Hội nghị tổng kết công tác khoa học công nghệ năm 2025 và phương hướng 2026</h4>
+                     </div>
+                  </div>
+                  <!-- Notice item -->
+                  <div class="flex gap-4 group cursor-pointer">
+                     <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=150&h=100&fit=crop"
+                        class="w-28 h-20 object-cover rounded-lg group-hover:opacity-90 transition-opacity" alt="Notice">
+                     <div>
+                        <div class="flex items-center gap-2 mb-1">
+                           <span class="bg-evnBlue text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Thông báo</span>
+                           <span class="text-xs text-gray-500">12/10/2025</span>
+                        </div>
+                        <h4
+                           class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                           Thông báo thể lệ tham gia cuộc thi Ý tưởng sáng tạo cấp Tổng công ty năm 2026</h4>
+                     </div>
+                  </div>
+                  <!-- News item -->
+                  <div class="flex gap-4 group cursor-pointer">
+                     <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=150&h=100&fit=crop"
+                        class="w-28 h-20 object-cover rounded-lg group-hover:opacity-90 transition-opacity" alt="News">
+                     <div>
+                        <div class="flex items-center gap-2 mb-1">
+                           <span class="bg-evnRed text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tin tức</span>
+                           <span class="text-xs text-gray-500">18/10/2025</span>
+                        </div>
+                        <h4
+                           class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                           Đẩy mạnh ứng dụng AI trong điều độ hệ thống điện tại EVNGENCO2</h4>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       </section>
    </main>
@@ -591,7 +730,7 @@
       </div>
    </div>
    <div
-      class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4 p-2 bg-white/10 backdrop-blur-md border border-evnBlue rounded-l-2xl shadow-2xl">
+      class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] hidden sm:flex flex-col gap-4 p-2 pl-4 bg-white/10 backdrop-blur-md border border-evnBlue rounded-l-2xl shadow-2xl translate-x-[calc(100%-16px)] hover:translate-x-0 transition-transform duration-300 ease-in-out">
       <a href="https://www.facebook.com/TongcongtyPhatdien2" target="_blank"
          class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -745,6 +884,20 @@
                console.error('Error rendering docx:', error);
             });
       }
+   </script>
+
+   <!-- Xử lý Mobile Menu -->
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         const btn = document.getElementById('mobile-menu-btn');
+         const menu = document.getElementById('mobile-menu');
+         if (btn && menu) {
+            btn.addEventListener('click', function (e) {
+               e.preventDefault();
+               menu.classList.toggle('hidden');
+            });
+         }
+      });
    </script>
 
    <!-- Vanta.js Animated Background -->
