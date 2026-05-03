@@ -81,20 +81,20 @@
          </div>
       </div>
 
-      <div class="hidden lg:block w-full border-t border-b border-gray-100 mt-2 shadow-sm bg-white">
+      <div class="hidden lg:block w-full mt-2 shadow-sm bg-evnBlue">
          <div class="max-w-[85vw] mx-auto">
             <div class="flex items-center justify-center py-3 w-full">
                <nav class="hidden lg:flex justify-center gap-48 w-full text-sm font-semibold uppercase tracking-wide">
-                  <a href="#" class="text-evnRed border-b-2 border-evnRed pb-1 transition-all">Trang chủ</a>
+                  <a href="#" class="text-white border-b-2 border-white pb-1 transition-all">Trang chủ</a>
                   <a href="/news"
-                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Tin
+                     class="text-white/80 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition-all">Tin
                      tức</a>
                   <a href="/notice"
-                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Thông
+                     class="text-white/80 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition-all">Thông
                      báo</a>
                   <div class="relative group">
                      <button type="button"
-                        class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
+                        class="text-white/80 hover:text-white border-b-2 border-transparent hover:border-white transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
                         Nội bộ
                      </button>
 
@@ -148,7 +148,7 @@
                      </div>
                   </div>
                   <a href="/login"
-                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">
+                     class="text-white/80 hover:text-white border-b-2 border-transparent hover:border-white pb-1 transition-all">
                      Đăng nhập
                   </a>
                </nav>
@@ -218,47 +218,49 @@
       </style>
 
       <!-- HERO SECTION -->
-      <section id="vanta-bg" class="relative w-full min-h-[550px] py-16 lg:py-0 hero-bg flex items-center">
-         <div class="relative z-10 w-full max-w-[85vw] mx-auto flex flex-col items-start justify-center gap-12">
+      <section id="vanta-bg" class="relative w-full min-h-[400px] lg:min-h-[500px] py-16 lg:py-0 hero-bg flex items-center">
+         <div class="relative z-10 w-full max-w-[85vw] mx-auto flex flex-col items-center justify-center gap-10">
 
             <div class="w-full">
-               <h2 class="text-white text-4xl md:text-3xl font-bold leading-tight drop-shadow-lg">
-                  Tôi có một sáng kiến ...
-               </h2>
-            </div>
-
-            <div class="w-full">
-               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 lg:gap-12">
-                  <!-- Button 1 -->
+               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+                  <!-- Button 1: Đề xuất/ đăng ký sáng kiến -->
                   <a href="#"
-                     class="glass-btn rounded-md text-center py-6 px-4 text-white text-sm font-semibold transition-all shadow-lg flex items-center justify-center h-24">
-                     Đề xuất sáng kiến đột phá
+                     class="group glass-btn rounded-xl text-center py-6 px-4 text-white text-sm md:text-base font-bold transition-all duration-300 shadow-xl flex flex-col items-center justify-center h-32 md:h-40 hover:-translate-y-2 hover:shadow-2xl border border-white/30 relative overflow-hidden">
+                     <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                     <svg class="w-10 h-10 mb-3 text-white/90 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                     </svg>
+                     <span class="relative z-10 drop-shadow-md">Đề xuất/ đăng ký<br>sáng kiến</span>
                   </a>
-                  <!-- Button 2 -->
+                  
+                  <!-- Button 2: Xét duyệt sáng kiến -->
                   <a href="#"
-                     class="glass-btn-blue rounded-md text-center py-6 px-4 text-white text-sm font-semibold transition-all shadow-lg flex items-center justify-center h-24">
-                     Đề xuất ứng viên cho vị trí Tổng công trình sư,<br>Kiến trúc sư trưởng
-                  </a>
-                  <!-- Button 3 -->
-                  <a href="#"
-                     class="glass-btn-blue rounded-md text-center py-6 px-4 text-white text-sm font-semibold transition-all shadow-lg flex items-center justify-center h-24">
-                     Đề nghị hỗ trợ hoạt động sáng kiến, giải pháp
+                     class="group glass-btn-blue rounded-xl text-center py-6 px-4 text-white text-sm md:text-base font-bold transition-all duration-300 shadow-xl flex flex-col items-center justify-center h-32 md:h-40 hover:-translate-y-2 hover:shadow-2xl border border-white/20 hover:border-white/40 relative overflow-hidden">
+                     <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                     <svg class="w-10 h-10 mb-3 text-white/80 group-hover:text-white group-hover:scale-110 transition-all duration-300 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                     </svg>
+                     <span class="relative z-10 drop-shadow-md">Xét duyệt<br>sáng kiến</span>
                   </a>
 
-                  <!-- Button 4 -->
-                  <a href="#"
-                     class="glass-btn rounded-md text-center py-6 px-4 text-white text-sm font-semibold transition-all shadow-lg flex items-center justify-center h-24">
-                     Đề xuất tài trợ, hỗ trợ kinh phí
-                  </a>
-                  <!-- Button 5 -->
+                  <!-- Button 3: Mạng lưới chuyên gia -->
                   <a href="/expert"
-                     class="glass-btn-blue rounded-md text-center py-6 px-4 text-white text-sm font-semibold transition-all shadow-lg flex items-center justify-center h-24">
-                     Mạng lưới chuyên gia
+                     class="group glass-btn-blue rounded-xl text-center py-6 px-4 text-white text-sm md:text-base font-bold transition-all duration-300 shadow-xl flex flex-col items-center justify-center h-32 md:h-40 hover:-translate-y-2 hover:shadow-2xl border border-white/20 hover:border-white/40 relative overflow-hidden">
+                     <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                     <svg class="w-10 h-10 mb-3 text-white/80 group-hover:text-white group-hover:scale-110 transition-all duration-300 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                     </svg>
+                     <span class="relative z-10 drop-shadow-md">Mạng lưới<br>chuyên gia</span>
                   </a>
-                  <!-- Button 6 -->
+
+                  <!-- Button 4: Đề xuất khác -->
                   <a href="#"
-                     class="glass-btn-blue rounded-md text-center py-6 px-4 text-white text-sm font-semibold transition-all shadow-lg flex items-center justify-center h-24">
-                     Đề xuất khác
+                     class="group glass-btn-blue rounded-xl text-center py-6 px-4 text-white text-sm md:text-base font-bold transition-all duration-300 shadow-xl flex flex-col items-center justify-center h-32 md:h-40 hover:-translate-y-2 hover:shadow-2xl border border-white/20 hover:border-white/40 relative overflow-hidden">
+                     <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                     <svg class="w-10 h-10 mb-3 text-white/80 group-hover:text-white group-hover:scale-110 transition-all duration-300 drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                     </svg>
+                     <span class="relative z-10 drop-shadow-md">Đề xuất<br>khác</span>
                   </a>
                </div>
             </div>
@@ -441,34 +443,53 @@
                </div>
                <div class="space-y-4">
                   <!-- Form item 1 -->
-                  <div class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0" onclick="openDocxPreview(event, '/db/pl2.docx', 'Biểu mẫu hồ sơ nhiệm vụ KHCN')">
+                  <div
+                     class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0"
+                     onclick="openDocxPreview(event, '/db/pl2.docx', 'Biểu mẫu hồ sơ nhiệm vụ KHCN')">
                      <div class="bg-red-50 text-evnRed rounded-lg p-3 text-center border border-red-100 shrink-0">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                           </path>
+                        </svg>
                      </div>
                      <div>
-                        <h4 class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                        <h4
+                           class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
                            Biểu mẫu hồ sơ đăng ký nhiệm vụ KHCN cấp Tổng công ty</h4>
                         <p class="text-xs text-gray-500 mt-1 line-clamp-1">Định dạng: .DOCX - Cập nhật: 15/10/2025</p>
                      </div>
                   </div>
                   <!-- Form item 2 -->
-                  <div class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
+                  <div
+                     class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
                      <div class="bg-red-50 text-evnRed rounded-lg p-3 text-center border border-red-100 shrink-0">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                           </path>
+                        </svg>
                      </div>
                      <div>
-                        <h4 class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                        <h4
+                           class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
                            Biểu mẫu báo cáo kết quả thực hiện sáng kiến</h4>
                         <p class="text-xs text-gray-500 mt-1 line-clamp-1">Định dạng: .DOCX - Cập nhật: 10/09/2025</p>
                      </div>
                   </div>
                   <!-- Form item 3 -->
-                  <div class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
+                  <div
+                     class="flex items-start gap-4 group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
                      <div class="bg-red-50 text-evnRed rounded-lg p-3 text-center border border-red-100 shrink-0">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                           </path>
+                        </svg>
                      </div>
                      <div>
-                        <h4 class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
+                        <h4
+                           class="font-bold text-sm text-gray-800 group-hover:text-evnBlue transition-colors line-clamp-2 leading-snug">
                            Đơn đề nghị hỗ trợ kinh phí thực hiện giải pháp</h4>
                         <p class="text-xs text-gray-500 mt-1 line-clamp-1">Định dạng: .DOCX - Cập nhật: 05/08/2025</p>
                      </div>
@@ -496,7 +517,8 @@
                         class="w-28 h-20 object-cover rounded-lg group-hover:opacity-90 transition-opacity" alt="News">
                      <div>
                         <div class="flex items-center gap-2 mb-1">
-                           <span class="bg-evnRed text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tin tức</span>
+                           <span class="bg-evnRed text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tin
+                              tức</span>
                            <span class="text-xs text-gray-500">20/10/2025</span>
                         </div>
                         <h4
@@ -507,10 +529,12 @@
                   <!-- Notice item -->
                   <div class="flex gap-4 group cursor-pointer">
                      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=150&h=100&fit=crop"
-                        class="w-28 h-20 object-cover rounded-lg group-hover:opacity-90 transition-opacity" alt="Notice">
+                        class="w-28 h-20 object-cover rounded-lg group-hover:opacity-90 transition-opacity"
+                        alt="Notice">
                      <div>
                         <div class="flex items-center gap-2 mb-1">
-                           <span class="bg-evnBlue text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Thông báo</span>
+                           <span class="bg-evnBlue text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Thông
+                              báo</span>
                            <span class="text-xs text-gray-500">12/10/2025</span>
                         </div>
                         <h4
@@ -524,7 +548,8 @@
                         class="w-28 h-20 object-cover rounded-lg group-hover:opacity-90 transition-opacity" alt="News">
                      <div>
                         <div class="flex items-center gap-2 mb-1">
-                           <span class="bg-evnRed text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tin tức</span>
+                           <span class="bg-evnRed text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tin
+                              tức</span>
                            <span class="text-xs text-gray-500">18/10/2025</span>
                         </div>
                         <h4
