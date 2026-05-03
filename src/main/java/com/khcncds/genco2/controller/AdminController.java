@@ -81,6 +81,27 @@ public class AdminController {
         
         return "redirect:/admin/employ";
     }
+
+    @PostMapping("/admin/appro/delete")
+    public String deleteApproAccount(@RequestParam("username") String username, HttpSession session) {
+        UserEntity loggedInUser = (UserEntity) session.getAttribute("LOGGED_IN_USER");
+        if (loggedInUser == null) {
+            return "redirect:/login";
+        }
+        dynamicApproveService.deleteApproAccount(username);
+        return "redirect:/admin/employ";
+    }
+
+    @PostMapping("/admin/council/delete")
+    public String deleteCouncilAccount(@RequestParam("username") String username, HttpSession session) {
+        UserEntity loggedInUser = (UserEntity) session.getAttribute("LOGGED_IN_USER");
+        if (loggedInUser == null) {
+            return "redirect:/login";
+        }
+        dynamicApproveService.deleteCouncilAccount(username);
+        return "redirect:/admin/employ";
+    }
+
     @GetMapping("/admin/idea")
     public String adminIdeaPage(HttpSession session, Model model) {
         UserEntity loggedInUser = (UserEntity) session.getAttribute("LOGGED_IN_USER");

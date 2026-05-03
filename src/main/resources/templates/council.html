@@ -30,19 +30,7 @@
             },
         };
     </script>
-    <style>
-        body {
-            background-color: #f4f7fb;
-        }
-
-        .filter-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-            background-position: right 0.5rem center;
-            background-repeat: no-repeat;
-            background-size: 1.5em 1.5em;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/council.css">
 </head>
 
 <body class="text-gray-800 antialiased font-sans">
@@ -393,36 +381,7 @@
         </div>
     </div>
 
-    <script>
-        const modal = document.getElementById('eval-modal');
-        const modalContent = document.getElementById('eval-modal-content');
-        
-        function openEvalModal(id) {
-            document.getElementById('modal-hs-id').textContent = id;
-            modal.classList.remove('hidden');
-            // Trigger reflow
-            void modal.offsetWidth;
-            modal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closeEvalModal() {
-            modal.classList.add('opacity-0');
-            modalContent.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
-
-        // Close on clicking outside
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeEvalModal();
-            }
-        });
-    </script>
+    <script src="/js/council.js"></script>
 </body>
 
 </html>

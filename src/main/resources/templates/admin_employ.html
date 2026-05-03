@@ -36,29 +36,7 @@
             },
         };
     </script>
-    <style>
-        .sidebar-collapsed .sidebar-text {
-            display: none !important;
-        }
-
-        /* Custom scrollbar for webkit */
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/admin_employ.css">
 </head>
 
 <body class="bg-bgMain text-textDark font-sans h-screen flex overflow-hidden">
@@ -470,8 +448,15 @@
             <div class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray mt-6">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                     <div>
-                        <h3 class="text-lg font-bold text-textDark">Danh sách tài khoản đăng ký năm 2026</h3>
+                        <h3 class="text-lg font-bold text-textDark">Danh sách tài khoản đăng ký sáng kiến năm 2026</h3>
                         <p class="text-xs text-textLight mt-1">Danh sách các tài khoản đã được phê duyệt.</p>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0 relative">
+                        <button onclick="toggleYearDropdown(this, 'appro')"
+                            class="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 text-textDark font-semibold text-sm rounded-lg transition-colors border border-gray-200 shadow-sm">Năm</button>
+                        <button onclick="window.location.reload()"
+                            class="px-4 py-1.5 bg-evnBlue hover:bg-opacity-90 text-white font-semibold text-sm rounded-lg transition-colors shadow-sm">Hiện
+                            tại</button>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -499,6 +484,7 @@
                                         <span class="text-xs font-normal text-textLight">Email</span>
                                     </div>
                                 </th>
+                                <th class="pb-3 font-semibold text-center">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-50">
@@ -525,6 +511,36 @@
                                         <span class="text-xs text-textGray" th:text="${a.email}"></span>
                                     </div>
                                 </td>
+                                <td class="py-3 text-center">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <button
+                                            onclick="alert('Thay vì sửa thì để người dùng đăng ký lại để tăng tính khách quan')"
+                                            class="p-1.5 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors"
+                                            title="Sửa">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <form th:action="@{/admin/appro/delete}" method="post"
+                                            onsubmit="return confirm('Bạn có chắc chắn muốn xoá tài khoản này không?');"
+                                            class="m-0 p-0">
+                                            <input type="hidden" name="username" th:value="${a.username}">
+                                            <button type="submit"
+                                                class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Xoá">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -538,6 +554,13 @@
                         <h3 class="text-lg font-bold text-textDark">Danh sách tài khoản Hội đồng khoa học năm 2026</h3>
                         <p class="text-xs text-textLight mt-1">Danh sách các tài khoản là thành viên Hội đồng khoa học.
                         </p>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0 relative">
+                        <button onclick="toggleYearDropdown(this, 'council')"
+                            class="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 text-textDark font-semibold text-sm rounded-lg transition-colors border border-gray-200 shadow-sm">Năm</button>
+                        <button onclick="window.location.reload()"
+                            class="px-4 py-1.5 bg-evnBlue hover:bg-opacity-90 text-white font-semibold text-sm rounded-lg transition-colors shadow-sm">Hiện
+                            tại</button>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -565,6 +588,7 @@
                                         <span class="text-xs font-normal text-textLight">Email</span>
                                     </div>
                                 </th>
+                                <th class="pb-3 font-semibold text-center">Thao tác</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-50">
@@ -591,6 +615,36 @@
                                         <span class="text-xs text-textGray" th:text="${c.email}"></span>
                                     </div>
                                 </td>
+                                <td class="py-3 text-center">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <button
+                                            onclick="alert('Thay vì sửa thì để người dùng đăng ký lại để tăng tính khách quan')"
+                                            class="p-1.5 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors"
+                                            title="Sửa">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <form th:action="@{/admin/council/delete}" method="post"
+                                            onsubmit="return confirm('Bạn có chắc chắn muốn xoá tài khoản này không?');"
+                                            class="m-0 p-0">
+                                            <input type="hidden" name="username" th:value="${c.username}">
+                                            <button type="submit"
+                                                class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Xoá">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -601,44 +655,7 @@
     </main>
 
 
-    <script>
-        function toggleApproveFrame(id) {
-            const frame = document.getElementById('approve-frame-' + id);
-            if (frame) {
-                frame.classList.toggle('hidden');
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.getElementById('sidebar');
-            const logoContainer = document.getElementById('logo-container');
-            const sidebarTexts = document.querySelectorAll('.sidebar-text');
-
-            menuToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('w-[260px]');
-                sidebar.classList.toggle('w-[80px]');
-
-                logoContainer.classList.toggle('px-6');
-                logoContainer.classList.toggle('justify-between');
-                logoContainer.classList.toggle('justify-center');
-                sidebar.classList.toggle('sidebar-collapsed');
-            });
-
-            // Doctor Accordion Toggle
-            const doctorToggle = document.getElementById('doctor-toggle');
-            const doctorSubmenu = document.getElementById('doctor-submenu');
-            const doctorChevron = document.getElementById('doctor-chevron');
-
-            if (doctorToggle) {
-                doctorToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    doctorSubmenu.classList.toggle('hidden');
-                    doctorChevron.classList.toggle('rotate-180');
-                });
-            }
-        });
-    </script>
+    <script src="/js/admin_employ.js"></script>
     <!-- Approval Success Popup -->
     <div th:if="${approvedAccount != null}" id="success-popup"
         class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">

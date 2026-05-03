@@ -54,35 +54,35 @@ public class DynamicApproveService {
             ensureCouncilTableExists(councilTable);
             username = generateCouncilUsername(reg.getDepartment(), reg.getFullName(), currentYear);
             password = generateCouncilPassword(reg.getFullName(), currentYear);
-            
-            String insertSql = "INSERT INTO " + councilTable + 
+
+            String insertSql = "INSERT INTO " + councilTable +
                     " (department, email, full_name, position, phone, councilday, username, password) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            jdbcTemplate.update(insertSql, 
-                    reg.getDepartment(), 
-                    reg.getEmail(), 
-                    reg.getFullName(), 
-                    reg.getPosition(), 
-                    reg.getPhone(), 
-                    LocalDateTime.now(), 
-                    username, 
+            jdbcTemplate.update(insertSql,
+                    reg.getDepartment(),
+                    reg.getEmail(),
+                    reg.getFullName(),
+                    reg.getPosition(),
+                    reg.getPhone(),
+                    LocalDateTime.now(),
+                    username,
                     password);
         } else {
             ensureApproTableExists(approTable);
             username = generateUsername(reg.getDepartment(), reg.getFullName(), currentYear);
             password = "khcncds@123456#";
-            
-            String insertSql = "INSERT INTO " + approTable + 
+
+            String insertSql = "INSERT INTO " + approTable +
                     " (department, email, full_name, position, phone, approday, username, password) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            jdbcTemplate.update(insertSql, 
-                    reg.getDepartment(), 
-                    reg.getEmail(), 
-                    reg.getFullName(), 
-                    reg.getPosition(), 
-                    reg.getPhone(), 
-                    LocalDateTime.now(), 
-                    username, 
+            jdbcTemplate.update(insertSql,
+                    reg.getDepartment(),
+                    reg.getEmail(),
+                    reg.getFullName(),
+                    reg.getPosition(),
+                    reg.getPhone(),
+                    LocalDateTime.now(),
+                    username,
                     password);
         }
 
@@ -95,7 +95,7 @@ public class DynamicApproveService {
             mailService.sendApprovalEmail(reg.getEmail(), username, password);
         }
 
-        return new String[]{username, reg.getAim()};
+        return new String[] { username, reg.getAim() };
     }
 
     public List<ApprovedAccountDTO> getApproAccounts() {
@@ -112,7 +112,8 @@ public class DynamicApproveService {
                 dto.setFullName(rs.getString("full_name"));
                 dto.setPosition(rs.getString("position"));
                 dto.setPhone(rs.getString("phone"));
-                dto.setActionDay(rs.getTimestamp("approday") != null ? rs.getTimestamp("approday").toLocalDateTime() : null);
+                dto.setActionDay(
+                        rs.getTimestamp("approday") != null ? rs.getTimestamp("approday").toLocalDateTime() : null);
                 dto.setUsername(rs.getString("username"));
                 dto.setPassword(rs.getString("password"));
                 return dto;
@@ -136,13 +137,38 @@ public class DynamicApproveService {
                 dto.setFullName(rs.getString("full_name"));
                 dto.setPosition(rs.getString("position"));
                 dto.setPhone(rs.getString("phone"));
-                dto.setActionDay(rs.getTimestamp("councilday") != null ? rs.getTimestamp("councilday").toLocalDateTime() : null);
+                dto.setActionDay(
+                        rs.getTimestamp("councilday") != null ? rs.getTimestamp("councilday").toLocalDateTime() : null);
                 dto.setUsername(rs.getString("username"));
                 dto.setPassword(rs.getString("password"));
                 return dto;
             });
         } catch (Exception e) {
             return List.of();
+        }
+    }
+
+    public void deleteApproAccount(String username) {
+        int currentYear = Year.now().getValue();
+        String approTable = "appro" + currentYear;
+        try {
+            ensureApproTableExists(approTable);
+            String deleteSql = "DELETE FROM " + approTable + " WHERE username = ?";
+            jdbcTemplate.update(deleteSql, username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCouncilAccount(String username) {
+        int currentYear = Year.now().getValue();
+        String councilTable = "council" + currentYear;
+        try {
+            ensureCouncilTableExists(councilTable);
+            String deleteSql = "DELETE FROM " + councilTable + " WHERE username = ?";
+            jdbcTemplate.update(deleteSql, username);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -196,7 +222,8 @@ public class DynamicApproveService {
         }
 
         String[] words = fullName.trim().split("\\s+");
-        if (words.length == 0) return "user";
+        if (words.length == 0)
+            return "user";
 
         String lastWord = words[words.length - 1].toLowerCase();
         StringBuilder initials = new StringBuilder();
@@ -210,31 +237,43 @@ public class DynamicApproveService {
     }
 
     private String getDepartmentCode(String department) {
-        if (department == null) return "unk";
+        if (department == null)
+            return "unk";
         String lower = department.toLowerCase();
-        
-        if (lower.contains("cơ quan tổng công ty") || lower.contains("phát điện 2") || lower.contains("genco2")) return "ge2";
-        if (lower.contains("nhiệt điện cần thơ")) return "ct";
-        if (lower.contains("an khê")) return "ak"; 
-        if (lower.contains("quảng trị")) return "qt";
-        if (lower.contains("sông bung")) return "sb";
-        if (lower.contains("trung sơn")) return "ts";
-        if (lower.contains("thác mơ")) return "tm";
-        if (lower.contains("a vương")) return "av";
-        if (lower.contains("sông ba hạ")) return "sbh";
-        if (lower.contains("phả lại")) return "pl";
-        if (lower.contains("hải phòng")) return "hp";
-        
+
+        if (lower.contains("cơ quan tổng công ty") || lower.contains("phát điện 2") || lower.contains("genco2"))
+            return "ge2";
+        if (lower.contains("nhiệt điện cần thơ"))
+            return "ct";
+        if (lower.contains("an khê"))
+            return "ak";
+        if (lower.contains("quảng trị"))
+            return "qt";
+        if (lower.contains("sông bung"))
+            return "sb";
+        if (lower.contains("trung sơn"))
+            return "ts";
+        if (lower.contains("thác mơ"))
+            return "tm";
+        if (lower.contains("a vương"))
+            return "av";
+        if (lower.contains("sông ba hạ"))
+            return "sbh";
+        if (lower.contains("phả lại"))
+            return "pl";
+        if (lower.contains("hải phòng"))
+            return "hp";
+
         return "unk";
     }
 
     public boolean validateApproUser(String username, String password) {
         int currentYear = Year.now().getValue();
         String approTable = "appro" + currentYear;
-        
+
         try {
             ensureApproTableExists(approTable);
-            
+
             String selectSql = "SELECT count(*) FROM " + approTable + " WHERE username = ? AND password = ?";
             Integer count = jdbcTemplate.queryForObject(selectSql, Integer.class, username, password);
             return count != null && count > 0;
@@ -247,10 +286,10 @@ public class DynamicApproveService {
     public boolean validateCouncilUser(String username, String password) {
         int currentYear = Year.now().getValue();
         String councilTable = "council" + currentYear;
-        
+
         try {
             ensureCouncilTableExists(councilTable);
-            
+
             String selectSql = "SELECT count(*) FROM " + councilTable + " WHERE username = ? AND password = ?";
             Integer count = jdbcTemplate.queryForObject(selectSql, Integer.class, username, password);
             return count != null && count > 0;

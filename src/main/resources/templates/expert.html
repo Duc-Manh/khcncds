@@ -81,22 +81,22 @@
          </div>
       </div>
 
-      <div class="hidden lg:block w-full border-t border-b border-gray-100 mt-2 shadow-sm bg-white">
+      <div class="hidden lg:block w-full mt-2 shadow-sm bg-evnBlue">
          <div class="max-w-[85vw] mx-auto">
             <div class="flex items-center justify-center py-3 w-full">
-               <nav class="hidden lg:flex justify-center gap-48 w-full text-sm font-semibold uppercase tracking-wide">
-                  <a href="/"
-                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Trang
+               <nav
+                  class="hidden lg:flex justify-center items-center gap-20 w-full text-sm font-semibold uppercase tracking-wide text-white">
+                  <a href="/" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Trang
                      chủ</a>
                   <a href="/news"
-                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">Tin
+                     class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Tin
                      tức</a>
                   <a href="/notice"
-                     class="text-evnBlue border-b-2 border-transparent hover:border-evnRed hover:text-evnRed pb-1 transition-all">Thông
+                     class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Thông
                      báo</a>
                   <div class="relative group">
                      <button type="button"
-                        class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
+                        class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
                         Nội bộ
                      </button>
 
@@ -149,8 +149,7 @@
                         </a>
                      </div>
                   </div>
-                  <a href="/login"
-                     class="text-evnBlue hover:text-evnRed border-b-2 border-transparent hover:border-evnRed pb-1 transition-all">
+                  <a href="/login" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">
                      Đăng nhập
                   </a>
                </nav>
@@ -162,9 +161,9 @@
       <div id="mobile-menu"
          class="hidden lg:hidden w-full bg-white border-t border-b border-gray-200 shadow-xl absolute left-0 top-full z-40">
          <div class="flex flex-col px-6 py-2 text-[13px] font-bold uppercase tracking-wide">
-            <a href="/" class="text-evnBlue block py-3 border-b border-gray-100">Trang chủ</a>
+            <a href="/" class="text-evnRed block py-3 border-b border-gray-100">Trang chủ</a>
             <a href="/news" class="text-evnBlue block py-3 border-b border-gray-100">Tin tức</a>
-            <a href="/notice" class="text-evnRed block py-3 border-b border-gray-100">Thông báo</a>
+            <a href="/notice" class="text-evnBlue block py-3 border-b border-gray-100">Thông báo</a>
             <a href="/expert" class="text-evnBlue block py-3 border-b border-gray-100">Mạng lưới chuyên gia</a>
             <a href="/login" class="text-evnBlue block py-3">Đăng nhập</a>
          </div>
@@ -179,22 +178,12 @@
       <div class="flex flex-col md:flex-row items-start md:items-center justify-start mb-4 gap-4">
 
          <div class="flex flex-wrap items-center gap-3 w-full">
-            <button
-               class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Tham
-               vấn của tôi
-            </button>
+
             <button onclick="toggleExpertRegistration()"
                class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all inline-block text-center">Đăng
                ký tham gia mạng lưới chuyên gia
             </button>
-            <button
-               class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Tham
-               vấn chuyên gia
-            </button>
-            <button
-               class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Mời
-               chuyên gia trao đổi giảng dạy, đào tạo
-            </button>
+
          </div>
       </div>
 
@@ -772,28 +761,7 @@
       </div>
    </footer>
 
-   <script>
-      function toggleExpertRegistration() {
-         const searchTools = document.getElementById('expert-search-tools');
-         const grid = document.getElementById('expert-grid');
-         const pagination = document.getElementById('expert-pagination');
-         const form = document.getElementById('expert-regis-form');
-
-         if (form.classList.contains('hidden')) {
-            // Hide list elements, show form
-            searchTools.classList.add('hidden');
-            grid.classList.add('hidden');
-            pagination.classList.add('hidden');
-            form.classList.remove('hidden');
-         } else {
-            // Hide form, show list elements
-            form.classList.add('hidden');
-            searchTools.classList.remove('hidden');
-            grid.classList.remove('hidden');
-            pagination.classList.remove('hidden');
-         }
-      }
-   </script>
+   <script src="/js/expert.js"></script>
 </body>
 
 </html>

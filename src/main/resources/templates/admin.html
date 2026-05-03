@@ -36,29 +36,7 @@
             },
         };
     </script>
-    <style>
-        .sidebar-collapsed .sidebar-text {
-            display: none !important;
-        }
-
-        /* Custom scrollbar for webkit */
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 
 <body class="bg-bgMain text-textDark font-sans h-screen flex overflow-hidden">
@@ -309,23 +287,22 @@
                             +15.9%
                         </span>
                     </div>
-                    <p class="text-[10px] text-textLight leading-tight">Stay informed with real-time data to enhance
-                        patient care and visitor management.</p>
+                    <p class="text-[10px] text-textLight leading-tight">Thống kê số lượng đăng ký tài khoản mới trên hệ
+                        thống.</p>
                 </div>
 
-                <!-- Doctors (Active) -->
+                <!-- Register -->
                 <div
-                    class="bg-[#eaf3fc] rounded-[20px] p-6 shadow-card border border-blue-100 flex flex-col justify-between relative overflow-hidden hover:-translate-y-1 transition-transform duration-300">
-                    <div class="flex justify-between items-start mb-4 relative z-10">
+                    class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
                         <div class="flex items-center gap-2">
-                            <div class="p-1.5 bg-white rounded-lg text-primary">
+                            <div class="p-1.5 bg-gray-100 rounded-lg text-textDark">
                                 <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
-                                    </path>
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                 </svg>
                             </div>
-                            <span class="font-semibold text-textDark">Duyệt đăng ký</span>
+                            <span class="font-semibold text-textDark">Tài khoản đăng ký sáng kiến</span>
                         </div>
                         <button class="text-gray-400"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -334,10 +311,10 @@
                                 </path>
                             </svg></button>
                     </div>
-                    <div class="flex items-end gap-3 mb-4 relative z-10">
-                        <h3 class="text-3xl font-extrabold text-textDark">260</h3>
+                    <div class="flex items-end gap-3 mb-4">
+                        <h3 class="text-3xl font-extrabold text-textDark">4,592</h3>
                         <span
-                            class="flex items-center text-xs font-bold text-gray-600 bg-white/60 px-1.5 py-0.5 rounded mb-1">
+                            class="flex items-center text-xs font-bold text-green-500 bg-green-50 px-1.5 py-0.5 rounded mb-1">
                             <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
@@ -345,16 +322,11 @@
                             +15.9%
                         </span>
                     </div>
-                    <div class="flex justify-between items-end mt-auto relative z-10">
-                        <svg class="w-16 h-8 text-white opacity-80" viewBox="0 0 100 40" fill="currentColor">
-                            <path d="M0 40V20L10 25L20 15L30 30L40 20L50 25L60 10L70 20L80 5L90 15L100 0V40H0Z" />
-                        </svg>
-                        <p class="text-[10px] text-textDark/70 leading-tight w-1/2 text-right">Stay updated with
-                            essential details to streamline medical support and management.</p>
-                    </div>
+                    <p class="text-[10px] text-textLight leading-tight">Thống kê số lượng đăng ký tài khoản mới trên hệ
+                        thống.</p>
                 </div>
 
-                <!-- Patient -->
+                <!-- Council -->
                 <div
                     class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
                     <div class="flex justify-between items-start mb-4">
@@ -366,7 +338,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <span class="font-semibold text-textDark">Hội đồng Khoa học</span>
+                            <span class="font-semibold text-textDark">Tài khoản hội đồng khoa học</span>
                         </div>
                         <button class="text-gray-400"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -386,11 +358,11 @@
                             +15.9%
                         </span>
                     </div>
-                    <p class="text-[10px] text-textLight leading-tight">Keep track of patient information at a glance,
-                        with easy access to key details for personalized care.</p>
+                    <p class="text-[10px] text-textLight leading-tight">Số lượng tài khoản thành viên thuộc hội đồng
+                        khoa học.</p>
                 </div>
 
-                <!-- Total Bed -->
+                <!-- Expert -->
                 <div
                     class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray flex flex-col justify-between hover:-translate-y-1 transition-transform duration-300">
                     <div class="flex justify-between items-start mb-4">
@@ -411,21 +383,19 @@
                                 </path>
                             </svg></button>
                     </div>
-                    <div class="flex items-baseline gap-2 mb-4">
-                        <h3 class="text-3xl font-extrabold text-textDark">1205</h3>
-                        <span class="text-xs font-semibold text-textDark">Available</span>
+                    <div class="flex items-end gap-3 mb-4">
+                        <h3 class="text-3xl font-extrabold text-textDark">120</h3>
+                        <span
+                            class="flex items-center text-xs font-bold text-green-500 bg-green-50 px-1.5 py-0.5 rounded mb-1">
+                            <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                            </svg>
+                            +5.2%
+                        </span>
                     </div>
-                    <div class="flex justify-between border-t border-gray-100 pt-3">
-                        <div>
-                            <h4 class="font-bold text-textDark">110 Bed</h4>
-                            <p class="text-[10px] text-textLight">Private Bed</p>
-                        </div>
-                        <div class="w-px bg-gray-200"></div>
-                        <div class="text-right">
-                            <h4 class="font-bold text-textDark">215 Bed</h4>
-                            <p class="text-[10px] text-textLight">General Bed</p>
-                        </div>
-                    </div>
+                    <p class="text-[10px] text-textLight leading-tight">Số lượng tài khoản chuyên gia đánh giá độc lập
+                        trên hệ thống.</p>
                 </div>
 
             </div>
@@ -437,323 +407,198 @@
                 <div
                     class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray lg:col-span-2 flex flex-col">
                     <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-lg font-bold text-textDark">Sáng kiến trong năm</h3>
-                        <div class="flex items-center gap-2">
-                            <button
-                                class="px-4 py-1.5 text-textGray hover:text-evnBlue hover:bg-gray-50 text-xs font-bold rounded-md transition-colors border border-gray-200">Năm
-                                trước</button>
-                            <button
-                                class="px-4 py-1.5 bg-[#eef2ff] text-evnBlue text-xs font-bold rounded-md shadow-sm border border-[#eef2ff]">Hiện
-                                tại</button>
+                        <div class="flex items-center gap-3 relative">
+                            <h3 class="text-lg font-bold text-textDark">Thống kê tài khoản theo đơn vị</h3>
+                            <div class="relative">
+                                <button onclick="toggleCategoryDropdown(this)"
+                                    class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold text-evnBlue bg-[#eef2ff] hover:bg-blue-100 rounded-lg transition-colors border border-[#eef2ff] shadow-sm">
+                                    <span id="category-label">Hạng mục</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div id="category-dropdown"
+                                    class="hidden absolute top-full left-0 mt-2 bg-white border border-gray-200 shadow-xl rounded-lg z-50 min-w-[220px] py-1 overflow-hidden">
+                                    <a href="#"
+                                        class="block px-4 py-2.5 text-xs font-medium text-textDark hover:bg-gray-50 hover:text-evnBlue transition-colors"
+                                        onclick="selectCategory('Đăng ký tài khoản', event)">Đăng ký tài khoản</a>
+                                    <a href="#"
+                                        class="block px-4 py-2.5 text-xs font-medium text-textDark hover:bg-gray-50 hover:text-evnBlue transition-colors"
+                                        onclick="selectCategory('Tài khoản đăng ký sáng kiến', event)">Tài khoản đăng ký
+                                        sáng kiến</a>
+                                    <a href="#"
+                                        class="block px-4 py-2.5 text-xs font-medium text-textDark hover:bg-gray-50 hover:text-evnBlue transition-colors"
+                                        onclick="selectCategory('Tài khoản hội đồng khoa học', event)">Tài khoản hội
+                                        đồng khoa học</a>
+                                    <a href="#"
+                                        class="block px-4 py-2.5 text-xs font-medium text-textDark hover:bg-gray-50 hover:text-evnBlue transition-colors"
+                                        onclick="selectCategory('Chuyên gia', event)">Chuyên gia</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2 relative">
+                            <button onclick="toggleYearDropdown(this)"
+                                class="flex items-center gap-1.5 px-4 py-1.5 bg-[#eef2ff] text-evnBlue text-xs font-bold rounded-md shadow-sm border border-[#eef2ff] transition-colors">
+                                <span id="year-label">Năm</span>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="year-dropdown"
+                                class="hidden absolute top-full right-0 mt-2 bg-white border border-gray-200 shadow-xl rounded-lg z-50 min-w-[100px] py-1 overflow-hidden">
+                                <!-- Dynamic years injected here -->
+                                <div class="px-4 py-2 text-xs text-gray-500">Chưa chọn hạng mục</div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="flex-1 flex flex-col justify-center space-y-4 pr-2">
                         <!-- Bar Items -->
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Cơ quan Tổng công ty Phát điện 2">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
-                                <span>Cơ quan Tổng công ty</span>
-                                <span>120</span>
+                                <span>Cơ quan Tổng công ty Phát điện 2</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full" style="width: 80%"></div>
+                                <div class="h-full bg-evnBlue rounded-full dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty Nhiệt điện Cần Thơ">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty Nhiệt điện Cần Thơ</span>
-                                <span>95</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-90" style="width: 65%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-90 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty Thuỷ điện An Khê - Ka Nak">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty Thuỷ điện An Khê - Ka Nak</span>
-                                <span>80</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-80" style="width: 55%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-80 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty Thuỷ điện Quảng Trị">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty Thuỷ điện Quảng Trị</span>
-                                <span>60</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-70" style="width: 45%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-70 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty Thuỷ điện Sông Bung">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty Thuỷ điện Sông Bung</span>
-                                <span>50</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-60" style="width: 38%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-60 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty Thuỷ điện Trung Sơn">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty Thuỷ điện Trung Sơn</span>
-                                <span>70</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-75" style="width: 50%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-75 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty CP Thuỷ điện Thác Mơ">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty CP Thuỷ điện Thác Mơ</span>
-                                <span>105</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-95" style="width: 70%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-95 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty CP Thuỷ điện A Vương">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty CP Thuỷ điện A Vương</span>
-                                <span>85</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-85" style="width: 60%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-85 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty CP Thuỷ điện Sông Ba Hạ">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty CP Thuỷ điện Sông Ba Hạ</span>
-                                <span>65</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-70" style="width: 48%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-70 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty CP Nhiệt điện Phả Lại">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty CP Nhiệt điện Phả Lại</span>
-                                <span>110</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-90" style="width: 75%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-90 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <div class="flex flex-col gap-1" data-dept="Công ty CP Nhiệt điện Hải Phòng">
                             <div class="flex justify-between text-xs font-semibold text-textDark">
                                 <span>Công ty CP Nhiệt điện Hải Phòng</span>
-                                <span>90</span>
+                                <span class="dept-count">0</span>
                             </div>
                             <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-evnBlue rounded-full opacity-80" style="width: 62%"></div>
+                                <div class="h-full bg-evnBlue rounded-full opacity-80 dept-bar transition-all duration-500"
+                                    style="width: 0%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Calendar Card -->
-                <div class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray flex flex-col">
-                    <h3 class="text-lg font-bold text-textDark mb-4">Calendar</h3>
+                <!-- Account List Card -->
+                <div
+                    class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray flex flex-col h-full min-h-0 overflow-hidden">
+                    <h3 class="text-lg font-bold text-textDark mb-4 shrink-0">Danh sách tài khoản</h3>
 
-                    <!-- Month Navigation -->
-                    <div class="flex items-center gap-4 mb-4">
-                        <button
-                            class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50"><svg
-                                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 19l-7-7 7-7"></path>
-                            </svg></button>
-                        <span class="font-bold text-textDark">July 2026</span>
-                        <button
-                            class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50"><svg
-                                class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                                </path>
-                            </svg></button>
-                    </div>
-
-                    <!-- Calendar Grid -->
-                    <div class="grid grid-cols-7 gap-y-3 text-center text-sm font-medium">
-                        <!-- Days -->
-                        <div class="text-textLight text-xs mb-2">S</div>
-                        <div class="text-textLight text-xs mb-2">M</div>
-                        <div class="text-textLight text-xs mb-2">T</div>
-                        <div class="text-textLight text-xs mb-2">W</div>
-                        <div class="text-textLight text-xs mb-2">T</div>
-                        <div class="text-textLight text-xs mb-2">F</div>
-                        <div class="text-textLight text-xs mb-2">S</div>
-
-                        <!-- Dates -->
-                        <div class="text-gray-300">26</div>
-                        <div class="text-gray-300">27</div>
-                        <div class="text-gray-300">28</div>
-                        <div class="text-gray-300">29</div>
-                        <div class="text-gray-300">30</div>
-                        <div class="text-textDark">1</div>
-                        <div class="text-textDark">2</div>
-
-                        <div class="text-textDark">3</div>
-                        <div class="relative">
-                            <div
-                                class="w-7 h-7 mx-auto bg-purple-100 text-purple-700 rounded-full flex items-center justify-center">
-                                4</div>
-                        </div>
-                        <div class="text-textDark">5</div>
-                        <div class="text-textDark relative">6<div class="flex gap-0.5 justify-center mt-0.5">
-                                <div class="w-1 h-1 bg-red-500 rounded-full"></div>
-                                <div class="w-1 h-1 bg-yellow-500 rounded-full"></div>
-                                <div class="w-1 h-1 bg-purple-500 rounded-full"></div>
-                            </div>
-                        </div>
-                        <div class="text-textDark">7</div>
-                        <div class="text-textDark">8</div>
-                        <div class="text-textDark">9</div>
-
-                        <div class="text-textDark">10</div>
-                        <div class="text-textDark">11</div>
-                        <div class="text-textDark relative">12<div class="flex gap-0.5 justify-center mt-0.5">
-                                <div class="w-1 h-1 bg-purple-500 rounded-full"></div>
-                            </div>
-                        </div>
-                        <div class="text-textDark">13</div>
-                        <div class="text-textDark">14</div>
-                        <div class="text-textDark">15</div>
-                        <div class="text-textDark">16</div>
-
-                        <div class="text-textDark">17</div>
-                        <div class="text-textDark">18</div>
-                        <div class="text-textDark">19</div>
-                        <div class="text-textDark relative">20<div class="flex gap-0.5 justify-center mt-0.5">
-                                <div class="w-1 h-1 bg-yellow-500 rounded-full"></div>
-                            </div>
-                        </div>
-                        <div class="text-textDark">21</div>
-                        <div class="text-textDark">22</div>
-                        <div class="text-textDark">23</div>
-
-                        <div class="text-textDark">24</div>
-                        <div class="text-textDark relative">25<div class="flex gap-0.5 justify-center mt-0.5">
-                                <div class="w-1 h-1 bg-red-500 rounded-full"></div>
-                                <div class="w-1 h-1 bg-yellow-500 rounded-full"></div>
-                            </div>
-                        </div>
-                        <div class="text-textDark">26</div>
-                        <div class="text-textDark">27</div>
-                        <div class="text-textDark">28</div>
-                        <div class="text-textDark">29</div>
-                        <div class="text-textDark relative">30<div class="flex gap-0.5 justify-center mt-0.5">
-                                <div class="w-1 h-1 bg-red-500 rounded-full"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Legend -->
-                    <div class="flex items-center gap-3 mt-auto pt-4 text-xs font-semibold text-textGray">
-                        <div class="flex items-center gap-1.5">
-                            <div class="w-2 h-2 rounded-full bg-yellow-500"></div> Appointment
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <div class="w-2 h-2 rounded-full bg-red-500"></div> Meeting
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <div class="w-2 h-2 rounded-full bg-purple-500"></div> Surgery
-                        </div>
+                    <div class="flex-1 overflow-y-auto rounded-lg border border-gray-100 min-h-0">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
+                            <thead class="bg-gray-50 sticky top-0 z-10">
+                                <tr class="text-textGray">
+                                    <th class="px-4 py-3 font-semibold border-b border-gray-100">Họ tên</th>
+                                    <th class="px-4 py-3 font-semibold border-b border-gray-100">Vị trí</th>
+                                    <th class="px-4 py-3 font-semibold border-b border-gray-100">Số điện thoại</th>
+                                </tr>
+                            </thead>
+                            <tbody id="account-list-tbody" class="divide-y divide-gray-50">
+                                <tr>
+                                    <td colspan="3" class="px-4 py-8 text-center text-gray-400 text-xs">
+                                        Chọn một đơn vị bên trái để xem danh sách
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-
-            <!-- 3. Bottom Table Section -->
-            <div class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray">
-
-                <!-- Table Header -->
-                <!-- <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-textDark">Patient Overview</h3>
-                        <p class="text-xs text-textLight mt-1">Lorem ipsum dolor sit amet consectetur sit amet ipsum
-                            dolor sit amet consectetur.</p>
-                    </div>
-
-                    <div class="flex items-center bg-gray-50 p-1 rounded-lg">
-                        <button
-                            class="px-4 py-1.5 bg-[#f4ebf8] text-[#a062c3] text-xs font-bold rounded-md shadow-sm">Today</button>
-                        <button
-                            class="px-4 py-1.5 text-textGray hover:text-textDark text-xs font-bold rounded-md transition-colors">Weekly</button>
-                        <button
-                            class="px-4 py-1.5 text-textGray hover:text-textDark text-xs font-bold rounded-md transition-colors">Monthly</button>
-                        <button
-                            class="px-4 py-1.5 text-textGray hover:text-textDark text-xs font-bold rounded-md transition-colors">Yearly</button>
-                    </div>
-                </div> -->
-
-                <!-- Table -->
-                <!-- <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm whitespace-nowrap">
-                        <thead>
-                            <tr class="text-textGray border-b border-gray-100">
-                                <th class="pb-3 font-semibold">ID</th>
-                                <th class="pb-3 font-semibold">Đơn vị</th>
-                                <th class="pb-3 font-semibold">Email</th>
-                                <th class="pb-3 font-semibold">Họ tên</th>
-                                <th class="pb-3 font-semibold">Tài khoản</th>
-                                <th class="pb-3 font-semibold">Mật khẩu</th>
-                                <th class="pb-3 font-semibold">Số điện thoại</th>
-                                <th class="pb-3 font-semibold">Vị trí</th>
-                                <th class="pb-3 font-semibold text-right pr-2">Phân quyền</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-50">
-                            <tr th:each="u : ${users}" class="hover:bg-gray-50 transition-colors group">
-                                <td class="py-3 font-medium text-textDark" th:text="${u.id}"></td>
-                                <td class="py-3" th:text="${u.department}"></td>
-                                <td class="py-3" th:text="${u.email}"></td>
-                                <td class="py-3 font-bold text-textDark" th:text="${u.fullName}"></td>
-                                <td class="py-3" th:text="${u.username}"></td>
-                                <td class="py-3" th:text="${u.password}"></td>
-                                <td class="py-3" th:text="${u.phone}"></td>
-                                <td class="py-3" th:text="${u.position}"></td>
-                                <td class="py-3 text-right pr-2" th:text="${u.role}"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
-            </div>
-
         </div>
     </main>
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuToggle = document.getElementById('menu-toggle');
-            const sidebar = document.getElementById('sidebar');
-            const logoContainer = document.getElementById('logo-container');
-            const sidebarTexts = document.querySelectorAll('.sidebar-text');
-
-            menuToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('w-[260px]');
-                sidebar.classList.toggle('w-[80px]');
-
-                logoContainer.classList.toggle('px-6');
-                logoContainer.classList.toggle('justify-between');
-                logoContainer.classList.toggle('justify-center');
-                sidebar.classList.toggle('sidebar-collapsed');
-            });
-
-            // Doctor Accordion Toggle
-            const doctorToggle = document.getElementById('doctor-toggle');
-            const doctorSubmenu = document.getElementById('doctor-submenu');
-            const doctorChevron = document.getElementById('doctor-chevron');
-
-            if (doctorToggle) {
-                doctorToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    doctorSubmenu.classList.toggle('hidden');
-                    doctorChevron.classList.toggle('rotate-180');
-                });
-            }
-        });
-    </script>
+    <script src="/js/admin.js"></script>
 </body>
 
 </html>
