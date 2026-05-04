@@ -451,14 +451,22 @@
             <div>
                <label class="block text-evnBlue font-bold text-sm mb-2">Họ và tên <span
                      class="text-red-500">*</span></label>
-               <input type="text" placeholder="Nhập tên ..."
+               <input type="text" id="exp-fullName" placeholder="Nhập tên ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
             </div>
             <!-- CCCD -->
             <div>
                <label class="block text-evnBlue font-bold text-sm mb-2">CCCD <span class="text-red-500">*</span></label>
-               <input type="text" placeholder="Nhập số CCCD"
+               <input type="text" id="exp-cccd" placeholder="Nhập số CCCD"
+                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
+                  required>
+            </div>
+            <!-- Email -->
+            <div>
+               <label class="block text-evnBlue font-bold text-sm mb-2">Số điện thoại <span
+                     class="text-red-500">*</span></label>
+               <input type="tel" id="exp-phone" placeholder="Nhập số điện thoại ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
             </div>
@@ -466,7 +474,7 @@
             <div>
                <label class="block text-evnBlue font-bold text-sm mb-2">Email <span
                      class="text-red-500">*</span></label>
-               <input type="email" placeholder="Nhập email ..."
+               <input type="email" id="exp-email" placeholder="Nhập email ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
             </div>
@@ -474,7 +482,7 @@
             <!-- Học hàm/Học vị -->
             <div>
                <label class="block text-evnBlue font-bold text-sm mb-2">Học hàm/Học vị</label>
-               <select
+               <select id="exp-rank"
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors">
                   <option>Chọn</option>
                   <option>Cử nhân/Kỹ sư</option>
@@ -489,7 +497,7 @@
             <div class="md:col-span-2">
                <label class="block text-evnBlue font-bold text-sm mb-2">Cơ quan công tác <span
                      class="text-red-500">*</span></label>
-               <input type="text" placeholder="Nhập Cơ quan công tác ..."
+               <input type="text" id="exp-department" placeholder="Nhập Cơ quan công tác ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
             </div>
@@ -498,7 +506,7 @@
             <div class="md:col-span-2">
                <label class="block text-evnBlue font-bold text-sm mb-2">Chuyên gia trong lĩnh vực <span
                      class="text-red-500">*</span></label>
-               <select
+               <select id="exp-major"
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
                   <option>Chọn lĩnh vực</option>
@@ -514,7 +522,7 @@
                <label class="block text-evnBlue font-bold text-sm mb-2">
                   Lĩnh vực/Chuyên ngành
                </label>
-               <input type="text" placeholder="Nhập Lĩnh vực ..."
+               <input type="text" id="exp-field" placeholder="Nhập Lĩnh vực ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
             </div>
@@ -525,7 +533,7 @@
                   Hướng nghiên cứu <span class="text-evnBlue/70 text-xs font-normal ml-1">(5 năm gần nhất)</span> <span
                      class="text-red-500">*</span>
                </label>
-               <textarea rows="4" placeholder="Nhập hướng nghiên cứu ..."
+               <textarea id="exp-trend" rows="4" placeholder="Nhập hướng nghiên cứu ..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors resize-none"
                   required></textarea>
             </div>
@@ -534,7 +542,7 @@
             <div class="md:col-span-2">
                <label class="block text-evnBlue font-bold text-sm mb-2">Google scholar: <span
                      class="text-red-500">*</span></label>
-               <input type="text" placeholder="Nhập link Google scholar..."
+               <input type="text" id="exp-google" placeholder="Nhập link Google scholar..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
                   required>
             </div>
@@ -542,14 +550,14 @@
             <!-- Orcid -->
             <div class="md:col-span-2">
                <label class="block text-evnBlue font-bold text-sm mb-2">ORCID:</label>
-               <input type="text" placeholder="Nhập link ORCID..."
+               <input type="text" id="exp-orcid" placeholder="Nhập link ORCID..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors">
             </div>
 
             <!-- Research gate -->
             <div class="md:col-span-2">
                <label class="block text-evnBlue font-bold text-sm mb-2">Research gate:</label>
-               <input type="text" placeholder="Nhập link research_gate..."
+               <input type="text" id="exp-gate" placeholder="Nhập link research_gate..."
                   class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors">
             </div>
 
@@ -571,7 +579,7 @@
          <div class="mt-8 pt-6 border-t border-gray-200 text-center flex justify-center gap-4">
             <button type="button" onclick="toggleExpertRegistration()"
                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2.5 px-8 rounded shadow-md transition-all active:scale-95">Hủy</button>
-            <button type="button" onclick="window.location.href='/login'"
+            <button type="button" onclick="submitExpertForm(event)"
                class="bg-evnBlue hover:bg-blue-900 text-white font-bold py-2.5 px-12 rounded shadow-md transition-all active:scale-95">Gửi</button>
          </div>
 
