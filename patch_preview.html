@@ -1,0 +1,47 @@
+<!-- Preview Modal -->
+<div id="previewModal" class="fixed inset-0 z-[100] bg-black/60 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="relative max-h-full overflow-y-auto rounded-xl flex justify-center w-full">
+        <button onclick="closePreview()" class="fixed top-6 right-10 z-50 text-white bg-red-600 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl shadow-lg hover:bg-red-700 transition-colors">X</button>
+        <div id="previewModalContent" class="flex justify-center w-full"></div>
+    </div>
+</div>
+
+<script>
+    function openPreview() {
+        const mainForm = document.querySelector('form.bg-white');
+        const modalContent = document.getElementById('previewModalContent');
+        modalContent.innerHTML = '';
+        
+        // Clone the form but change tag to div
+        const clone = mainForm.cloneNode(true);
+        const divWrapper = document.createElement('div');
+        divWrapper.innerHTML = clone.innerHTML;
+        divWrapper.className = clone.className.replace('relative', '');
+        divWrapper.setAttribute('style', clone.getAttribute('style'));
+        
+        // Disable all inputs/textareas
+        const originalInputs = mainForm.querySelectorAll('input, textarea');
+        const clonedInputs = divWrapper.querySelectorAll('input, textarea');
+        
+        originalInputs.forEach((orig, index) => {
+            clonedInputs[index].value = orig.value;
+            clonedInputs[index].setAttribute('readonly', 'true');
+            clonedInputs[index].style.pointerEvents = 'none';
+        });
+        
+        // Hide action buttons (+, -)
+        const buttons = divWrapper.querySelectorAll('button');
+        buttons.forEach(btn => btn.style.display = 'none');
+        
+        // Avoid ID conflicts
+        const allElements = divWrapper.querySelectorAll('[id]');
+        allElements.forEach(el => el.removeAttribute('id'));
+        
+        modalContent.appendChild(divWrapper);
+        document.getElementById('previewModal').classList.remove('hidden');
+    }
+
+    function closePreview() {
+        document.getElementById('previewModal').classList.add('hidden');
+    }
+</script>

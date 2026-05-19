@@ -4,15 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const logoContainer = document.getElementById('logo-container');
             const sidebarTexts = document.querySelectorAll('.sidebar-text');
 
-            menuToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('w-[260px]');
-                sidebar.classList.toggle('w-[80px]');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('w-[260px]');
+                    sidebar.classList.toggle('w-[80px]');
 
-                logoContainer.classList.toggle('px-6');
-                logoContainer.classList.toggle('justify-between');
-                logoContainer.classList.toggle('justify-center');
-                sidebar.classList.toggle('sidebar-collapsed');
-            });
+                    logoContainer.classList.toggle('px-6');
+                    logoContainer.classList.toggle('justify-between');
+                    logoContainer.classList.toggle('justify-center');
+                    sidebar.classList.toggle('sidebar-collapsed');
+                });
+            }
 
             // Doctor Accordion Toggle
             const doctorToggle = document.getElementById('doctor-toggle');

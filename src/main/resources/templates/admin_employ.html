@@ -37,6 +37,25 @@
         };
     </script>
     <link rel="stylesheet" href="/css/admin_employ.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="bg-bgMain text-textDark font-sans h-screen flex overflow-hidden">
@@ -84,37 +103,88 @@
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tài khoản</span>
                     </a>
                 </li>
-                <!-- Applications -->
-                <!-- Active Accordion -->
-                <li class="rounded-lg overflow-hidden">
-                    <a href="#" id="doctor-toggle"
-                        class="flex items-center justify-between px-3 py-2.5 text-activeText font-semibold text-sm">
-                        <div class="flex items-center gap-3">
-                            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
-                                </path>
-                            </svg>
-                            <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Sáng
-                                kiến</span>
-                        </div>
-                        <svg id="doctor-chevron"
-                            class="w-4 h-4 transform shrink-0 sidebar-text transition-opacity duration-300" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                <li>
+                    <a href="/admin/council"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
                             </path>
                         </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Hội đồng khoa
+                            học</span>
                     </a>
-                    <ul id="doctor-submenu"
-                        class="hidden border-l-2 border-gray-200 ml-5 pl-2 space-y-1 mt-1 sidebar-text transition-opacity duration-300">
-                        <li><a href="/admin/idea" class="block px-3 py-1.5 text-sm text-evnBlue font-medium
-                                hover:text-evnRed">Danh sách sáng kiến</a></li>
-                        <!-- <li><a href="#"
-                                class="block px-3 py-1.5 text-sm text-evnBlue font-medium hover:text-evnRed">Doctor
-                                list</a></li> -->
-                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/regis"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Đăng ký sáng
+                            kiến</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/pro"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mạng lưới chuyên
+                            gia</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/idea"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Đề xuất ý
+                            tưởng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/other"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Đề xuất khác</span>
+                    </a>
                 </li>
 
+
+
+                                <li>
+                    <a href="/admin/news"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"></path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tin tức</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/notice"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Thông báo</span>
+                    </a>
+                </li>
 
                 <!-- Others -->
                 <div>
@@ -146,18 +216,7 @@
                                     class="sidebar-text whitespace-nowrap transition-opacity duration-300">Widgets</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="/logout"
-                                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors font-semibold text-sm mt-4">
-                                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                                    </path>
-                                </svg>
-                                <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Log
-                                    Out</span>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
         </div>
@@ -233,19 +292,15 @@
                             <p class="text-xs font-medium text-textGray">Online</p>
                         </div>
                     </div>
-                    <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white shadow-sm overflow-hidden">
-                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Profile"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <button class="text-gray-400 hover:text-gray-600 ml-1 bg-gray-100 p-1.5 rounded-full">
+                    <a href="/logout"
+                        class="text-red-500 hover:text-red-700 ml-1 bg-red-50 hover:bg-red-100 p-1.5 rounded-full transition-colors"
+                        title="Đăng xuất">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                             </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </header>
@@ -307,23 +362,29 @@
                                     <div class="flex items-center justify-end gap-2">
                                         <button title="Phê duyệt" th:onclick="'toggleApproveFrame(' + ${r.id} + ')'"
                                             class="px-3 py-1.5 text-white bg-green-500 hover:bg-green-600 rounded-md text-xs font-semibold transition-colors shadow-sm">Duyệt</button>
-                                        <button title="Từ chối"
-                                            class="px-3 py-1.5 text-white bg-red-500 hover:bg-red-600 rounded-md text-xs font-semibold transition-colors shadow-sm">Từ
-                                            chối</button>
+                                        <form th:action="@{/admin/reject}" method="post" class="inline"
+                                            onsubmit="if(confirm('Bạn có chắc chắn muốn từ chối đăng ký này không?')) { const btn = this.querySelector('button'); btn.disabled = true; btn.classList.add('opacity-50', 'cursor-not-allowed'); btn.innerHTML = 'Đang xử lý...'; return true; } return false;">
+                                            <input type="hidden" name="registerId" th:value="${r.id}">
+                                            <button title="Từ chối" type="submit"
+                                                class="px-3 py-1.5 text-white bg-red-500 hover:bg-red-600 rounded-md text-xs font-semibold transition-colors shadow-sm">Từ
+                                                chối</button>
+                                        </form>
                                     </div>
                                     <div th:id="'approve-frame-' + ${r.id}"
-                                        class="hidden mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg text-left shadow-sm">
-                                        <p class="text-xs text-evnBlue font-medium mb-3">Sau khi duyệt tài khoản này sẽ
-                                            đăng ký được sáng kiến</p>
-                                        <form th:action="@{/admin/approve}" method="post"
-                                            class="flex justify-end gap-2">
-                                            <input type="hidden" name="registerId" th:value="${r.id}">
-                                            <button type="button" th:onclick="'toggleApproveFrame(' + ${r.id} + ')'"
-                                                class="px-3 py-1.5 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md text-xs font-semibold transition-colors">Huỷ</button>
-                                            <button type="submit"
-                                                class="px-3 py-1.5 bg-evnBlue text-white hover:bg-blue-700 rounded-md text-xs font-bold transition-colors shadow-sm">Chấp
-                                                nhận</button>
-                                        </form>
+                                        class="hidden inline-block mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg text-left shadow-sm">
+                                        <div class="flex items-center justify-end gap-3">
+                                            <p class="text-xs text-evnBlue font-medium">Bạn chắc chắn chưa?</p>
+                                            <form th:action="@{/admin/approve}" method="post"
+                                                onsubmit="const btn = this.querySelector('button[type=submit]'); btn.disabled = true; btn.classList.add('opacity-50', 'cursor-not-allowed'); btn.innerHTML = 'Đang lưu...';"
+                                                class="flex justify-end gap-2">
+                                                <input type="hidden" name="registerId" th:value="${r.id}">
+                                                <button type="button" th:onclick="'toggleApproveFrame(' + ${r.id} + ')'"
+                                                    class="px-3 py-1.5 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-md text-xs font-semibold transition-colors">Huỷ</button>
+                                                <button type="submit"
+                                                    class="px-3 py-1.5 bg-evnBlue text-white hover:bg-blue-700 rounded-md text-xs font-bold transition-colors shadow-sm">Chấp
+                                                    nhận</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -343,20 +404,7 @@
                             khoản nội bộ</p>
                     </div>
 
-                    <!-- Time Filters -->
-                    <div class="flex items-center bg-gray-50 p-1 rounded-lg">
-                        <button
-                            class="px-4 py-1.5 bg-[#f4ebf8] text-[#a062c3] text-xs font-bold rounded-md shadow-sm">Admin</button>
-                        <button
-                            class="px-4 py-1.5 text-textGray hover:text-textDark text-xs font-bold rounded-md transition-colors">Đăng
-                            tin</button>
-                        <button
-                            class="px-4 py-1.5 text-textGray hover:text-textDark text-xs font-bold rounded-md transition-colors">Đăng
-                            thông báo</button>
-                        <button
-                            class="px-4 py-1.5 text-textGray hover:text-textDark text-xs font-bold rounded-md transition-colors">Tổng
-                            hợp</button>
-                    </div>
+
                 </div>
 
                 <!-- Table -->
@@ -413,7 +461,8 @@
                                 <td class="py-3" th:text="${u.role}"></td>
                                 <td class="py-3 pr-2 text-right">
                                     <div class="flex items-center justify-end gap-2">
-                                        <button title="Thêm"
+                                        <button title="Thêm" type="button"
+                                            onclick="document.getElementById('addUserOverlay').classList.remove('hidden')"
                                             class="p-1.5 text-green-500 hover:bg-green-50 bg-white shadow-sm border border-gray-100 rounded-md transition-colors">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -448,7 +497,7 @@
             <div class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray mt-6">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                     <div>
-                        <h3 class="text-lg font-bold text-textDark">Danh sách tài khoản đăng ký sáng kiến năm 2026</h3>
+                        <h3 class="text-lg font-bold text-textDark">Danh sách tài khoản đăng ký sáng kiến</h3>
                         <p class="text-xs text-textLight mt-1">Danh sách các tài khoản đã được phê duyệt.</p>
                     </div>
                     <div class="flex items-center gap-2 shrink-0 relative">
@@ -651,6 +700,96 @@
                 </div>
             </div>
 
+            <!-- 6. Expert Accounts Table -->
+            <div class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray mt-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-textDark">Danh sách Chuyên gia tham vấn</h3>
+                        <p class="text-xs text-textLight mt-1">Danh sách thông tin và tài khoản của các chuyên gia.</p>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm whitespace-nowrap">
+                        <thead>
+                            <tr class="text-textGray border-b border-gray-100">
+                                <th class="pb-3 font-semibold">STT</th>
+                                <th class="pb-3 font-semibold">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span>Đơn vị</span>
+                                        <span class="text-xs font-normal text-textLight">Phòng/Ban/Khoa</span>
+                                    </div>
+                                </th>
+                                <th class="pb-3 font-semibold">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span>Họ tên</span>
+                                        <span class="text-xs font-normal text-textLight">Tài khoản &amp; Mật khẩu</span>
+                                    </div>
+                                </th>
+                                <th class="pb-3 font-semibold">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span>Số điện thoại</span>
+                                        <span class="text-xs font-normal text-textLight">Email</span>
+                                    </div>
+                                </th>
+                                <th class="pb-3 font-semibold text-right pr-2">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-50">
+                            <tr th:each="e : ${experts}" class="hover:bg-gray-50 transition-colors group">
+                                <td class="py-3 font-medium text-textDark" th:text="${e.id}"></td>
+                                <td class="py-3">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="font-medium text-textDark" th:text="${e.department}"></span>
+                                        <span class="text-xs text-textGray" th:text="${e.position}"></span>
+                                    </div>
+                                </td>
+                                <td class="py-3">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="font-bold text-textDark" th:text="${e.fullName}"></span>
+                                        <span class="font-medium text-evnBlue" th:text="${e.username}"></span>
+                                        <span class="text-xs text-textGray" th:text="${e.password}"></span>
+                                    </div>
+                                </td>
+                                <td class="py-3">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="font-medium text-textDark" th:text="${e.phone}"></span>
+                                        <span class="text-xs text-textGray" th:text="${e.email}"></span>
+                                    </div>
+                                </td>
+                                <td class="py-3 pr-2 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button title="Sửa"
+                                            class="p-1.5 text-blue-500 hover:bg-blue-50 bg-white shadow-sm border border-gray-100 rounded-md transition-colors">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                                </path>
+                                            </svg>
+                                        </button>
+                                        <form th:action="@{/admin/expert/delete}" method="post"
+                                            onsubmit="return confirm('Bạn có chắc chắn muốn xoá tài khoản này không?');"
+                                            class="m-0 p-0">
+                                            <input type="hidden" name="username" th:value="${e.username}">
+                                            <button type="submit"
+                                                class="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                                title="Xoá">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -678,6 +817,97 @@
                 class="w-full py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-xl font-semibold transition-colors shadow-sm">
                 Đóng
             </button>
+        </div>
+    </div>
+
+    <!-- Rejection Success Popup -->
+    <div th:if="${rejectedAccount != null}" id="reject-success-popup"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-6 w-[400px] shadow-2xl transform transition-all text-center">
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Thông báo</h3>
+            <p class="text-sm text-gray-600 mb-6">Bạn đã từ chối việc đăng ký tài khoản này.</p>
+            <button onclick="document.getElementById('reject-success-popup').style.display='none'"
+                class="w-full py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-xl font-semibold transition-colors shadow-sm">
+                Đóng
+            </button>
+        </div>
+    </div>
+
+    <!-- Add User Overlay -->
+    <div id="addUserOverlay"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-2xl p-8 w-[500px] shadow-2xl transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-gray-900">Thêm Tài Khoản Admin Mới</h3>
+                <button onclick="document.getElementById('addUserOverlay').classList.add('hidden')"
+                    class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+            <form action="/admin/user/create" method="POST" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Họ tên</label>
+                        <input type="text" name="fullName" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tài khoản</label>
+                        <input type="text" name="username" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
+                        <input type="password" name="password" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Đơn vị (Department)</label>
+                        <input type="text" name="department" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Chức vụ (Position)</label>
+                        <input type="text" name="position"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" name="email"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại</label>
+                        <input type="text" name="phone"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phân quyền (Role)</label>
+                        <input type="text" name="role" value="admin" readonly
+                            class="w-full border border-gray-300 bg-gray-100 rounded-lg px-3 py-2 text-sm text-gray-500 cursor-not-allowed outline-none">
+                    </div>
+                </div>
+                <div class="pt-4 flex gap-3">
+                    <button type="button" onclick="document.getElementById('addUserOverlay').classList.add('hidden')"
+                        class="flex-1 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-semibold transition-colors">
+                        Huỷ
+                    </button>
+                    <button type="submit"
+                        class="flex-1 py-2.5 bg-evnBlue hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors shadow-sm">
+                        Tạo tài khoản
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </body>

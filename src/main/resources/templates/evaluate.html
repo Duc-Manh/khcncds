@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xét duyệt sáng kiến online - Ban KHCNCĐS EVNGENCO2</title>
+
+  <meta name="description"
+    content="Hệ thống xét duyệt sáng kiến online thuộc Ban Khoa học công nghệ và Chuyển đổi số - Tổng Công ty Phát điện 2 (EVNGENCO2)." />
+  <meta name="keywords" content="sáng kiến, EVNGENCO2, xét duyệt sáng kiến, chuyển đổi số, KHCNCĐS, phát điện 2" />
+  <meta name="author" content="Ban KHCNCĐS - EVNGENCO2" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hệ thống Xét duyệt Sáng kiến Online - EVNGENCO2" />
+  <meta property="og:description"
+    content="Số hóa quy trình nộp hồ sơ, kiểm tra và xét duyệt sáng kiến khoa học kỹ thuật tại Tổng Công ty Phát điện 2." />
+  <meta property="og:image" content="https://yourdomain.com/path-to-logo-evn.png" />
+  <meta property="og:url" content="https://sangkien.evngenco2.vn" />
+  <meta property="og:site_name" content="EVNGENCO2 Portal" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hệ thống Xét duyệt Sáng kiến Online - Ban KHCNCĐS" />
+  <meta name="twitter:description" content="Nền tảng quản lý sáng kiến khoa học công nghệ của EVNGENCO2." />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="theme-color" content="#DB0D0D" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            // Cấu hình để font-sans mặc định là Montserrat
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            evnRed: '#DB0D0D',
+            evnBlue: '#29348f',
+          },
+        },
+      },
+    };
+  </script>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="bg-white font-sans x-hidden flex flex-col min-h-screen">
+  <header class="relative z-50 bg-white w-full flex-shrink-0 bg-no-repeat bg-right"
+    style="background-image: url('/images/header.png'); background-size: auto 100%;">
+    <div class="max-w-[85vw] mx-auto">
+      <div class="flex justify-between items-center py-4 md:py-6 relative">
+        <!-- Bên trái: Logo và 2 dòng chữ -->
+        <div
+          class="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-6 w-full text-center md:text-left pr-10 md:pr-0">
+          <img src="/images/logo_evngenco2.png" alt="Logo EVNGENCO2" class="h-16 md:h-24 w-auto object-contain" />
+          <div class="flex flex-col justify-center">
+            <h1
+              class="text-evnRed text-sm sm:text-base md:text-2xl font-extrabold tracking-wide uppercase drop-shadow-sm leading-tight">
+              CỔNG SÁNG KIẾN KHCN, ĐMST & CĐS</h1>
+            <p class="text-evnBlue text-xs md:text-xl font-bold md:mt-1 drop-shadow-sm">"Khơi nguồn sáng tạo - Mở
+              lối tương lai"</p>
+          </div>
+        </div>
+
+        <!-- Nút Mobile Menu Hamburger -->
+        <div class="block lg:hidden absolute right-0 top-1/2 -translate-y-1/2">
+          <button id="mobile-menu-btn" class="text-evnBlue focus:outline-none p-2 rounded hover:bg-gray-100">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hidden lg:block w-full mt-2 shadow-sm bg-evnBlue">
+      <div class="max-w-[85vw] mx-auto">
+        <div class="flex items-center justify-center w-full">
+          <nav
+            class="hidden lg:flex justify-center items-stretch w-full text-sm font-semibold uppercase tracking-wide text-white">
+            <a href="/"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Trang
+              chủ</a>
+            <a href="/news"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Tin
+              tức</a>
+            <a href="/notice"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Thông
+              báo</a>
+            <div class="relative group flex w-44">
+              <button type="button"
+                class="text-white group-hover:bg-evnRed hover:text-white w-full transition-all text-sm font-semibold uppercase tracking-wide flex items-center justify-center h-full cursor-pointer">
+                Nội bộ
+              </button>
+
+              <div
+                class="absolute left-1/2 -translate-x-1/2 top-full w-72 bg-white border border-evnRed shadow-xl rounded py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+                <a href="https://doffice.evngenco2.vn/sign-in?redirectURL=%2Fproject" target="_blank"
+                  rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Văn phòng điện tử
+                </a>
+                <a href="https://smartevn.evngenco2.vn/sign-in?redirectURL=%2Fdashboard" target="_blank"
+                  rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  SmartEVN
+                </a>
+                <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=9199bf20-a13f-4107-85dc-02114787ef48&scope=https%3A%2F%2Foutlook.office.com%2F.default%20openid%20profile%20offline_access&redirect_uri=https%3A%2F%2Foutlook.office.com%2Fmail%2F&client-request-id=f020718d-77d8-7965-e630-7664d134e4f1&response_mode=fragment&client_info=1&prompt=select_account&nonce=019d972f-3e4d-7fd0-a77e-bd6ba9f7d827&state=eyJpZCI6IjAxOWQ5NzJmLTNlNGQtN2E1Ni1hNGExLTgxZWJiOTNiZTBjNCIsIm1ldGEiOnsiaW50ZXJhY3Rpb25UeXBlIjoicmVkaXJlY3QifX0%3D%7CaHR0cHM6Ly9vdXRsb29rLm9mZmljZS5jb20vbWFpbC8&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22CP1%22%5D%7D%7D%7D&x-client-SKU=msal.js.browser&x-client-VER=4.28.2&response_type=code&code_challenge=URuQGkeAZbCDVfQwTWSIXx_P02BNfm3mdXKfgbWXfJA&code_challenge_method=S256"
+                  target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Email - Thư điện tử
+                </a>
+                <a href="https://bcqt.evngenco2.vn/#/signin" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  BI - Báo cáo quản trị
+                </a>
+                <a href="https://home.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Web nội bộ
+                </a>
+                <a href="https://elearninglms.evn.com.vn/user/login" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  E-Learning 2.0
+                </a>
+                <a href="https://lichtuan.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Lịch tuần EVNGENCO2
+                </a>
+                <a href="https://lichxe.evngenco2.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Lịch xe
+                </a>
+                <a href="https://login.evn.com.vn/adfs/ls?wa=wsignin1.0&wtrealm=urn%3aeoffice%3aevn&wctx=https%3a%2f%2fportal.evn.com.vn%2f_layouts%2f15%2fAuthenticate.aspx%3fSource%3d%252F"
+                  target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  EVN Portal
+                </a>
+
+                <a href="https://nhatruyenthong.evn.com.vn/" target="_blank" rel="noopener noreferrer"
+                  class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
+                  Nhà truyền thống ngành điện
+                </a>
+              </div>
+            </div>
+            <a href="/login"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">
+              Đăng nhập
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu"
+      class="hidden lg:hidden w-full bg-white border-t border-b border-gray-200 shadow-xl absolute left-0 top-full z-40">
+      <div class="flex flex-col px-6 py-2 text-[13px] font-bold uppercase tracking-wide">
+        <a href="/" class="text-evnBlue block py-3 border-b border-gray-100">Trang chủ</a>
+        <a href="/news" class="text-evnBlue block py-3 border-b border-gray-100">Tin tức</a>
+        <a href="/notice" class="text-evnRed block py-3 border-b border-gray-100">Thông báo</a>
+        <a href="/expert" class="text-evnBlue block py-3 border-b border-gray-100">Mạng lưới chuyên gia</a>
+        <a href="/login" class="text-evnBlue block py-3">Đăng nhập</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow bg-gray-50 py-10 px-4">
+    <style>
+      .custom-checkbox {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        border-radius: 0;
+        outline: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        margin-right: 4px;
+        flex-shrink: 0;
+      }
+      .custom-checkbox:checked::after {
+        content: "✓";
+        font-size: 14px;
+        color: black;
+        font-weight: bold;
+      }
+    </style>
+    <div class="max-w-[900px] mx-auto relative flex items-start justify-center gap-6">
+
+      <!-- Action Buttons Sidebar -->
+      <div class="flex flex-col gap-4 sticky top-1/2 -translate-y-1/2 shrink-0 z-10">
+        <!-- Download Button -->
+        <button
+          class="group w-12 h-12 bg-white border border-gray-300 text-evnBlue rounded-full flex items-center justify-center shadow-md hover:bg-evnBlue hover:text-white transition-all hover:-translate-y-1 relative"
+          title="Tải xuống">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+          <span
+            class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white text-[11px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity pointer-events-none uppercase tracking-wide">Tải xuống</span>
+        </button>
+        <!-- Submit Button -->
+        <button
+          class="group w-12 h-12 bg-white border border-gray-300 text-green-600 rounded-full flex items-center justify-center shadow-md hover:bg-green-600 hover:text-white transition-all hover:-translate-y-1 relative"
+          title="Đăng ký">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5 ml-0.5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+          </svg>
+          <span
+            class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white text-[11px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity pointer-events-none uppercase tracking-wide">Đăng ký</span>
+        </button>
+        <!-- Guide Button -->
+        <button
+          class="group w-12 h-12 bg-white border border-gray-300 text-evnRed rounded-full flex items-center justify-center shadow-md hover:bg-evnRed hover:text-white transition-all hover:-translate-y-1 relative"
+          title="Hướng dẫn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+          <span
+            class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-800 text-white text-[11px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap transition-opacity pointer-events-none uppercase tracking-wide">Hướng dẫn</span>
+        </button>
+      </div>
+
+      <!-- Document Container -->
+      <div class="w-full max-w-[800px] bg-white shadow-xl p-10 md:p-14 text-black text-[15px] leading-[1.5]" style="font-family: 'Times New Roman', Times, serif;">
+      <!-- Title -->
+      <h1 class="text-center text-[19px] font-bold uppercase mb-8">
+        PHIẾU ĐÁNH GIÁ CÔNG NHẬN SÁNG KIẾN
+      </h1>
+
+      <div class="space-y-2">
+        <!-- Section 1 -->
+        <div>
+          <p>
+            <span class="font-bold">1. Các thông tin chính sáng kiến</span> 
+            <span class="italic">(ghi theo Đơn yêu cầu công nhận sáng kiến):</span>
+          </p>
+          <p>Tiêu đề giải pháp:</p>
+          <p>Tác giả/đồng tác giả giải pháp:</p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="pt-1">
+          <p class="font-bold">2. Người đánh giá:</p>
+          <p>Họ và tên:</p>
+          <p>Thời điểm nhận Đơn và Hồ sơ sáng kiến để đánh giá: ngày ... tháng ... năm 202...</p>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="pt-1">
+          <p class="font-bold">3. Các tiêu chí đánh giá giải pháp</p>
+          <p>Phải đánh dấu vào 1 trong 2 ô của từng tiêu chí dưới đây</p>
+
+          <div class="space-y-2 mt-1">
+            <!-- 3.1 -->
+            <div>
+              <p>
+                <span class="font-bold italic">3.1. Về tình trạng kỹ thuật hoặc tổ chức sản xuất hiện tại, chỉ rõ ưu khuyết điểm</span> 
+                <span class="italic">(mục A.1 trong Đơn):</span>
+              </p>
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-20 ml-8 mt-1">
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Thông tin đầy đủ, chính xác</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Thông tin không đầy đủ hoặc không chính xác</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 3.2 -->
+            <div>
+              <p>
+                <span class="font-bold italic">3.2. Về nội dung giải pháp</span> 
+                <span class="italic">(mục A.2 trong Đơn)</span>
+              </p>
+              
+              <div class="ml-4 space-y-2 mt-1">
+                <!-- 3.2.1 -->
+                <div>
+                  <p class="italic">3.2.1. Mục đích của giải pháp, các điều kiện cần thiết:</p>
+                  <div class="flex flex-col sm:flex-row gap-2 sm:gap-32 ml-4 mt-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Khả thi</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Không khả thi</span>
+                    </label>
+                  </div>
+                  <p class="mt-1 ml-0">(Nếu mục đích, điều kiện giải pháp là Không khả thi thì không tiếp tục đánh giá các mục bên dưới và chuyển sang mục 4. Kết luận).</p>
+                </div>
+
+                <!-- 3.2.2 -->
+                <div>
+                  <p class="italic">3.2.2. Mô tả bản chất của giải pháp</p>
+                  <div class="flex flex-col sm:flex-row gap-2 sm:gap-32 ml-4 mt-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Đầy đủ, rõ ràng</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Không đầy đủ/rõ ràng</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- 3.2.3 -->
+                <div>
+                  <p class="italic">3.2.3. Các bước thực hiện</p>
+                  <div class="flex flex-col sm:flex-row gap-2 sm:gap-32 ml-4 mt-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Hợp lý</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Không hợp lý</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- 3.2.4 -->
+                <div>
+                  <p class="italic text-justify">
+                    3.2.4. Giải pháp có tính mới <span class="font-normal">(nếu đáp ứng đồng thời tất cả các điều kiện sau đây: i) Không trùng với nội dung của giải pháp đã được công nhận sáng kiến; ii) Chưa bị bộc lộ công khai trong các văn bản, sách báo, tài liệu kỹ thuật đến mức căn cứ vào đó có thể thực hiện ngay được; iii) Không trùng với giải pháp của người khác đã được áp dụng hoặc áp dụng thử, hoặc đưa vào kế hoạch áp dụng, phổ biến hoặc chuẩn bị các điều kiện để áp dụng, phổ biến; iv) Chưa được quy định thành tiêu chuẩn, quy trình, quy phạm bắt buộc phải thực hiện)</span>
+                  </p>
+                  <div class="flex flex-col sm:flex-row gap-2 sm:gap-32 ml-4 mt-1">
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Có</span>
+                    </label>
+                    <label class="flex items-center cursor-pointer">
+                      <input type="checkbox" class="custom-checkbox" />
+                      <span>Không</span>
+                    </label>
+                  </div>
+                  <p class="mt-1 ml-0">(Nếu giải pháp được đánh giá là Không có tính mới thì không tiếp tục đánh giá mục 3.3, 3.4 bên dưới và chuyển sang mục 4. Kết luận).</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3.3 -->
+            <div>
+              <p>
+                <span class="font-bold italic">3.3. Về quá trình áp dụng giải pháp</span> 
+                <span class="italic">(mục A.3 trong Đơn)</span>
+              </p>
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-20 ml-8 mt-1">
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Đủ dài để đánh giá hiệu quả</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Không đủ dài để đánh giá hiệu quả</span>
+                </label>
+              </div>
+              <p class="mt-1 ml-4 text-justify">1. (Nếu quá trình áp dụng giải pháp không đủ dài để đánh giá hiệu quả thì không tiếp tục đánh giá mục 3.4 bên dưới và chuyển sang mục 4. Kết luận).</p>
+            </div>
+
+            <!-- 3.4 -->
+            <div>
+              <p>
+                <span class="font-bold italic">3.4. Hiệu quả thực tế thu được khi áp dụng giải pháp</span> 
+                <span class="italic">(mục A.4 trong Đơn)</span>
+              </p>
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-32 ml-8 mt-1">
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Hiệu quả</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Không hiệu quả</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 3.5 -->
+            <div>
+              <p class="font-bold italic text-justify">
+                3.5. Có khả năng áp dụng tại Đơn vị khác trong... <span class="font-normal">(Đơn vị xét duyệt)</span> hoặc có tính hiệu quả cao đủ để công nhận ở cấp ... <span class="font-normal">(chỉ dùng cho cấp EVN/EVNGENCO2)</span>
+              </p>
+              <div class="flex flex-col sm:flex-row gap-2 sm:gap-32 ml-8 mt-1">
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Có</span>
+                </label>
+                <label class="flex items-center cursor-pointer">
+                  <input type="checkbox" class="custom-checkbox" />
+                  <span>Không</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="pt-1">
+          <p class="font-bold">4. Kết luận</p>
+          <div class="ml-4 mt-1">
+            <label class="flex items-start gap-1 cursor-pointer">
+              <input type="checkbox" class="custom-checkbox mt-1" />
+              <span class="text-justify">
+                <span class="font-bold italic">4.1. Không công nhận sáng kiến cấp</span> ... tại...(tuỳ theo cấp sáng kiến) nếu đánh giá ở trên thuộc một trong các trường hợp:
+              </span>
+            </label>
+          </div>
+          <div class="ml-10 mt-1 space-y-1">
+            <p class="italic text-justify">- Mục đích của giải pháp, các điều kiện cần thiết (mục 3.2.1) là Không khả thi, hoặc</p>
+            <p class="italic text-justify">- Giải pháp không có tính mới (mục 3.2.4); hoặc</p>
+            <p class="italic text-justify">- Quá trình áp dụng giải pháp (mục 3.3) là Không đủ dài để đánh giá hiệu quả, hoặc</p>
+            <p class="italic text-justify">- Việc áp dụng giải pháp (mục 3.4) là Không hiệu quả hoặc</p>
+            <p class="italic text-justify">- Không có khả năng áp dụng tại đơn vị khác và không có tính hiệu quả cao (mục 3.5) (chỉ dùng cho cấp EVN/EVNGENCO2).</p>
+          </div>
+          
+          <div class="mt-2 ml-4">
+            <label class="flex items-start gap-1 cursor-pointer">
+              <span class="font-bold italic mt-0.5">4.2.</span>
+              <input type="checkbox" class="custom-checkbox mt-1" />
+              <span class="text-justify">
+                <span class="font-bold italic">Công nhận sáng kiến cấp ... nhưng đề nghị hoàn thiện hồ sơ sáng kiến</span> trước khi công nhận sáng kiến nếu không có đánh giá thuộc một trong các trường hợp nêu tại mục 4.1 ở trên và có ít nhất một trong các tiêu chí tại mục 3.1, 3.2.2, 3.2.3 được đánh giá là Không.
+              </span>
+            </label>
+            <p class="mt-1">Yêu cầu hoàn thiện <span class="italic">(ghi rõ phạm vi cần bổ sung trong đánh giá hiện trạng và/hoặc mô tả chi tiết bản chất giải pháp và/hoặc thay đổi các bước thực hiện giải pháp):</span></p>
+            <p class="mt-1 tracking-[0.2em] overflow-hidden text-clip whitespace-nowrap">........................................................................................................................................................................................................................................................</p>
+          </div>
+
+          <div class="mt-2 ml-4">
+            <label class="flex items-start gap-1 cursor-pointer">
+              <span class="font-bold italic mt-0.5">4.3.</span>
+              <input type="checkbox" class="custom-checkbox mt-1" />
+              <span class="text-justify">
+                <span class="font-bold italic">Công nhận sáng kiến cấp ...</span> tại... nếu không thuộc các trường hợp nêu tại mục 4.1 và 4.2
+              </span>
+            </label>
+          </div>
+
+          <div class="mt-2 ml-4">
+            <p>
+              <span class="font-bold italic">4.4. Số tiền làm lợi</span> <span class="italic">(nếu Công nhận sáng kiến tại mục 4.2 hoặc 4.3)</span>
+            </p>
+            <p class="mt-1">Số tiền làm lợi trong năm đầu áp dụng sáng kiến là</p>
+            <div class="space-y-1 mt-1 ml-4">
+              <label class="flex items-start gap-1 cursor-pointer">
+                <input type="checkbox" class="custom-checkbox mt-1" />
+                <span class="text-justify">Không tính được (nếu mục B trong Đơn ghi là Không tính được hoặc người đánh giá cho rằng cách tính số tiền làm lợi ghi trong Đơn là không khả thi)</span>
+              </label>
+              <label class="flex items-start gap-1 cursor-pointer">
+                <input type="checkbox" class="custom-checkbox mt-1" />
+                <span class="text-justify">Tính được theo cách tính ghi trong Đơn nhưng cần tính lại trên cơ sở cập nhật, bổ sung số liệu sau:</span>
+              </label>
+              <p class="mt-1 tracking-[0.2em] overflow-hidden text-clip whitespace-nowrap">........................................................................................................................................................................................................................................................</p>
+              <label class="flex items-start gap-1 cursor-pointer mt-1">
+                <input type="checkbox" class="custom-checkbox mt-1" />
+                <span class="text-justify">Tính được và đồng ý với số tiền làm lợi theo cách tính ghi trong Đơn</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="mt-2 ml-4">
+            <p class="text-justify">
+              <span class="font-bold italic">4.5. Đề xuất mức thù lao chung cho tác giả/đồng tác giả trong 01 năm</span> <span class="italic">(mức tối thiểu là...% tối đa là ...% nếu tính được hoặc tối thiểu là ... mức lương cơ sở tối đa là... mức lương cơ sở nếu không tính được)</span><sup>1</sup>
+            </p>
+            <p class="mt-1 tracking-[0.2em] overflow-hidden text-clip whitespace-nowrap">........................................................................................................................................................................................................................................................</p>
+            <p class="italic text-justify">(người đánh giá ghi rõ số % nếu tính được hoặc số mức lương cơ sở nếu không tính được)</p>
+          </div>
+
+          <div class="mt-2 ml-4">
+            <p class="text-justify">
+              <span class="font-bold italic">4.6. Đề xuất mức thù lao chung cho những người tham gia tổ chức áp dụng sáng kiến lần đầu trong 01 năm</span> <span class="italic">(mức tối thiểu ...% tối đa là ...% thù lao tác giả nêu tại mục 4.5)</span><sup>2</sup>
+            </p>
+            <p class="mt-1 tracking-[0.2em] overflow-hidden text-clip whitespace-nowrap">........................................................................................................................................................................................................................................................</p>
+            <p class="italic text-justify">(người đánh giá ghi rõ số %)</p>
+          </div>
+
+          <div class="mt-2 ml-4">
+            <label class="flex items-start gap-1 cursor-pointer">
+              <span class="font-bold italic mt-0.5">4.7.</span>
+              <input type="checkbox" class="custom-checkbox mt-1" />
+              <span class="text-justify">
+                <span class="font-bold italic">Đề xuất đăng ký công nhận sáng kiến cấp cao hơn</span> <span class="italic">(đối với cấp cơ sở tại Đơn vị và cấp Tổng công ty)</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="mt-2 ml-4">
+            <p class="font-bold italic">4.8. Ý kiến khác</p>
+            <div class="space-y-4 mt-2">
+              <p class="tracking-[0.2em] overflow-hidden text-clip whitespace-nowrap">........................................................................................................................................................................................................................................................</p>
+              <p class="tracking-[0.2em] overflow-hidden text-clip whitespace-nowrap">........................................................................................................................................................................................................................................................</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-8 flex justify-end">
+          <div class="text-center italic">
+            <p>......., Ngày .... tháng .... năm ....</p>
+            <p class="font-bold not-italic mt-1">Người đánh giá</p>
+            <p class="mt-1">(Họ, tên và chữ ký)</p>
+            <div class="h-28"></div>
+          </div>
+        </div>
+
+        <div class="mt-4 border-t border-black pt-2 text-[13px]">
+          <p class="text-justify mb-1">
+            <sup>1</sup> Tuỳ từng cấp sáng kiến EVNGENCO2/Cơ sở ghi rõ định mức thù lao quy định tại Điều 32, 33 của Quy định này. Thư ký của Hội đồng chuẩn bị các phiếu phù hợp trước khi họp.
+          </p>
+          <p class="text-justify">
+            <sup>2</sup> Tuỳ từng cấp sáng kiến EVNGENCO2/Cơ sở ghi rõ mức tối thiểu và tối đa quy định tại Điều 32, 33 của Quy định này. Thư ký của Hội đồng chuẩn bị các phiếu phù hợp trước khi họp.
+          </p>
+        </div>
+      </div>
+     </div>
+    </div>
+  </main>
+  <footer class="bg-evnBlue text-white pt-12 pb-6 mt-auto">
+    <div class="max-w-[85vw] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-10">
+        <div class="lg:col-span-5 space-y-5">
+          <h4 class="text-lg font-bold uppercase border-l-4 border-evnRed pl-3 mb-6 leading-tight">
+            Tổng Công ty Phát điện 2 - CTCP (EVNGENCO2)
+          </h4>
+          <div class="space-y-4 text-sm opacity-90">
+            <p id="open-map" class="flex items-start gap-3 hover:text-evnRed transition-colors cursor-pointer group">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 shrink-0 text-evnRed mt-0.5 group-hover:scale-110 transition-transform" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span class="underline-offset-4">Số 01 đường Lê Hồng Phong, phường Thới An Đông, TP. Cần Thơ</span>
+            </p>
+            <p class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-evnRed" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              ĐT: 0292.246.1507 - Fax: 0292.6255.500
+            </p>
+            <p class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-evnRed" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Email: evngenco2@gmail.com
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 space-y-4">
+          <div>
+            <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white">Đơn vị thành viên</label>
+            <select id="don-vi-thanh-vien"
+              class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none">
+              <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+              <option value="https://evngenco2.vn/">Cơ quan Tổng Công ty Phát điện 2</option>
+              <option value="https://nhietdiencantho.vn/" class="text-evnBlue">
+                Công ty Nhiệt điện Cần Thơ
+              </option>
+              <option value="https://akhpc.vn/" class="text-evnBlue">
+                Công ty Thủy điện An Khê - Ka Nak
+              </option>
+              <option value="http://www.thuydienquangtri.vn/" class="text-evnBlue">
+                Công ty Thủy điện Quảng Trị
+              </option>
+              <option value="https://songbunghpc.vn/vi/home" class="text-evnBlue">
+                Công ty Thủy điện Sông Bung
+              </option>
+              <option value="https://trungsonhp.vn/" class="text-evnBlue">
+                Công ty TNHH MTV Thủy điện Trung Sơn
+              </option>
+              <option value="https://tmhpp.com.vn/" class="text-evnBlue">
+                Công ty Cổ phần Thủy điện Thác Mơ
+              </option>
+              <option value="https://avuong.com/" class="text-evnBlue">
+                Công ty Cổ phần Thủy điện A Vương
+              </option>
+              <option value="https://sbh.vn/" class="text-evnBlue">
+                Công ty Cổ phần Thủy điện Sông Ba Hạ
+              </option>
+              <option value="http://ppc.evn.vn/" class="text-evnBlue">
+                Công ty Cổ phần Nhiệt điện Phả Lại
+              </option>
+              <option value="https://www.ndhp.com.vn/" class="text-evnBlue">
+                Công ty Cổ phần Nhiệt điện Hải Phòng
+              </option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold uppercase mb-3 tracking-widest text-white">Đơn vị liên kết</label>
+            <select id="don-vi-lien-ket"
+              class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-[13px] focus:outline-none focus:border-evnRed text-white cursor-pointer appearance-none">
+              <option class="text-evnBlue">--- Chọn đơn vị ---</option>
+              <option value="https://evn.com.vn/" class="text-evnBlue">
+                Tập đoàn Điện lực Việt Nam
+              </option>
+              <option value="https://www.evngenco1.vn/en/home" class="text-evnBlue">
+                Tổng công ty Phát điện 1
+              </option>
+              <option value="https://www.genco3.com/" class="text-evnBlue">
+                Tổng công ty Phát điện 3
+              </option>
+              <option value="https://npc.com.vn/" class="text-evnBlue">
+                Tổng công ty Điện lực miền Bắc
+              </option>
+              <option value="https://cpc.vn/vi-vn/" class="text-evnBlue">
+                Tổng công ty Điện lực miền Trung
+              </option>
+              <option value="https://evnspc.vn/bai-viet/F02WEB-201905-00000012/tong-quan" class="text-evnBlue">
+                Tổng công ty Điện lực miền Nam
+              </option>
+              <option value="https://evnhanoi.vn/" class="text-evnBlue">
+                Tổng công ty Điện lực TP. Hà Nội
+              </option>
+              <option value="https://www.evnhcmc.vn/" class="text-evnBlue">
+                Tổng công ty Điện lực TP. HCM
+              </option>
+              <option value="https://www.npt.com.vn/" class="text-evnBlue">
+                Tổng công ty Truyền tải điện Quốc gia
+              </option>
+              <option value="https://www.nsmo.vn/" class="text-evnBlue">
+                Trung tâm Điều độ hệ thống điện Quốc gia
+              </option>
+              <option class="text-evnBlue">Công ty Viễn thông điện lực và CNTT</option>
+              <option value="https://www.congdoandlvn.org.vn/" class="text-evnBlue">
+                Công đoàn Điện lực Việt Nam
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="lg:col-span-3 space-y-5">
+          <div>
+            <label class="block text-sm font-bold uppercase mb-6 tracking-widest text-white">
+              Thống kê truy cập
+            </label>
+
+            <div class="w-full text-sm space-y-3">
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80 font-medium text-white">Đang truy cập</span>
+                <span class="font-bold">31</span>
+              </div>
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80">Hôm nay</span>
+                <span class="font-semibold">6,162</span>
+              </div>
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80">Tháng hiện tại</span>
+                <span class="font-semibold">143,294</span>
+              </div>
+              <div class="flex justify-between pb-1">
+                <span class="opacity-80">Tổng truy cập</span>
+                <span class="font-semibold">443,224</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-2">
+        <div class="flex flex-col md:flex-col items-start gap-2 text-xs opacity-80">
+          <p>Trưởng ban biên tập: <strong class="text-white">Họ tên</strong></p>
+          <p>
+            Chịu trách nhiệm nội dung:
+            <strong class="text-white not-italic">Họ tên</strong>
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="pt-2 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] opacity-50 uppercase tracking-[0.2em] font-medium">
+        <p>© 2026 - BẢN QUYỀN THUỘC VỀ EVNGENCO2</p>
+        <p class="mt-2 md:mt-0">Thiết kế và Phát triển bởi Ban KHCNCĐS</p>
+      </div>
+    </div>
+  </footer>
+  <div id="map-overlay"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div
+      class="relative w-full max-w-4xl bg-white rounded-2xl overflow-hidden shadow-2xl transition-all scale-95 opacity-0"
+      id="map-modal">
+      <div class="flex justify-between items-center p-4 border-b border-gray-100">
+        <h3 class="font-bold text-evnBlue">
+          Địa chỉ Trụ sở Tổng công ty Phát điện 2 - CTCP EVNGENCO2
+        </h3>
+        <button id="close-map" class="text-gray-500 hover:text-evnRed transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="aspect-video w-full">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4751.469808457514!2d105.71685797577128!3d10.097593071346312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a087b43cede8af%3A0x465c2bf04ca9dfe7!2zVOG7lW5nIEPDtG5nIFR5IFBow6F0IMSQaeG7h24gMiAoRVZOIEdFTkNPIDIp!5e1!3m2!1svi!2s!4v1776313226144!5m2!1svi!2s"
+          width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+  <div
+    class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4 p-2 bg-white/10 backdrop-blur-md border border-evnBlue rounded-l-2xl shadow-2xl">
+    <a href="https://www.facebook.com/TongcongtyPhatdien2" target="_blank"
+      class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+        <path fill="rgb(0, 92, 255)"
+          d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5l0-170.3-52.8 0 0-78.2 52.8 0 0-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4l0 70.8c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2l0 27.8 83.6 0-14.4 78.2-69.3 0 0 175.9C413.8 494.8 512 386.9 512 256z" />
+      </svg>
+      <span
+        class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold">Facebook</span>
+    </a>
+
+    <a href="https://www.youtube.com/@evngenco2" target="_blank"
+      class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+        <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+        <path fill="rgb(250, 1, 1)"
+          d="M549.7 124.1C543.5 100.4 524.9 81.8 501.4 75.5 458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5C51.2 81.8 32.7 100.4 26.4 124.1 15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8 42.6 11.5 213.4 11.5 213.4 11.5s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6l0-162.4 142.7 81.2-142.7 81.2z" />
+      </svg>
+      <span
+        class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold">Youtube</span>
+    </a>
+
+    <a href="https://www.tiktok.com/@evngenco2" target="_blank"
+      class="w-8 h-8 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+        <path fill="rgb(0, 0, 0)"
+          d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2l0 178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16l0 89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8l0-349.4 88 0c-.1 7.4 .6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1l0 87.4z" />
+      </svg>
+      <span
+        class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold">Tiktok</span>
+    </a>
+  </div>
+  <script src="/js/index.js"></script>
+</body>
+
+</html>

@@ -36,7 +36,26 @@
             },
         };
     </script>
-    <link rel="stylesheet" href="/css/admin_idea.css">
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="bg-bgMain text-textDark font-sans h-screen flex overflow-hidden">
@@ -65,7 +84,7 @@
             <ul class="space-y-1">
                 <li>
                     <a href="/admin"
-                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnBlue transition-colors font-medium text-sm">
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
@@ -84,37 +103,90 @@
                         <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tài khoản</span>
                     </a>
                 </li>
-                <!-- Applications -->
-                <!-- Active Accordion -->
-                <li class="bg-activeBg rounded-lg overflow-hidden">
-                    <a href="#" id="doctor-toggle"
-                        class="flex items-center justify-between px-3 py-2.5 text-activeText font-semibold text-evnRed text-sm">
-                        <div class="flex items-center gap-3">
-                            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
-                                </path>
-                            </svg>
-                            <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Sáng
-                                kiến</span>
-                        </div>
-                        <svg id="doctor-chevron"
-                            class="w-4 h-4 transform shrink-0 sidebar-text transition-opacity duration-300" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                <li>
+                    <a href="/admin/council"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
                             </path>
                         </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Hội đồng khoa
+                            học</span>
                     </a>
-                    <ul id="doctor-submenu"
-                        class="hidden border-l-2 border-gray-200 ml-5 pl-2 space-y-1 mt-1 sidebar-text transition-opacity duration-300">
-                        <li><a href="/admin/idea" class="block px-3 py-1.5 text-sm text-evnBlue font-medium
-                                hover:text-evnRed">Danh sách sáng kiến</a></li>
-                        <!-- <li><a href="#"
-                                class="block px-3 py-1.5 text-sm text-evnBlue font-medium hover:text-evnRed">Doctor
-                                list</a></li> -->
-                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/regis"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Đăng ký sáng
+                            kiến</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/pro"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mạng lưới chuyên
+                            gia</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/idea"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnRed hover:bg-gray-50 hover:text-evnBlue transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Đề xuất ý
+                            tưởng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/other"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Đề xuất khác</span>
+                    </a>
                 </li>
 
+
+
+                <li>
+                    <a href="/admin/news"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Tin tức</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/notice"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Thông báo</span>
+                    </a>
+                </li>
 
                 <!-- Others -->
                 <div>
@@ -146,18 +218,7 @@
                                     class="sidebar-text whitespace-nowrap transition-opacity duration-300">Widgets</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="/logout"
-                                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors font-semibold text-sm mt-4">
-                                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                                    </path>
-                                </svg>
-                                <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Log
-                                    Out</span>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
         </div>
@@ -233,34 +294,338 @@
                             <p class="text-xs font-medium text-textGray">Online</p>
                         </div>
                     </div>
-                    <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white shadow-sm overflow-hidden">
-                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Profile"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <button class="text-gray-400 hover:text-gray-600 ml-1 bg-gray-100 p-1.5 rounded-full">
+                    <a href="/logout"
+                        class="text-red-500 hover:text-red-700 ml-1 bg-red-50 hover:bg-red-100 p-1.5 rounded-full transition-colors"
+                        title="Đăng xuất">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                             </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
-                    </button>
+                    </a>
                 </div>
             </div>
         </header>
 
         <!-- Main Content Area -->
-        <div class="p-8 space-y-6">
-            <div class="bg-white rounded-[20px] p-6 shadow-card border border-borderGray">
-                <h2 class="text-2xl font-bold text-textDark mb-4">Danh sách sáng kiến</h2>
-                <p class="text-textLight">Nội dung danh sách sáng kiến sẽ được hiển thị ở đây.</p>
+        <div class="p-8 space-y-6 max-w-5xl mx-auto">
+            <!-- Form content -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-sm text-gray-800">
+
+                <!-- Phần 1 -->
+                <h2 class="text-evnRed font-bold text-lg mb-4 uppercase">Phần 1. Thông tin chung</h2>
+
+                <div class="space-y-5 mb-8">
+                    <!-- 1 -->
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">1. Tên ý tưởng <span
+                                class="text-red-500">*</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập Tên ý tưởng ..."></textarea>
+                    </div>
+
+                    <!-- 2 -->
+                    <div>
+                        <label class="block font-bold mb-2 text-evnBlue">2. Lĩnh vực đề xuất <span
+                                class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4 text-sm">
+                            <label class="flex items-start gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                                <input type="radio" name="linhvuc" class="mt-1">
+                                <span>A. Nhóm ý tưởng đổi mới thể chế và quản lý quản trị</span>
+                            </label>
+                            <label class="flex items-start gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                                <input type="radio" name="linhvuc" class="mt-1">
+                                <span>B. Nhóm ý tưởng cải cách hành chính, nghiệp vụ, tổ chức bộ máy</span>
+                            </label>
+                            <label class="flex items-start gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                                <input type="radio" name="linhvuc" class="mt-1">
+                                <span>C. Nhóm ý tưởng cải tiến kỹ thuật và công nghệ</span>
+                            </label>
+                            <label class="flex items-start gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                                <input type="radio" name="linhvuc" class="mt-1">
+                                <span>D. Nhóm ý tưởng tự động hoá và dữ liệu</span>
+                            </label>
+                            <label class="flex items-start gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                                <input type="radio" name="linhvuc" class="mt-1">
+                                <span>E. Nhóm ý tưởng kế hoạch và tài chính</span>
+                            </label>
+                            <label class="flex items-start gap-2 cursor-pointer hover:bg-gray-50 p-1 rounded">
+                                <input type="radio" name="linhvuc" class="mt-1">
+                                <span>E. Nhóm ý tưởng khác</span>
+                            </label>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 3 -->
+                    <div>
+                        <div class="flex items-center gap-6 mb-2">
+                            <label class="font-bold text-evnBlue">3. Đơn vị/cá nhân đề xuất:</label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="doituong" checked>
+                                <span>Cá nhân</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="doituong">
+                                <span>Tổ chức</span>
+                            </label>
+                        </div>
+
+                        <p class="text-gray-600 mb-3 italic">(Nếu là Tổ chức đề xuất thì nhập tại mục Họ và tên, nhập Họ
+                            và tên người đại diện)
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2">
+                                <label class="w-32 font-bold text-evnBlue shrink-0">- Họ và tên <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text"
+                                    class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50"
+                                    placeholder="Nhập họ và tên ...">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="w-32 font-bold text-evnBlue shrink-0">- Địa chỉ <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text"
+                                    class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50"
+                                    placeholder="Nhập địa chỉ ...">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="w-32 font-bold text-evnBlue shrink-0">- Điện thoại <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text"
+                                    class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50"
+                                    placeholder="Nhập số điện thoại ...">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label class="w-32 font-bold text-evnBlue shrink-0">- Email <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text"
+                                    class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50"
+                                    placeholder="Nhập email ...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">4. Đơn vị phối hợp chính (nếu có)</label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập đơn vị phối hợp chính ..."></textarea>
+                    </div>
+                </div>
+
+                <hr class="border-t border-dashed border-gray-300 my-8">
+
+                <!-- Phần 2 -->
+                <h2 class="text-evnRed font-bold text-lg mb-4 uppercase">Phần 2. Nội dung ý tưởng</h2>
+
+                <div class="space-y-5 mb-8">
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">a) Ý tưởng này nhằm giải quyết <span
+                                class="text-red-500">*</span>: <span class="font-normal text-gray-500 italic">(Nêu rõ
+                                thực trạng, vấn đề cần có...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">b) Nêu tóm tắt tác dụng chính <span
+                                class="text-red-500">*</span>: <span class="font-normal text-gray-500 italic">(Giải pháp
+                                dựa vào hiện trạng...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">1. Sự cần thiết và cơ sở đề xuất <span
+                                class="text-red-500">*</span>: <span class="font-normal text-gray-500 italic">(Phân tích
+                                bối cảnh, thực trạng...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-2 text-evnBlue">2. Mục tiêu của ý tưởng</label>
+                        <div class="pl-4 space-y-4">
+                            <div>
+                                <label class="block font-bold mb-1 text-evnBlue">2.1 Mục tiêu tổng quát <span
+                                        class="text-red-500">*</span></label>
+                                <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                                    class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                                    rows="1" placeholder="Nhập nội dung..."></textarea>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-1 text-evnBlue">2.2 Mục tiêu cụ thể <span
+                                        class="text-red-500">*</span></label>
+                                <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                                    class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                                    rows="1" placeholder="Nhập nội dung..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">3. Tính mới, sáng tạo và đột phá của giải pháp
+                            <span class="text-red-500">*</span> <span class="font-normal text-gray-500 italic">(Phân
+                                tích, so sánh ưu nhược điểm...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">4. Phạm vi và đối tượng thực hiện chính <span
+                                class="text-red-500">*</span>: <span class="font-normal text-gray-500 italic">(Mô tả các
+                                quy mô, số lượng...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">5. Sản phẩm và kết quả đầu ra dự kiến <span
+                                class="text-red-500">*</span>: <span class="font-normal text-gray-500 italic">(Liệt kê
+                                các sản phẩm cụ thể...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">6. Đóng góp vào các mục tiêu của Nghị quyết
+                            số... <span class="font-normal text-gray-500 italic">(Tùy chọn)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                </div>
+
+                <hr class="border-t border-dashed border-gray-300 my-8">
+
+                <!-- Phần 3 -->
+                <h2 class="text-evnRed font-bold text-lg mb-4 uppercase">Phần 3. Kế hoạch và nguồn lực</h2>
+
+                <div class="space-y-5 mb-8">
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">1. Kế hoạch và lộ trình thực hiện <span
+                                class="text-red-500">*</span>: <span class="font-normal text-gray-500 italic">(Phân chia
+                                các giai đoạn...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">2. Nguồn lực dự kiến <span
+                                class="text-red-500">*</span></label>
+                        <ul class="list-disc pl-5 mb-2 text-gray-700 font-medium">
+                            <li>Tổng kinh phí và cơ cấu nguồn vốn (ngân sách nhà nước, tự có, huy động, khác...)</li>
+                            <li>Nhân lực chủ chốt (chuyên gia, cán bộ sẵn có)</li>
+                            <li>Hạ tầng, trang thiết bị cần thiết</li>
+                        </ul>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">3. Phân tích rủi ro và giải pháp quản lý rủi ro
+                            <span class="text-red-500">*</span>: <span class="font-normal text-gray-500 italic">(Nhận
+                                diện các rủi ro chính...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                </div>
+
+                <hr class="border-t border-dashed border-gray-300 my-8">
+
+                <!-- Phần 4 -->
+                <h2 class="text-evnRed font-bold text-lg mb-4 uppercase">Phần 4. Kiến nghị và cam kết</h2>
+
+                <div class="space-y-5 mb-8">
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">1. Kiến nghị về cơ chế, chính sách đặc thù (nếu
+                            cần thiết)...</label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1 text-evnBlue">2. Cam kết của Đơn vị/Cá nhân đề xuất: <span
+                                class="font-normal text-gray-500 italic">(Cam kết về tính chính xác...)</span></label>
+                        <textarea oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            class="w-full border border-gray-300 rounded p-2 focus:border-evnBlue outline-none bg-gray-50/50 resize-none overflow-hidden"
+                            rows="1" placeholder="Nhập nội dung..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Đính kèm -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-evnRed text-lg mb-2">Tài liệu đính kèm của ý tưởng:</h3>
+
+                    <p class="text-gray-700 font-bold mb-2">Có thể đính kèm tài liệu liên quan hoặc nếu có (Dung lượng
+                        tối đa 5MB)</p>
+
+                    <div
+                        class="border-2 border-dashed border-evnBlue bg-white rounded-lg p-6 flex flex-col items-center justify-center text-center mt-4">
+                        <button
+                            class="px-6 py-2 bg-[#89e1be] text-white font-bold rounded hover:bg-[#78d0ad] transition-colors">
+                            Chọn file đính kèm
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex justify-between items-center pt-4">
+                    <button
+                        class="px-8 py-2.5 bg-[#8bc9ff] text-white font-bold rounded hover:bg-blue-400 transition-colors shadow-sm">Lưu
+                        lại</button>
+                    <button
+                        class="px-8 py-2.5 bg-[#6bdeb6] text-white font-bold rounded hover:bg-green-400 transition-colors shadow-sm">Gửi
+                        ý tưởng</button>
+                </div>
             </div>
         </div>
     </main>
 
 
-    <script src="/js/admin_idea.js"></script>
+    <script>
+        function addRow(btn) {
+            const tr = btn.closest('tr');
+            const tbody = tr.closest('tbody');
+            const newTr = tr.cloneNode(true);
+            const inputs = newTr.querySelectorAll('input');
+            inputs.forEach(input => input.value = '');
+            tbody.appendChild(newTr);
+            updateRowNumbers(tbody);
+        }
+
+        function deleteRow(btn) {
+            const tr = btn.closest('tr');
+            const tbody = tr.closest('tbody');
+            if (tbody.querySelectorAll('tr').length > 1) {
+                tr.remove();
+                updateRowNumbers(tbody);
+            } else {
+                alert('Không thể xoá hàng cuối cùng!');
+            }
+        }
+
+        function updateRowNumbers(tbody) {
+            const rows = tbody.querySelectorAll('tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td:first-child').innerText = index + 1;
+            });
+        }
+    </script>
+    <script src="/js/admin.js"></script>
 </body>
 
 </html>

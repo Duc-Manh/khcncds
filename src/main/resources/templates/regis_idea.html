@@ -4,296 +4,1317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Ký Sáng Kiến - EVNGENCO2</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin-Ban KHCNCDS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
                     colors: {
                         evnRed: '#DB0D0D',
                         evnBlue: '#29348f',
-                        evnLight: '#f0f4f8'
+                        primary: '#29348f',
+                        activeBg: '#eef2ff',
+                        activeText: '#29348f',
+                        bgMain: '#f8fafc',
+                        textDark: '#1e293b',
+                        textGray: '#64748b',
+                        textLight: '#94a3b8',
+                        borderGray: '#f1f5f9',
                     },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                    }
                 },
             },
         };
     </script>
-    <link rel="stylesheet" href="/css/regis_idea.css">
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
-<body class="text-gray-800 antialiased relative">
-    <!-- Navbar (Optional, to match existing design) -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-4">
-                    <img src="/img/genco2_logo.jpg" alt="EVNGENCO2 Logo" class="h-12 object-contain"
-                        onerror="this.src='https://via.placeholder.com/150x50?text=EVNGENCO2'" />
-                    <div class="hidden md:block border-l-2 border-gray-200 pl-4">
-                        <h1 class="text-xl font-bold text-evnBlue">Hệ Thống Quản Lý Khoa Học Công Nghệ</h1>
-                        <p class="text-sm text-gray-500">Đăng ký sáng kiến & Đề tài</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <span class="text-sm font-semibold text-gray-700">Xin chào, <span class="text-evnBlue font-bold"
-                            th:text="${session.APPRO_USER != null ? session.APPRO_USER : 'Người dùng'}"></span></span>
-                    <a href="/logout"
-                        class="px-4 py-2 text-sm font-semibold text-white bg-evnRed rounded-lg hover:bg-red-700 transition-colors shadow-sm">Đăng
-                        xuất</a>
-                </div>
+<body class="bg-bgMain text-textDark font-sans h-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="w-[260px] bg-white border-r border-borderGray flex flex-col h-full shrink-0 z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] transition-all duration-300">
+
+        <!-- Logo -->
+        <div id="logo-container" class="h-20 flex items-center px-6 justify-between transition-all duration-300">
+            <div class="flex items-center gap-2 sidebar-text transition-opacity duration-300">
+                <img src="/images/logo_evngenco2.png" alt="Logo" class="w-24 h-24 object-contain">
             </div>
-        </div>
-    </header>
-
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-3">Biểu Mẫu Đăng Ký Sáng Kiến</h2>
-            <p class="text-gray-500 mb-3">Vui lòng điền đầy đủ và chính xác thông tin để phục vụ công tác xét duyệt</p>
-            <p
-                class="text-sm text-evnBlue font-medium bg-blue-50 inline-block px-4 py-1.5 rounded-full border border-blue-100">
-                Tuân thủ Quyết định 722/QĐ-EVN và Nghị quyết 388/NQ-HĐQT của EVNGENCO2
-            </p>
+            <button id="menu-toggle" class="text-evnBlue hover:text-evnRed shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
         </div>
 
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <!-- Navigation Scrollable Area -->
+        <div class="flex-1 overflow-y-auto px-4 py-2 space-y-6 overflow-x-hidden">
 
-            <!-- 1. Thông tin chung -->
-            <div class="form-section">
-                <h3 class="section-title">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    I. Thông tin chung
-                </h3>
+            <!-- Top Menu -->
+            <ul class="space-y-1">
+                <li>
+                    <a href="/admin"
+                        class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnRed hover:bg-gray-50 hover:text-evnBlue transition-colors font-medium text-sm">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                            </path>
+                        </svg>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Đăng ký sáng
+                            kiến</span>
+                    </a>
+                </li>
 
-                <div class="space-y-5">
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 gap-5 bg-blue-50/50 p-5 rounded-xl border border-blue-100 mb-6">
-                        <div>
-                            <label class="input-label text-evnBlue">Mã số hồ sơ (Tự động cấp)</label>
-                            <input type="text"
-                                class="input-field bg-gray-200 text-gray-500 font-bold cursor-not-allowed border-transparent focus:border-transparent focus:shadow-none"
-                                value="SK26-[Chờ cấp]" readonly>
-                        </div>
-                        <div>
-                            <label class="input-label text-evnBlue">Đơn vị công tác <span
-                                    class="text-evnRed">*</span></label>
-                            <select name="department"
-                                class="input-field cursor-pointer border-evnBlue focus:ring-evnBlue" required>
-                                <option value="">-- Chọn đơn vị (Theo Điều 3) --</option>
-                                <option>Cơ quan Tổng Công ty Phát điện 2</option>
-                                <option>Công ty Nhiệt điện Cần Thơ</option>
-                                <option>Công ty Thủy điện An Khê - Ka Nak</option>
-                                <option>Công ty Thủy điện Quảng Trị</option>
-                                <option>Công ty Thủy điện Sông Bung</option>
-                                <option>Công ty Thủy điện Trung Sơn</option>
-                                <option>Công ty CP Thủy điện Thác Mơ</option>
-                                <option>Công ty CP Thủy điện A Vương</option>
-                                <option>Công ty CP Thủy điện Sông Ba Hạ</option>
-                                <option>Công ty CP Nhiệt điện Phả Lại</option>
-                                <option>Công ty CP Nhiệt điện Hải Phòng</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div>
-                        <label class="input-label">Tên sáng kiến/đề tài khoa học công nghệ <span
-                                class="text-evnRed">*</span></label>
-                        <input type="text" name="ideaName" class="input-field" placeholder="Nhập tên sáng kiến..."
-                            required>
-                    </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div>
-                            <label class="input-label">Lĩnh vực <span class="text-evnRed">*</span></label>
-                            <select name="category" class="input-field cursor-pointer" required>
-                                <option value="">-- Chọn lĩnh vực --</option>
-                                <option value="Vận hành">Vận hành</option>
-                                <option value="Kỹ thuật">Kỹ thuật</option>
-                                <option value="An toàn">An toàn</option>
-                                <option value="Chuyển đổi số">Chuyển đổi số</option>
-                                <option value="Khác">Khác</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="input-label">Căn cứ thực hiện <span class="text-evnRed">*</span></label>
-                            <input type="text" name="basis" class="input-field"
-                                placeholder="Ví dụ: Phù hợp với Quyết định quản lý hoạt động KHCN..." required>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 border-t border-gray-100 pt-5">
-                        <label class="input-label mb-3 text-evnBlue">Danh sách tác giả đồng hành</label>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="text-xs font-semibold text-gray-500 mb-1 block">Tác giả chủ trì <span
-                                        class="text-evnRed">*</span></label>
-                                <input type="text" name="primaryAuthor" class="input-field border-evnBlue"
-                                    placeholder="Họ tên, đơn vị công tác..." required>
-                            </div>
-                            <div>
-                                <label class="text-xs font-semibold text-gray-500 mb-1 block">Thành viên phối
-                                    hợp</label>
-                                <input type="text" name="coAuthors" class="input-field"
-                                    placeholder="Họ tên, đơn vị công tác (nếu có)...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. Nội dung chi tiết -->
-            <div class="form-section">
-                <h3 class="section-title">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                        </path>
-                    </svg>
-                    II. Nội dung chi tiết
-                </h3>
-
-                <div class="space-y-5">
-                    <div>
-                        <label class="input-label">1. Mô tả thực trạng trước khi áp dụng sáng kiến <span
-                                class="text-evnRed">*</span></label>
-                        <textarea name="currentState" rows="4" class="input-field resize-y"
-                            placeholder="Nêu rõ những khó khăn, vướng mắc của giải pháp cũ..." required></textarea>
-                    </div>
-                    <div>
-                        <label class="input-label">2. Nội dung cốt lõi của sáng kiến/giải pháp <span
-                                class="text-evnRed">*</span></label>
-                        <textarea name="coreSolution" rows="5" class="input-field resize-y"
-                            placeholder="Trình bày chi tiết tính mới so với các quy định cũ (như Quyết định số 93/QĐ-EVNGENCO2 đã bị thay thế)..."
-                            required></textarea>
-                    </div>
-                    <div>
-                        <label class="input-label">3. Tính mới và tính sáng tạo <span
-                                class="text-evnRed">*</span></label>
-                        <textarea name="novelty" rows="3" class="input-field resize-y"
-                            placeholder="Chỉ ra những điểm khác biệt, ưu việt so với giải pháp cũ hoặc các giải pháp đã có..."
-                            required></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Hiệu quả dự kiến -->
-            <div class="form-section">
-                <h3 class="section-title">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                    </svg>
-                    III. Hiệu quả dự kiến
-                </h3>
-
-                <div class="space-y-5">
-                    <div>
-                        <label class="input-label">Khả năng áp dụng <span class="text-evnRed">*</span></label>
-                        <div class="flex gap-4 mt-2">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="applicability" value="Tại đơn vị"
-                                    class="w-4 h-4 text-evnBlue focus:ring-evnBlue" required>
-                                <span class="text-sm font-medium text-gray-700">Tại đơn vị</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" name="applicability" value="Toàn Tổng công ty"
-                                    class="w-4 h-4 text-evnBlue focus:ring-evnBlue">
-                                <span class="text-sm font-medium text-gray-700">Toàn Tổng công ty</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="input-label">Hiệu quả kinh tế, kỹ thuật, an toàn, môi trường <span
-                                class="text-evnRed">*</span></label>
-                        <textarea name="expectedImpact" rows="4" class="input-field resize-y"
-                            placeholder="Tính toán số tiền làm lợi ước tính (nếu có), hoặc mô tả các lợi ích vô hình (tăng tuổi thọ thiết bị, cải thiện điều kiện làm việc...)"
-                            required></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Tệp đính kèm -->
-            <div class="form-section">
-                <h3 class="section-title">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
-                        </path>
-                    </svg>
-                    IV. Tệp đính kèm
-                </h3>
-
+                <!-- Others -->
                 <div>
-                    <label class="input-label">Bản thuyết minh chi tiết, bản vẽ, tài liệu minh chứng</label>
-                    <p class="text-xs text-evnBlue mb-2 font-medium">Lưu ý: Tải lên các tệp tin theo tiêu chuẩn chuyển
-                        đổi số của Ban Khoa học công nghệ và Chuyển đổi số.</p>
-                    <div
-                        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
-                        <div class="space-y-1 text-center">
-                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
-                                viewBox="0 0 48 48" aria-hidden="true">
-                                <path
-                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <div class="flex text-sm text-gray-600 justify-center">
-                                <label for="file-upload"
-                                    class="relative cursor-pointer bg-white rounded-md font-medium text-evnBlue hover:text-blue-800 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-evnBlue px-1">
-                                    <span>Tải tệp lên</span>
-                                    <input id="file-upload" name="attachments" type="file" class="sr-only" multiple
-                                        accept=".pdf,.doc,.docx,.xls,.xlsx,.zip,.cad,.dwg">
-                                </label>
-                                <p class="pl-1">hoặc kéo thả vào đây</p>
-                            </div>
-                            <p class="text-xs text-gray-500">Định dạng hỗ trợ: PDF, CAD (DWG), DOCX, XLSX, ZIP (Max
-                                50MB)</p>
+                    <h3
+                        class="px-3 text-xs font-bold text-textLight uppercase tracking-wider mb-2 mt-4 sidebar-text transition-opacity duration-300">
+                        Others</h3>
+                    <ul class="space-y-1">
+
+                        <li>
+                            <a href="#"
+                                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <span class="sidebar-text whitespace-nowrap transition-opacity duration-300">Mail</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-evnBlue hover:bg-gray-50 hover:text-evnRed transition-colors font-medium text-sm">
+                                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                                    </path>
+                                </svg>
+                                <span
+                                    class="sidebar-text whitespace-nowrap transition-opacity duration-300">Widgets</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-full relative overflow-y-auto">
+
+        <!-- Header -->
+        <header
+            class="h-[72px] shrink-0 sticky top-0 z-10 bg-bgMain/90 backdrop-blur-md px-8 flex items-center justify-between border-b border-borderGray">
+
+            <!-- Search -->
+            <div class="relative w-full max-w-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-evnRed" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <input type="text"
+                    class="block w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary shadow-sm bg-white"
+                    placeholder="Tìm kiếm">
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-5">
+
+                <!-- Theme Toggle Switch -->
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                    <div class="w-10 h-5 bg-gray-200 rounded-full relative cursor-pointer">
+                        <div class="w-4 h-4 bg-white rounded-full absolute top-0.5 left-0.5 shadow-sm"></div>
+                    </div>
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                        </path>
+                    </svg>
+                </div>
+
+                <!-- Icons -->
+                <button class="relative text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                        </path>
+                    </svg>
+                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                </button>
+                <button class="relative text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                </button>
+
+                <!-- Divider -->
+                <div class="h-6 w-px bg-gray-200 mx-2"></div>
+
+                <!-- Profile -->
+                <div class="flex items-center gap-3">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-bold text-textDark"
+                            th:text="${fullName != null ? fullName : 'Người dùng'}">Patricia Peters</p>
+                        <div class="flex items-center justify-end gap-1.5 mt-0.5" th:if="${fullName != null}">
+                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                            <p class="text-xs font-medium text-textGray">Online</p>
+                        </div>
+                        <div class="flex items-center justify-end gap-1.5 mt-0.5" th:unless="${fullName != null}">
+                            <div class="w-2 h-2 rounded-full bg-gray-400"></div>
+                            <p class="text-xs font-medium text-textGray">Offline</p>
                         </div>
                     </div>
+                    <a href="/logout"
+                        class="text-red-500 hover:text-red-700 ml-1 bg-red-50 hover:bg-red-100 p-1.5 rounded-full transition-colors"
+                        title="Đăng xuất">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="p-8 space-y-6">
+            <!-- Form content -->
+            <div class="p-4 sm:p-8 w-full flex justify-center overflow-x-auto bg-gray-50/50">
+                <div class="bg-white shadow-xl text-black shrink-0"
+                    style="width: 210mm; min-height: 297mm; padding: 10mm 20mm 10mm 30mm; font-family: 'Times New Roman', Times, serif; font-size: 13pt; line-height: 1.15; box-sizing: border-box;">
+
+                    <!-- Header -->
+                    <div class="text-center mb-6">
+                        <p class="font-bold uppercase" style="font-size: 13pt;">Cộng hoà xã hội chủ nghĩa Việt Nam</p>
+                        <p class="font-bold" style="font-size: 14pt;">Độc lập - Tự do - Hạnh phúc</p>
+                        <div class="mx-auto border-b-[1.5px] border-black mt-1 mb-8" style="width: 142px;"></div>
+                        <p class="font-bold uppercase" style="font-size: 13pt;">ĐƠN YÊU CẦU CÔNG NHẬN SÁNG KIẾN</p>
+                    </div>
+
+                    <!-- Kính gửi -->
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><span class="font-bold">Kính gửi:</span> Tổng công ty
+                        Phát điện 2 - Công ty cổ phần <i>(nếu đề nghị công nhận sáng kiến cấp EVNGENCO2)</i> hoặc Đơn vị
+                        <i>(đề nghị công nhận sáng kiến cấp cơ sở)</i>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">Căn cứ Quy định hoạt động KHCN
+                        trong Tổng công ty Phát điện 2 - CTCP ban hành kèm theo Quyết định số <input id="in1"
+                            type="text" maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            style="border: 1px solid #ff6600; background-color: #fff; width: 5ch; outline: none; text-align: center;">/QĐ-EVNGENCO2
+                        ngày <input id="in2" type="text" maxlength="2"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            style="border: 1px solid #ff6600; background-color: #fff; width: 3ch; outline: none; text-align: center;">
+                        tháng <input id="in3" type="text" maxlength="2"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            style="border: 1px solid #ff6600; background-color: #fff; width: 3ch; outline: none; text-align: center;">
+                        năm <input id="in4" type="text" maxlength="4"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            style="border: 1px solid #ff6600; background-color: #fff; width: 5ch; outline: none; text-align: center;">
+                        của Tổng giám đốc Tổng công ty Phát điện 2 - CTCP</p>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;">Tôi (chúng tôi) có tên dưới đây <i>(ghi tên tác giả/các
+                            đồng tác giả của giải pháp đề nghị công nhận sáng kiến)</i>:</p>
+
+                    <!-- Table 1 -->
+                    <div class="mb-4 mt-2">
+                        <table class="w-full border-collapse border border-black" style="font-size: 12pt;">
+                            <thead>
+                                <tr>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 5.96%;">TT</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 27.04%;">Họ và tên</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 13%;">Năm sinh</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 16.92%;">Chức danh, nơi công tác (hoặc nơi ở)</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 16%;">Trình độ chuyên môn</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 21.08%;">Tỷ lệ % đóng góp vào việc tạo ra giải pháp</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-black p-1 text-center align-top">1</td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="i5" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="i6" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="i7" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="i8" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top relative">
+                                        <textarea id="i9" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                        <div
+                                            class="absolute top-1/2 -translate-y-1/2 left-full pl-2 print:hidden whitespace-nowrap flex items-center gap-2 z-10">
+                                            <button type="button" title="Thêm hàng"
+                                                class="text-blue-600 hover:text-blue-800 font-bold text-2xl leading-none px-1 pb-1"
+                                                onclick="addRow(this)">+</button>
+                                            <button type="button" title="Xoá hàng"
+                                                class="text-red-600 hover:text-red-800 font-bold text-3xl leading-none px-1 pb-1"
+                                                onclick="deleteRow(this)">-</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;">Đề nghị xét công nhận giải pháp sau đây là sáng kiến
+                        <i>(tiêu đề giải pháp cần thể hiện bản chất của giải pháp)</i>:
+                    </p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;">
+                        <textarea id="in10" class="focus:outline-none bg-transparent resize-none overflow-hidden"
+                            rows="1" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">Chủ đầu tư tạo ra sáng kiến <i>(ghi
+                            tên tổ chức/cá nhân đã đầu tư kinh phí, phương tiện vật chất - kỹ thuật để tạo điều kiện
+                            triển khai giải pháp)</i></p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;">
+                        <textarea id="in11" class="focus:outline-none bg-transparent resize-none overflow-hidden"
+                            rows="1" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <div class="relative" style="margin: 6pt 0; padding-left: 1cm;">
+                        <span class="absolute whitespace-nowrap pointer-events-none"
+                            style="left: calc(1cm + 6px); top: 5px;">Lĩnh vực áp dụng:</span>
+                        <textarea id="in12"
+                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden block" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="border: 1px solid #ff6600; padding: 2px; line-height: 1.5; text-indent: 135px;"></textarea>
+                    </div>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><b>A. Mô tả giải pháp:</b></p>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">1. Tình trạng kỹ thuật hoặc tổ chức
+                        sản xuất hiện tại (có thể kèm theo tài liệu tham khảo bản vẽ, biên bản thí nghiệm, nghiệm
+                        thu,…), chỉ rõ ưu khuyết điểm của giải pháp kỹ thuật, giải pháp tổ chức sản xuất hiện đang được
+                        áp dụng tại EVNGENCO2/Đơn vị</p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in13"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">2. Nội dung giải pháp đề nghị công
+                        nhận là sáng kiến <i>(Mục đích của giải pháp và các điều kiện cần thiết để đạt mục đích, mô tả
+                            chi tiết bản chất của giải pháp mới kèm theo minh họa bằng các bản vẽ, thiết kế, sơ đồ, ảnh
+                            chụp mẫu sản phẩm... nếu cần thiết, các bước thực hiện giải pháp, những nội dung đã cải
+                            tiến, sáng tạo để khắc phục nhược điểm của tình trạng hiện tại và đáp ứng quy định về tính
+                            mới theo Khoản 1 Điều 4 Điều lệ Sáng kiến)</i>:</p>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;">2.1. Mục đích của giải pháp</p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in14"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;">2.2. Các điều kiện cần thiết để áp dụng giải pháp</p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in15"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">2.3. Bản chất chi tiết của giải
+                        pháp <i>(kèm theo minh họa bằng các bản vẽ, thiết kế, sơ đồ, ảnh chụp mẫu sản phẩm... nếu cần
+                            thiết)</i></p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in16"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;">2.4. Nội dung, các bước thực hiện giải pháp</p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in17"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;">2.5. Những nội dung đã cải tiến, sáng tạo khắc phục được
+                        nhược điểm</p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in18"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">3. Quá trình áp dụng giải pháp trên
+                        thực tiễn hoặc áp dụng thử <i>(nêu rõ thời điểm bắt đầu áp dụng giải pháp, tình hình áp dụng
+                            giải pháp trong ít nhất 03 tháng tại phòng/ban/bộ phận thuộc EVNGENCO2/Đơn vị</i>): </p>
+                    <div class="relative" style="margin: 6pt 0; padding-left: 1cm;">
+                        <div class="absolute flex items-center gap-1" style="left: calc(1cm + 6px); top: 3px;">
+                            <span class="pointer-events-none whitespace-nowrap">- Thời điểm bắt đầu áp dụng: Ngày</span>
+                            <input id="in19" type="text"
+                                style="border: 1px solid #ff6600; background-color: transparent; width: 10ch; outline: none; text-align: center; pointer-events: auto;">
+                            <span class="pointer-events-none whitespace-nowrap">(theo tài liệu số</span>
+                        </div>
+                        <textarea id="in20"
+                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden block" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="border: 1px solid #ff6600;  line-height: 1.5; text-indent: 455px;"></textarea>
+                    </div>
+                    <div class="flex items-center gap-2" style="margin: 6pt 0; padding-left: 1cm;">
+                        <span class="whitespace-nowrap">- Đơn vị áp dụng: Áp dụng tại</span>
+                        <input id="in21" type="text" class="flex-1 focus:outline-none bg-transparent"
+                            style="border: 1px solid #ff6600; padding: 2px 4px;">
+                    </div>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">4. Hiệu quả thực tế thu được khi áp
+                        dụng giải pháp <i>(So sánh lợi ích kinh tế, xã hội thu được khi áp dụng giải pháp trong đơn so
+                            với trường hợp không áp dụng giải pháp đó, hoặc so với những giải pháp tương tự đã biết ở cơ
+                            sở, cần nêu rõ giải pháp đem lại hiệu quả kinh tế, lợi ích xã hội cao hơn như thế nào hoặc
+                            khắc phục được đến mức độ nào những nhược điểm của giải pháp đã biết trước đó - nếu là giải
+                            pháp cải tiến giải pháp đã biết trước đó)</i>: </p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in22"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;"><b>B. Số tiền làm lợi trong năm đầu
+                            tiên áp dụng giải pháp</b><i> (nêu cách tính cụ thể nếu có thể tính được hoặc ghi rõ Không
+                            tính được)</i></p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in23"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><b>C. Khả năng áp dụng tại Đơn vị khác (</b><i>nếu
+                            có</i><b>)</b></p>
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><textarea id="in24"
+                            class="focus:outline-none bg-transparent resize-none overflow-hidden" rows="1"
+                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"
+                            style="width: 95%; border: 1px solid #ff6600; padding: 4px; line-height: 1.5;"></textarea>
+                    </p>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><b>D. Danh mục tài liệu nộp kèm Đơn yêu cầu công nhận
+                            sáng kiến:</b></p>
+                    <div id="document-list">
+                        <div class="flex items-center gap-2 document-item" style="margin: 6pt 0; padding-left: 1cm;">
+                            <span class="whitespace-nowrap doc-index">[1]-</span>
+                            <input id="in25" type="text" class="flex-1 focus:outline-none bg-transparent"
+                                style="border: 1px solid #ff6600; padding: 2px 4px;">
+                            <div class="print:hidden flex items-center gap-1 ml-2">
+                                <button type="button" title="Thêm tài liệu"
+                                    class="text-blue-600 hover:bg-blue-50 font-bold text-2xl px-1 leading-none rounded pb-1"
+                                    onclick="addDocumentRow(this)">+</button>
+                                <button type="button" title="Xoá tài liệu"
+                                    class="text-red-600 hover:bg-red-50 font-bold text-3xl px-1 leading-none rounded pb-1"
+                                    onclick="deleteDocumentRow(this)">-</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;"><b>E. Danh sách Những người tham gia tổ chức áp dụng
+                            sáng kiến lần đầu (nếu có)</b></p>
+
+                    <!-- Table 2 -->
+                    <div class="mb-4 mt-2">
+                        <table class="w-full border-collapse border border-black" style="font-size: 12pt;">
+                            <thead>
+                                <tr>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 6.42%;">TT</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 27.04%;">Họ và tên</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 12.52%;">Năm sinh</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 18.76%;">Nơi công tác (hoặc nơi ở)</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 16.96%;">Trình độ chuyên môn</th>
+                                    <th class="border border-black p-1 font-bold text-center align-middle"
+                                        style="width: 18.68%;">Nội dung tham gia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-black p-1 text-center align-top">1</td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="in26" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="in27" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="in28" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top"><textarea id="in29" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </td>
+                                    <td class="border border-orange-600 p-1 align-top relative">
+                                        <textarea id="in30" rows="1"
+                                            class="w-full focus:outline-none bg-transparent resize-none overflow-hidden"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                        <div
+                                            class="absolute top-1/2 -translate-y-1/2 left-full pl-2 print:hidden whitespace-nowrap flex items-center gap-2 z-10">
+                                            <button type="button" title="Thêm hàng"
+                                                class="text-blue-600 hover:text-blue-800 font-bold text-2xl leading-none px-1 pb-1"
+                                                onclick="addRow(this)">+</button>
+                                            <button type="button" title="Xoá hàng"
+                                                class="text-red-600 hover:text-red-800 font-bold text-3xl leading-none px-1 pb-1"
+                                                onclick="deleteRow(this)">-</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin: 6pt 0; text-indent: 1cm;">Tôi (chúng tôi) cam đoan những điều khai trong đơn là
+                        đúng sự thật.</p>
+
+                    <table class="w-full mt-6" style="border: none;">
+                        <tr>
+                            <td class="w-1/2 align-top"></td>
+                            <td class="w-1/2 align-top text-center">
+                                <div class="flex items-center justify-center whitespace-nowrap italic mb-1">
+                                    <input id="in31" type="text"
+                                        style="border: 1px solid #ff6600; outline: none; background-color: transparent; width: 15ch; text-align: right; padding-right: 4px;">,
+                                    &nbsp;ngày <input id="in32" type="text"
+                                        style="border: 1px solid #ff6600; background-color: transparent; width: 3ch; outline: none; text-align: center; margin: 0 2px;">
+                                    tháng <input id="in33" type="text"
+                                        style="border: 1px solid #ff6600; background-color: transparent; width: 3ch; outline: none; text-align: center; margin: 0 2px;">
+                                    năm <input id="in34" type="text"
+                                        style="border: 1px solid #ff6600; background-color: transparent; width: 5ch; outline: none; text-align: center; margin-left: 2px;">
+                                </div>
+                                <p class="font-bold mt-1">Người/Những người nộp đơn</p>
+                                <p><i>(Họ tên và chữ ký từng đồng tác giả)</i></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="pt-6">
+                                <div class="grid grid-cols-3 gap-8 px-8" id="signature-container" dir="rtl">
+                                    <div class="signature-box flex flex-col items-center relative" dir="ltr">
+                                        <div
+                                            class="aspect-square w-full border-2 border-[#ff6600] flex flex-col items-center justify-center rounded-lg transition-colors relative bg-white">
+                                            <button type="button" onclick="this.nextElementSibling.click()"
+                                                class="text-[#ff6600] font-semibold px-4 py-2 border border-[#ff6600] rounded bg-white hover:bg-[#ff6600] hover:text-white transition-colors print:hidden shadow-sm z-10 relative">
+                                                Tải chữ ký
+                                            </button>
+                                            <input type="file" accept="image/*" class="hidden"
+                                                onchange="handleSignatureUpload(event, this)">
+                                            <img src="" class="absolute inset-0 w-full h-full object-contain hidden"
+                                                style="pointer-events: none;">
+                                            <input type="hidden" id="in35" value="">
+
+                                            <!-- Buttons -->
+                                            <div
+                                                class="absolute top-2 right-0 translate-x-full print:hidden flex flex-col z-10 border-2 border-l-0 border-[#ff6600] rounded-r-md bg-white overflow-hidden shadow-sm">
+                                                <button type="button" title="Thêm chữ ký"
+                                                    class="text-blue-600 hover:bg-blue-50 font-bold text-2xl px-2 pb-1 leading-none"
+                                                    onclick="addSignature(this)">+</button>
+                                                <button type="button" title="Xoá chữ ký"
+                                                    class="text-red-600 hover:bg-red-50 font-bold text-3xl px-2 pb-1 leading-none border-t-2 border-[#ff6600]"
+                                                    onclick="deleteSignature(this)">-</button>
+                                            </div>
+                                        </div>
+                                        <input id="in36" type="text" placeholder="Nhập họ tên"
+                                            class="mt-3 w-full text-center border border-[#ff6600] px-2 py-1 focus:outline-none bg-transparent print:border-none print:placeholder-transparent relative z-10 font-bold">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <script>
+                        function addSignature(btn) {
+                            const box = btn.closest('.signature-box');
+                            const container = document.getElementById('signature-container');
+                            const newBox = box.cloneNode(true);
+                            // Xóa giá trị input cũ khi nhân bản
+                            const txtInput = newBox.querySelector('input[type="text"]');
+                            const img = newBox.querySelector('img');
+                            const hidden = newBox.querySelector('input[type="hidden"]');
+                            if (txtInput) txtInput.value = '';
+                            if (img) img.classList.add('hidden');
+                            if (img) img.src = '';
+                            if (hidden) hidden.value = '';
+                            container.appendChild(newBox);
+                        }
+
+                        function deleteSignature(btn) {
+                            const container = document.getElementById('signature-container');
+                            if (container.querySelectorAll('.signature-box').length > 1) {
+                                btn.closest('.signature-box').remove();
+                            } else {
+                                alert('Không thể xoá ô chữ ký cuối cùng!');
+                            }
+                        }
+
+                        function handleSignatureUpload(event, inputElem) {
+                            const file = event.target.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = function (e) {
+                                    const box = inputElem.closest('.signature-box');
+                                    const img = box.querySelector('img');
+                                    const hiddenIn35 = box.querySelector('#in35');
+                                    img.src = e.target.result;
+                                    img.classList.remove('hidden');
+                                    hiddenIn35.value = e.target.result;
+                                }
+                                reader.readAsDataURL(file);
+                            }
+                        }
+
+                        async function submitForm() {
+                            const formPayload = {};
+
+                            const getValues = (selector) => {
+                                const nodes = document.querySelectorAll(selector);
+                                const vals = Array.from(nodes).map(el => el.value || '');
+                                return vals.join('||');
+                            };
+
+                            for (let i = 1; i <= 4; i++) {
+                                formPayload['in' + i] = getValues('#in' + i);
+                            }
+                            formPayload['in5'] = getValues('#i5');
+                            formPayload['in6'] = getValues('#i6');
+                            formPayload['in7'] = getValues('#i7');
+                            formPayload['in8'] = getValues('#i8');
+                            formPayload['in9'] = getValues('#i9');
+                            for (let i = 10; i <= 25; i++) {
+                                formPayload['in' + i] = getValues('#in' + i);
+                            }
+                            for (let i = 26; i <= 30; i++) {
+                                formPayload['in' + i] = getValues('#in' + i);
+                            }
+                            for (let i = 31; i <= 34; i++) {
+                                formPayload['in' + i] = getValues('#in' + i);
+                            }
+                            formPayload['in35'] = getValues('#in35');
+                            formPayload['in36'] = getValues('#in36');
+
+                            try {
+                                const response = await fetch('/api/forms/submit', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(formPayload)
+                                });
+
+                                if (response.ok) {
+                                    alert('Bạn đã gửi thành công');
+                                } else {
+                                    const data = await response.json();
+                                    alert(data.message || 'Có lỗi xảy ra khi lưu form.');
+                                }
+                            } catch (e) {
+                                console.error(e);
+                                alert('Có lỗi mạng khi lưu form.');
+                            }
+                        }
+
+                        function addDocumentRow(btn) {
+                            const item = btn.closest('.document-item');
+                            const list = document.getElementById('document-list');
+                            const newItem = item.cloneNode(true);
+                            const input = newItem.querySelector('input');
+                            if (input) input.value = '';
+                            list.appendChild(newItem);
+                            updateDocumentNumbers(list);
+                        }
+
+                        function deleteDocumentRow(btn) {
+                            const item = btn.closest('.document-item');
+                            const list = document.getElementById('document-list');
+                            if (list.querySelectorAll('.document-item').length > 1) {
+                                item.remove();
+                                updateDocumentNumbers(list);
+                            } else {
+                                alert('Phải có ít nhất 1 tài liệu!');
+                            }
+                        }
+
+                        function updateDocumentNumbers(list) {
+                            const items = list.querySelectorAll('.document-item');
+                            items.forEach((item, index) => {
+                                item.querySelector('.doc-index').innerText = `[${index + 1}]-`;
+                            });
+                        }
+                    </script>
+
+                    <p style="text-align: justify; text-indent: 1cm; margin-top: 1rem;">Xác nhận của phòng/ban/bộ phận
+                        thuộc EVNGENCO2/Đơn vị nơi đã áp dụng giải pháp được yêu cầu công nhận sáng kiến</p>
+                    <p style="text-indent: 1cm;">………………………………………………………………………………</p>
+                    <p style="text-indent: 1cm;">………………………………………………………………………………</p>
+
+                    <p style="text-align: justify; text-indent: 1cm;">Ghi chú: người nộp đơn cần gửi kèm bản sao điện tử
+                        của đơn và của các tài liệu liên quan.</p>
+
                 </div>
             </div>
 
-            <!-- 5. Cam kết & Nút Submit -->
-            <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 mb-8 shadow-sm">
-                <label class="flex items-start gap-3 cursor-pointer">
-                    <div class="flex items-center h-5 mt-0.5">
-                        <input type="checkbox" name="commitment"
-                            class="w-5 h-5 text-evnBlue border-gray-300 rounded focus:ring-evnBlue" required>
-                    </div>
-                    <div class="text-sm font-medium text-evnBlue leading-relaxed">
-                        Tôi cam kết những nội dung đăng ký trên là đúng sự thật, không sao chép và không vi phạm bản
-                        quyền sở hữu trí tuệ của bất kỳ tổ chức, cá nhân nào. Nếu sai phạm, tôi xin chịu hoàn toàn trách
-                        nhiệm.
-                    </div>
-                </label>
-            </div>
-
-            <div class="flex justify-end gap-4">
-                <button type="button"
-                    class="px-6 py-3 bg-white border-2 border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
-                    LƯU NHÁP
-                </button>
-                <button type="submit"
-                    class="px-8 py-3 bg-evnBlue text-white font-bold rounded-xl shadow-lg shadow-blue-900/20 hover:bg-blue-800 transform hover:-translate-y-0.5 transition-all flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            <!-- Floating Action Buttons -->
+            <div class="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
+                <button title="Xem" onclick="openPreview()"
+                    class="w-12 h-12 flex items-center justify-center bg-white text-orange-500 border border-orange-500 rounded-full shadow-lg hover:bg-orange-500 hover:text-white transition-colors group relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
-                    GỬI ĐĂNG KÝ
+                    <span
+                        class="absolute right-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Xem</span>
+                </button>
+                <div class="relative flex items-center">
+                    <!-- Download Menu (Hidden by default) -->
+                    <div id="downloadMenu"
+                        class="absolute right-16 bg-white rounded-lg shadow-xl border border-gray-200 py-1 w-24 hidden flex-col z-50 transition-all">
+                        <button type="button" onclick="downloadPDF()"
+                            class="px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold text-left w-full transition-colors flex items-center gap-2">
+                            PDF
+                        </button>
+                        <hr class="border-gray-100">
+                        <button type="button" onclick="downloadWord()"
+                            class="px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-bold text-left w-full transition-colors flex items-center gap-2">
+                            WORD
+                        </button>
+                    </div>
+
+                    <button title="Tải phiếu" type="button" onclick="toggleDownloadMenu(event)"
+                        class="w-12 h-12 flex items-center justify-center bg-white text-evnBlue border border-evnBlue rounded-full shadow-lg hover:bg-evnBlue hover:text-white transition-colors group relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <span id="tooltip-download"
+                            class="absolute right-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Tải
+                            phiếu</span>
+                    </button>
+                </div>
+                <button title="Nộp phiếu" type="button" onclick="submitForm()"
+                    class="w-12 h-12 flex items-center justify-center bg-evnBlue text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors group relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 pr-0.5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6 12L3.269 3.125A59.769 59.769 0 0121.485 12 59.768 59.768 0 013.27 20.875L5.999 12Zm0 0h7.5" />
+                    </svg>
+                    <span
+                        class="absolute right-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Nộp
+                        phiếu</span>
+                </button>
+                <button title="Hướng dẫn"
+                    class="w-12 h-12 flex items-center justify-center bg-evnRed text-white rounded-full shadow-lg hover:bg-red-700 transition-colors group relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span
+                        class="absolute right-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Hướng
+                        dẫn</span>
                 </button>
             </div>
+        </div>
 
-        </form>
     </main>
+    <script>
+        function addRow(btn) {
+            const tr = btn.closest('tr');
+            const tbody = tr.closest('tbody');
+            const newTr = tr.cloneNode(true);
+            const inputs = newTr.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.value = '';
+                if (input.tagName === 'TEXTAREA') {
+                    input.style.height = '';
+                }
+            });
+            tbody.appendChild(newTr);
+            updateRowNumbers(tbody);
+        }
 
+        function deleteRow(btn) {
+            const tr = btn.closest('tr');
+            const tbody = tr.closest('tbody');
+            if (tbody.querySelectorAll('tr').length > 1) {
+                tr.remove();
+                updateRowNumbers(tbody);
+            } else {
+                alert('Không thể xoá hàng cuối cùng!');
+            }
+        }
+
+        function updateRowNumbers(tbody) {
+            const rows = tbody.querySelectorAll('tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td:first-child').innerText = index + 1;
+            });
+        }
+    </script>
+    <script src="/js/admin.js"></script>
+
+    <!-- Preview Modal -->
+    <div id="previewModal"
+        class="fixed inset-0 z-[100] bg-black/60 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="relative max-h-full overflow-y-auto rounded-xl flex justify-center w-full">
+            <button onclick="closePreview()"
+                class="fixed top-6 right-10 z-50 text-white bg-red-600 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl shadow-lg hover:bg-red-700 transition-colors">X</button>
+            <div id="previewModalContent" class="flex justify-center w-full"></div>
+        </div>
+    </div>
+
+    <script>
+        async function buildPreviewWrapper() {
+            try {
+                const response = await fetch('/api/forms/latest');
+                if (!response.ok) {
+                    alert('Chưa có dữ liệu trong Database!');
+                    return null;
+                }
+                const formData = await response.json();
+
+                const mainForm = document.querySelector('.bg-white.shadow-xl.text-black.shrink-0');
+
+                // Clone the form directly to preserve DOM exactly without string parsing
+                const divWrapper = mainForm.cloneNode(true);
+
+                // Create outer wrapper exactly as requested
+                const outerWrapper = document.createElement('div');
+                outerWrapper.className = 'p-4 sm:p-8 w-full flex justify-center overflow-x-auto bg-gray-50/50';
+
+                // Set inner wrapper classes exactly as requested
+                divWrapper.className = 'bg-white shadow-xl text-black shrink-0';
+                divWrapper.style.width = '210mm';
+                divWrapper.style.minHeight = '297mm';
+                divWrapper.style.height = 'max-content';
+                divWrapper.style.padding = '10mm 20mm 10mm 30mm';
+                divWrapper.style.fontFamily = "'Times New Roman', Times, serif";
+                divWrapper.style.fontSize = '13pt';
+                divWrapper.style.lineHeight = '1.15';
+                divWrapper.style.boxSizing = 'border-box';
+                divWrapper.style.backgroundColor = 'white'; // Enforce white background
+
+                outerWrapper.appendChild(divWrapper);
+
+                // Helper to set simple value
+                const setVal = (id, val) => {
+                    const el = divWrapper.querySelector('#' + id);
+                    if (el) {
+                        el.value = val || '';
+                        el.textContent = val || '';
+                    }
+                };
+
+                // 1. Populate simple fields
+                for (let i = 1; i <= 34; i++) {
+                    if (i >= 5 && i <= 9) continue;
+                    if (i >= 26 && i <= 30) continue;
+                    if (i === 25) continue;
+                    setVal('in' + i, formData['in' + i]);
+                }
+
+                // 2. Populate Table 1 (in5 -> in9)
+                const table1Body = divWrapper.querySelector('#i5') ? divWrapper.querySelector('#i5').closest('tbody') : null;
+                if (table1Body) {
+                    const firstColData = (formData['in5'] || '').split('||');
+                    const templateRow = table1Body.querySelector('tr').cloneNode(true);
+                    table1Body.innerHTML = '';
+                    for (let r = 0; r < firstColData.length; r++) {
+                        if (!firstColData[r] && r > 0) continue;
+                        const tr = templateRow.cloneNode(true);
+                        tr.querySelector('td:first-child').innerText = r + 1;
+                        [5, 6, 7, 8, 9].forEach(col => {
+                            const valArray = (formData['in' + col] || '').split('||');
+                            const input = tr.querySelector('#i' + col);
+                            if (input) {
+                                input.value = valArray[r] || '';
+                                input.textContent = valArray[r] || '';
+                            }
+                        });
+                        table1Body.appendChild(tr);
+                    }
+                }
+
+                // 3. Populate Table 2 (in26 -> in30)
+                const table2Body = divWrapper.querySelector('#in26') ? divWrapper.querySelector('#in26').closest('tbody') : null;
+                if (table2Body) {
+                    const firstColData = (formData['in26'] || '').split('||');
+                    const templateRow = table2Body.querySelector('tr').cloneNode(true);
+                    table2Body.innerHTML = '';
+                    for (let r = 0; r < firstColData.length; r++) {
+                        if (!firstColData[r] && r > 0) continue;
+                        const tr = templateRow.cloneNode(true);
+                        tr.querySelector('td:first-child').innerText = r + 1;
+                        [26, 27, 28, 29, 30].forEach(col => {
+                            const valArray = (formData['in' + col] || '').split('||');
+                            const input = tr.querySelector('#in' + col);
+                            if (input) {
+                                input.value = valArray[r] || '';
+                                input.textContent = valArray[r] || '';
+                            }
+                        });
+                        table2Body.appendChild(tr);
+                    }
+                }
+
+                // 4. Populate Document List (in25)
+                const docList = divWrapper.querySelector('#document-list');
+                if (docList) {
+                    const docData = (formData['in25'] || '').split('||');
+                    const templateItem = docList.querySelector('.document-item').cloneNode(true);
+                    docList.innerHTML = '';
+                    for (let r = 0; r < docData.length; r++) {
+                        if (!docData[r] && r > 0) continue;
+                        const item = templateItem.cloneNode(true);
+                        item.querySelector('.doc-index').innerText = `[${r + 1}]-`;
+                        const input = item.querySelector('#in25');
+                        if (input) {
+                            input.value = docData[r] || '';
+                            input.textContent = docData[r] || '';
+                        }
+                        docList.appendChild(item);
+                    }
+                }
+
+                // 5. Populate Signatures (in35, in36)
+                const sigContainer = divWrapper.querySelector('#signature-container');
+                if (sigContainer) {
+                    const sigNames = (formData['in36'] || '').split('||');
+                    const sigImages = (formData['in35'] || '').split('||');
+                    const count = Math.max(sigNames.length, sigImages.length, 1);
+                    const templateBox = sigContainer.querySelector('.signature-box').cloneNode(true);
+                    sigContainer.innerHTML = '';
+                    for (let r = 0; r < count; r++) {
+                        if (!sigNames[r] && !sigImages[r] && r > 0) continue;
+                        const box = templateBox.cloneNode(true);
+                        const img = box.querySelector('img');
+                        if (img && sigImages[r]) {
+                            img.src = sigImages[r];
+                            img.classList.remove('hidden');
+                        }
+                        const nameInput = box.querySelector('#in36');
+                        if (nameInput) {
+                            nameInput.value = sigNames[r] || '';
+                            nameInput.textContent = sigNames[r] || '';
+                        }
+                        sigContainer.appendChild(box);
+                    }
+                }
+
+                // Replace inputs and textareas with span to prevent scrolling/height issues and force word wrapping
+                // Using span instead of div ensures we don't break <p> tag nesting rules in HTML5
+                const clonedInputs = divWrapper.querySelectorAll('input, textarea');
+                clonedInputs.forEach((el) => {
+                    const text = el.value || el.textContent || '';
+                    const span = document.createElement('span');
+                    span.textContent = text;
+                    span.style.cssText = el.style.cssText;
+                    span.className = el.className;
+
+                    // Force text to wrap and break so it doesn't overflow container
+                    span.style.wordBreak = 'break-word';
+                    span.style.whiteSpace = 'pre-wrap';
+                    span.style.height = 'max-content'; // allow natural expansion
+
+                    // Remove input-specific properties to look like normal text
+                    span.style.border = 'none';
+                    span.style.background = 'transparent';
+                    span.style.outline = 'none';
+                    span.style.resize = 'none';
+                    span.style.minHeight = 'auto'; // Remove minHeight to avoid artificial spacing
+                    span.classList.remove('border', 'border-orange-600', 'border-[#ff6600]', 'bg-transparent', 'focus:outline-none', 'shadow-sm', 'w-full');
+
+                    if (el.tagName === 'TEXTAREA') {
+                        span.style.display = 'block';
+                        span.style.padding = '0';
+                        span.style.marginTop = '4px';
+                    } else {
+                        // For INPUT elements, use inline so they flow perfectly with the surrounding text without breaking lines
+                        span.style.display = 'inline';
+                        span.style.width = 'auto';
+                        // Add a tiny margin to separate from adjacent text if it was tightly packed
+                        span.style.margin = '0 2px';
+                    }
+                    el.parentNode.replaceChild(span, el);
+                });
+
+                // Cleanup orange borders across the whole document to make it look like printed paper
+                const allElementsInWrapper = divWrapper.querySelectorAll('*');
+                allElementsInWrapper.forEach(el => {
+                    // 1. Table cells: change orange border to black border
+                    if (el.tagName === 'TD' && el.classList.contains('border-orange-600')) {
+                        el.classList.remove('border-orange-600');
+                        el.classList.add('border-black');
+                    }
+                    // 2. Signature boxes: remove orange border entirely
+                    if (el.classList.contains('border-[#ff6600]')) {
+                        el.classList.remove('border-[#ff6600]', 'border-2', 'border');
+                    }
+                    // 3. Any leftover inline orange borders
+                    if (el.style.borderColor === '#ff6600' || el.style.borderColor === 'rgb(255, 102, 0)') {
+                        el.style.border = 'none';
+                    }
+                });
+
+                // Hide action buttons (+, -, etc)
+                const buttons = divWrapper.querySelectorAll('button');
+                buttons.forEach(btn => btn.style.display = 'none');
+
+                // Avoid ID conflicts
+                const allElements = divWrapper.querySelectorAll('[id]');
+                allElements.forEach(el => el.removeAttribute('id'));
+
+                return { outerWrapper, divWrapper };
+
+            } catch (e) {
+                console.error(e);
+                alert('Lỗi khi tải dữ liệu!');
+                return null;
+            }
+        }
+
+        async function openPreview() {
+            const wrappers = await buildPreviewWrapper();
+            if (!wrappers) return;
+            
+            const modalContent = document.getElementById('previewModalContent');
+            modalContent.innerHTML = '';
+            modalContent.appendChild(wrappers.outerWrapper);
+            document.getElementById('previewModal').classList.remove('hidden');
+        }
+
+        function toggleDownloadMenu(e) {
+            e.stopPropagation();
+            const menu = document.getElementById('downloadMenu');
+            const tooltip = document.getElementById('tooltip-download');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                tooltip.style.display = 'none';
+                setTimeout(() => {
+                    menu.classList.remove('opacity-0', 'translate-x-2');
+                }, 10);
+            } else {
+                menu.classList.add('opacity-0', 'translate-x-2');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                    tooltip.style.display = '';
+                }, 200);
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('downloadMenu');
+            if (menu && !menu.classList.contains('hidden')) {
+                const isClickInside = e.target.closest('.relative.flex.items-center');
+                if (!isClickInside) {
+                    menu.classList.add('opacity-0', 'translate-x-2');
+                    setTimeout(() => {
+                        menu.classList.add('hidden');
+                        document.getElementById('tooltip-download').style.display = '';
+                    }, 200);
+                }
+            }
+        });
+
+        async function downloadPDF() {
+            document.getElementById('downloadMenu').classList.add('hidden');
+            const wrappers = await buildPreviewWrapper();
+            if (!wrappers) return;
+            
+            const opt = {
+                margin:       0,
+                filename:     'Don_yeu_cau_cong_nhan_sang_kien.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Tạm thời gắn vào DOM để render chính xác
+            const tempContainer = document.createElement('div');
+            tempContainer.style.position = 'absolute';
+            tempContainer.style.left = '-9999px';
+            tempContainer.style.top = '-9999px';
+            tempContainer.appendChild(wrappers.divWrapper);
+            document.body.appendChild(tempContainer);
+            
+            html2pdf().set(opt).from(wrappers.divWrapper).save().then(() => {
+                document.body.removeChild(tempContainer);
+            });
+        }
+
+        async function downloadWord() {
+            document.getElementById('downloadMenu').classList.add('hidden');
+            
+            try {
+                // 1. Lấy dữ liệu form
+                const responseData = await fetch('/api/forms/latest');
+                if (!responseData.ok) {
+                    alert('Chưa có dữ liệu trong Database!');
+                    return;
+                }
+                const formData = await responseData.json();
+
+                // 2. Lấy file mẫu Word HTML
+                const responseSample = await fetch('/sample/regis.html');
+                if (!responseSample.ok) {
+                    alert('Không tìm thấy file mẫu regis.html trong thư mục sample!');
+                    return;
+                }
+                let rawHtml = await responseSample.text();
+
+                // 3. Thay thế các biến chuỗi tĩnh bằng Regex
+                rawHtml = rawHtml.replace(/Quyết định số.*?\/QĐ-EVNGENCO2/g, `Quyết định số ${formData.in1 || '.....'}/QĐ-EVNGENCO2`);
+                rawHtml = rawHtml.replace(/ngày\s*…+\s*tháng\s*…+\s*năm\s*…+\s*của/g, `ngày ${formData.in2 || '...'} tháng ${formData.in3 || '...'} năm ${formData.in4 || '...'} của`);
+
+                // 4. Phân tích HTML thành DOM để xử lý cấu trúc phức tạp
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(rawHtml, 'text/html');
+
+                // Thêm thuộc tính xmlns để MS Word nhận diện
+                doc.documentElement.setAttribute('xmlns:o', 'urn:schemas-microsoft-com:office:office');
+                doc.documentElement.setAttribute('xmlns:w', 'urn:schemas-microsoft-com:office:word');
+
+                // Khắc phục lỗi hiển thị ảnh gạch dưới tiêu đề trong Word
+                const imgs = doc.querySelectorAll('img');
+                imgs.forEach(img => {
+                    if (img.getAttribute('src') && img.getAttribute('src').includes('image001.png')) {
+                        img.outerHTML = `<div style="border-bottom: 1.5pt solid black; width: 142px; height: 1px;"></div>`;
+                    }
+                });
+
+                // 5. Thay thế dữ liệu các đoạn văn bản chính (Textareas)
+                const paragraphs = doc.querySelectorAll('p.MsoNormal');
+                for (let i = 0; i < paragraphs.length; i++) {
+                    const text = paragraphs[i].textContent;
+                    if (text.includes('Đề nghị xét công nhận giải pháp sau đây là sáng kiến')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in10 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('Chủ đầu tư tạo ra sáng kiến')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in11 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('Lĩnh vực áp dụng:')) {
+                        paragraphs[i].innerHTML = `<span lang=VI>Lĩnh vực áp dụng: ${formData.in12 || ''}</span>`;
+                    }
+                    if (text.includes('1. Tình trạng kỹ thuật hoặc tổ chức sản xuất')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in13 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('2.1. Mục đích của giải pháp')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in14 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('2.2. Các điều kiện cần thiết')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in15 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('2.3. Bản chất chi tiết')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in16 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('2.4. Nội dung, các bước thực hiện')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in17 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('2.5. Những nội dung đã cải tiến')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in18 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('Thời điểm bắt đầu áp dụng: Ngày')) {
+                        paragraphs[i].innerHTML = `<span lang=VI>- Thời điểm bắt đầu áp dụng: Ngày ${formData.in19 || '...'} (theo tài liệu số ${formData.in20 || '...'} (nếu có)).</span>`;
+                    }
+                    if (text.includes('Đơn vị áp dụng: Áp dụng tại')) {
+                        paragraphs[i].innerHTML = `<span lang=VI>- Đơn vị áp dụng: Áp dụng tại ${formData.in21 || '...'}</span>`;
+                    }
+                    if (text.includes('Hiệu quả thực tế thu được khi áp dụng giải pháp')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in22 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('B. Số tiền làm lợi trong năm đầu tiên')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in23 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('C. Khả năng áp dụng tại Đơn vị khác')) {
+                        paragraphs[i+1].innerHTML = `<span lang=VI>${(formData.in24 || '').replace(/\n/g, '<br>')}</span>`;
+                    }
+                    if (text.includes('[1]-')) {
+                        const docs = (formData.in25 || '').split('||');
+                        let html = '';
+                        docs.forEach((docName, idx) => {
+                            if(docName) html += `[${idx+1}]- ${docName}<br>`;
+                        });
+                        paragraphs[i].innerHTML = `<span lang=VI>${html}</span>`;
+                        if (paragraphs[i+1] && paragraphs[i+1].textContent.includes('[2]-')) {
+                            paragraphs[i+1].style.display = 'none';
+                        }
+                    }
+                    if (text.includes('(Địa danh), ngày')) {
+                        paragraphs[i].innerHTML = `<i><span lang=VI>${formData.in31 || '.....'}, ngày ${formData.in32 || '...'} tháng ${formData.in33 || '...'} năm ${formData.in34 || '...'}</span></i>`;
+                    }
+                }
+
+                // 6. Xử lý các Bảng (Tables)
+                const tables = doc.querySelectorAll('table.MsoNormalTable');
+                if (tables.length >= 3) {
+                    // Bảng 1: Tác giả
+                    const table1 = tables[0];
+                    const t1Rows = table1.querySelectorAll('tr');
+                    const t1Template = t1Rows[1].cloneNode(true);
+                    while (table1.rows.length > 1) table1.deleteRow(1);
+                    
+                    const names1 = (formData.in5 || '').split('||');
+                    const years1 = (formData.in6 || '').split('||');
+                    const works1 = (formData.in7 || '').split('||');
+                    const degrees1 = (formData.in8 || '').split('||');
+                    const percents1 = (formData.in9 || '').split('||');
+                    
+                    let hasData1 = false;
+                    for (let r=0; r<names1.length; r++) {
+                        if (names1[r] || years1[r] || works1[r] || degrees1[r] || percents1[r]) {
+                            hasData1 = true;
+                            const tr = t1Template.cloneNode(true);
+                            const tds = tr.querySelectorAll('td');
+                            tds[0].innerHTML = `<p class=MsoNormal><span lang=VI>${r+1}</span></p>`;
+                            tds[1].innerHTML = `<p class=MsoNormal><span lang=VI>${names1[r] || ''}</span></p>`;
+                            tds[2].innerHTML = `<p class=MsoNormal><span lang=VI>${years1[r] || ''}</span></p>`;
+                            tds[3].innerHTML = `<p class=MsoNormal><span lang=VI>${works1[r] || ''}</span></p>`;
+                            tds[4].innerHTML = `<p class=MsoNormal><span lang=VI>${degrees1[r] || ''}</span></p>`;
+                            tds[5].innerHTML = `<p class=MsoNormal><span lang=VI>${percents1[r] || ''}</span></p>`;
+                            table1.appendChild(tr);
+                        }
+                    }
+                    if (!hasData1) table1.appendChild(t1Template);
+
+                    // Bảng 2: Người tham gia
+                    const table2 = tables[1];
+                    const t2Rows = table2.querySelectorAll('tr');
+                    const t2Template = t2Rows[1].cloneNode(true);
+                    while (table2.rows.length > 1) table2.deleteRow(1);
+                    
+                    const names2 = (formData.in26 || '').split('||');
+                    const years2 = (formData.in27 || '').split('||');
+                    const works2 = (formData.in28 || '').split('||');
+                    const degrees2 = (formData.in29 || '').split('||');
+                    const roles2 = (formData.in30 || '').split('||');
+                    
+                    let hasData2 = false;
+                    for (let r=0; r<names2.length; r++) {
+                        if (names2[r] || years2[r] || works2[r] || degrees2[r] || roles2[r]) {
+                            hasData2 = true;
+                            const tr = t2Template.cloneNode(true);
+                            const tds = tr.querySelectorAll('td');
+                            tds[0].innerHTML = `<p class=MsoNormal><span lang=VI>${r+1}</span></p>`;
+                            tds[1].innerHTML = `<p class=MsoNormal><span lang=VI>${names2[r] || ''}</span></p>`;
+                            tds[2].innerHTML = `<p class=MsoNormal><span lang=VI>${years2[r] || ''}</span></p>`;
+                            tds[3].innerHTML = `<p class=MsoNormal><span lang=VI>${works2[r] || ''}</span></p>`;
+                            tds[4].innerHTML = `<p class=MsoNormal><span lang=VI>${degrees2[r] || ''}</span></p>`;
+                            tds[5].innerHTML = `<p class=MsoNormal><span lang=VI>${roles2[r] || ''}</span></p>`;
+                            table2.appendChild(tr);
+                        }
+                    }
+                    if (!hasData2) table2.appendChild(t2Template);
+
+                    // Bảng 3: Chữ ký
+                    const table3 = tables[2];
+                    const tdSig = table3.rows[1].cells[1];
+                    const sigNames = (formData.in36 || '').split('||');
+                    const sigImages = (formData.in35 || '').split('||');
+                    
+                    let sigHtml = `<p class=MsoNormal align=center style='text-align:center'><b><span lang=VI style='line-height:115%'>Người/Những người nộp đơn</span></b></p>`;
+                    sigHtml += `<p class=MsoNormal align=center style='text-align:center'><i><span lang=VI style='line-height:115%'>(Họ tên và chữ ký từng đồng tác giả)</span></i></p>`;
+                    
+                    for (let i=0; i<sigNames.length; i++) {
+                        if (sigImages[i]) {
+                            sigHtml += `<p class=MsoNormal align=center style='text-align:center; margin-top: 10px;'><img src="${sigImages[i]}" style="max-height: 80px;" /></p>`;
+                        } else {
+                            sigHtml += `<p class=MsoNormal align=center style='text-align:center; margin-top: 50px;'>&nbsp;</p>`;
+                        }
+                        if (sigNames[i]) {
+                            sigHtml += `<p class=MsoNormal align=center style='text-align:center'><b><span lang=VI>${sigNames[i]}</span></b></p>`;
+                        }
+                    }
+                    tdSig.innerHTML = sigHtml;
+                }
+
+                // 7. Xuất file Word
+                const finalHTML = doc.documentElement.outerHTML;
+                const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(finalHTML);
+                const fileDownload = document.createElement("a");
+                document.body.appendChild(fileDownload);
+                fileDownload.href = source;
+                fileDownload.download = 'Don_yeu_cau_cong_nhan_sang_kien.doc';
+                fileDownload.click();
+                document.body.removeChild(fileDownload);
+
+            } catch(e) {
+                console.error(e);
+                alert('Lỗi khi xuất file Word!');
+            }
+        }
+
+        function closePreview() {
+            document.getElementById('previewModal').classList.add('hidden');
+        }
+    </script>
 </body>
 
 </html>

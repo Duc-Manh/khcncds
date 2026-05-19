@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hội Đồng Xét Duyệt - EVNGENCO2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        evnRed: '#DB0D0D',
+                        evnBlue: '#29348f',
+                        evnLight: '#f0f4f8',
+                        textDark: '#1f2937',
+                        textGray: '#6b7280',
+                        textLight: '#9ca3af',
+                    },
+                    boxShadow: {
+                        card: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                    }
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="/css/council.css">
+</head>
+
+<body class="text-gray-800 antialiased font-sans">
+    
+    <!-- Top Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-100">
+        <div class="max-w-[95vw] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-4">
+                    <img src="/img/genco2_logo.jpg" alt="EVNGENCO2 Logo" class="h-12 object-contain"
+                         onerror="this.src='https://via.placeholder.com/150x50?text=EVNGENCO2'" />
+                    <div class="hidden md:block border-l-2 border-gray-200 pl-4">
+                        <h1 class="text-xl font-bold text-evnBlue">Hội Đồng Khoa Học Công Nghệ</h1>
+                        <p class="text-sm text-gray-500 font-medium">Dành cho Ban Lãnh đạo & Trưởng Ban chuyên môn</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2 cursor-pointer group">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-evnBlue flex items-center justify-center font-bold text-lg group-hover:bg-evnBlue group-hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        </div>
+                        <div class="hidden sm:block">
+                            <p class="text-sm font-bold text-textDark" th:text="${session.COUNCIL_USER != null ? session.COUNCIL_USER : 'Thành viên HĐKH'}"></p>
+                            <p class="text-xs text-textGray">Hội đồng cấp Tổng công ty</p>
+                        </div>
+                    </div>
+                    <a href="/logout" class="p-2 text-gray-400 hover:text-evnRed transition-colors bg-gray-50 hover:bg-red-50 rounded-lg" title="Đăng xuất">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[95vw] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Left Content: Main Dashboard -->
+            <div class="w-full lg:w-3/4 space-y-6">
+                
+                <!-- KPI / Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-evnBlue">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-textGray">Tổng hồ sơ</p>
+                            <h4 class="text-2xl font-bold text-textDark">145</h4>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-textGray">Chờ duyệt</p>
+                            <h4 class="text-2xl font-bold text-textDark">12</h4>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-textGray">Đang thẩm định</p>
+                            <h4 class="text-2xl font-bold text-textDark">5</h4>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-5 shadow-card border border-gray-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-textGray">Đã duyệt</p>
+                            <h4 class="text-2xl font-bold text-textDark">128</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Data Table -->
+                <div class="bg-white rounded-[20px] p-6 shadow-card border border-gray-100">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-textDark">Danh sách hồ sơ cần thẩm định</h3>
+                            <p class="text-xs text-textLight mt-1">Sắp xếp theo thời gian nộp mới nhất</p>
+                        </div>
+                        
+                        <!-- Filters -->
+                        <div class="flex gap-3 w-full md:w-auto">
+                            <select class="filter-select bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-evnBlue focus:border-evnBlue block w-full py-2 pl-3 pr-8">
+                                <option selected>Tất cả đơn vị</option>
+                                <option value="CT">Nhiệt điện Cần Thơ</option>
+                                <option value="TM">Thủy điện Thác Mơ</option>
+                            </select>
+                            <select class="filter-select bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-evnBlue focus:border-evnBlue block w-full py-2 pl-3 pr-8">
+                                <option selected>Tất cả trạng thái</option>
+                                <option value="review">Đang thẩm định</option>
+                                <option value="revision">Cần bổ sung</option>
+                                <option value="approved">Đã có quyết định phê duyệt</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm whitespace-nowrap">
+                            <thead>
+                                <tr class="text-textGray border-b border-gray-100 bg-gray-50/50">
+                                    <th class="pb-3 pt-3 pl-3 font-semibold rounded-tl-lg">Mã HS</th>
+                                    <th class="pb-3 pt-3 font-semibold">Tên sáng kiến</th>
+                                    <th class="pb-3 pt-3 font-semibold">Đơn vị</th>
+                                    <th class="pb-3 pt-3 font-semibold">
+                                        <div class="flex flex-col gap-0.5">
+                                            <span>Ngày ký / Hiệu lực</span>
+                                            <span class="text-[10px] font-normal text-textLight">Đối chiếu mốc 09/2025</span>
+                                        </div>
+                                    </th>
+                                    <th class="pb-3 pt-3 font-semibold text-center">Trạng thái</th>
+                                    <th class="pb-3 pt-3 pr-3 font-semibold text-right rounded-tr-lg">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-50">
+                                <!-- Sample Row 1 -->
+                                <tr class="hover:bg-gray-50 transition-colors group">
+                                    <td class="py-4 pl-3 font-bold text-evnBlue">SK26-042</td>
+                                    <td class="py-4">
+                                        <div class="flex flex-col gap-1 max-w-xs overflow-hidden">
+                                            <span class="font-bold text-textDark truncate" title="Giải pháp nâng cao hiệu suất lò hơi tổ máy S1">Giải pháp nâng cao hiệu suất lò hơi tổ máy S1</span>
+                                            <span class="text-xs text-textGray">Nguyễn Văn A - Kỹ thuật</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 font-medium text-textDark">Nhiệt điện Cần Thơ</td>
+                                    <td class="py-4 text-textGray text-sm">
+                                        <div class="flex flex-col">
+                                            <span class="font-medium text-textDark">15/05/2026</span>
+                                            <span class="text-xs text-green-600">Hợp lệ (>09/2025)</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 text-center">
+                                        <span class="px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-100 rounded-md">Đang thẩm định</span>
+                                    </td>
+                                    <td class="py-4 pr-3 text-right">
+                                        <button onclick="openEvalModal('SK26-042')" class="px-4 py-1.5 text-white bg-evnBlue hover:bg-blue-800 rounded-lg text-xs font-bold transition-colors shadow-sm">Thẩm định</button>
+                                    </td>
+                                </tr>
+                                <!-- Sample Row 2 -->
+                                <tr class="hover:bg-gray-50 transition-colors group">
+                                    <td class="py-4 pl-3 font-bold text-evnBlue">SK26-039</td>
+                                    <td class="py-4">
+                                        <div class="flex flex-col gap-1 max-w-xs overflow-hidden">
+                                            <span class="font-bold text-textDark truncate" title="Ứng dụng AI trong dự báo thủy văn">Ứng dụng AI trong dự báo thủy văn</span>
+                                            <span class="text-xs text-textGray">Trần Thị B - Chuyển đổi số</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 font-medium text-textDark">Thủy điện Thác Mơ</td>
+                                    <td class="py-4 text-textGray text-sm">
+                                        <div class="flex flex-col">
+                                            <span class="font-medium text-textDark">12/05/2026</span>
+                                            <span class="text-xs text-green-600">Hợp lệ (>09/2025)</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 text-center">
+                                        <span class="px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-green-700 bg-green-100 rounded-md">Đã phê duyệt</span>
+                                    </td>
+                                    <td class="py-4 pr-3 text-right">
+                                        <button onclick="openEvalModal('SK26-039')" class="px-4 py-1.5 text-white bg-evnBlue hover:bg-blue-800 rounded-lg text-xs font-bold transition-colors shadow-sm">Xem HS</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar: Docs & Reports -->
+            <div class="w-full lg:w-1/4 space-y-6">
+                
+                <!-- Báo cáo & Tổng hợp -->
+                <div class="bg-white rounded-[20px] p-6 shadow-card border border-gray-100">
+                    <h3 class="text-base font-bold text-textDark mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-evnBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Báo cáo & Tổng hợp
+                    </h3>
+                    <div class="space-y-3">
+                        <button class="w-full text-left px-4 py-3 bg-gray-50 hover:bg-evnLight rounded-xl border border-gray-100 transition-colors group flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-bold text-textDark group-hover:text-evnBlue transition-colors">Xuất Biên bản họp</p>
+                                <p class="text-[11px] text-textLight mt-0.5">Xuất file Word mẫu biên bản</p>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 group-hover:text-evnBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        </button>
+                        <button class="w-full text-left px-4 py-3 bg-gray-50 hover:bg-evnLight rounded-xl border border-gray-100 transition-colors group flex justify-between items-center">
+                            <div>
+                                <p class="text-sm font-bold text-textDark group-hover:text-evnBlue transition-colors">Báo cáo Thống kê</p>
+                                <p class="text-[11px] text-textLight mt-0.5">Số lượng theo đơn vị/lĩnh vực</p>
+                            </div>
+                            <svg class="w-5 h-5 text-gray-400 group-hover:text-evnBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tra cứu văn bản -->
+                <div class="bg-white rounded-[20px] p-6 shadow-card border border-gray-100">
+                    <h3 class="text-base font-bold text-textDark mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-evnRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        Tra cứu văn bản
+                    </h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" class="group block">
+                                <p class="text-sm font-semibold text-evnBlue group-hover:underline">Quy chế Quản lý Khoa học & Công nghệ</p>
+                                <p class="text-xs text-textGray mt-0.5 border-l-2 border-evnRed pl-2">Quyết định số 722/QĐ-EVN</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="group block">
+                                <p class="text-sm font-semibold text-evnBlue group-hover:underline">Nghị quyết thúc đẩy chuyển đổi số</p>
+                                <p class="text-xs text-textGray mt-0.5 border-l-2 border-evnRed pl-2">Nghị quyết 388/NQ-HĐQT</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="group block">
+                                <p class="text-sm font-semibold text-evnBlue group-hover:underline">Hướng dẫn đánh giá sáng kiến cấp TCT</p>
+                                <p class="text-xs text-textGray mt-0.5 border-l-2 border-evnRed pl-2">Văn bản số 145/HD-EVNGENCO2</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Evaluation Modal / Popup (Hidden by default) -->
+    <div id="eval-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-[24px] w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-transform duration-300" id="eval-modal-content">
+            
+            <div class="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex justify-between items-center z-10">
+                <div>
+                    <h2 class="text-xl font-bold text-evnBlue flex items-center gap-2">
+                        <span id="modal-hs-id" class="bg-blue-100 text-evnBlue px-2 py-0.5 rounded text-sm">SK26-042</span> 
+                        Đánh giá Sáng kiến
+                    </h2>
+                </div>
+                <button onclick="closeEvalModal()" class="p-2 text-gray-400 hover:text-evnRed bg-gray-50 hover:bg-red-50 rounded-full transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="p-6">
+                <!-- Info Summary -->
+                <div class="bg-gray-50 rounded-xl p-4 mb-6 border border-gray-100">
+                    <h3 class="font-bold text-textDark mb-1">Giải pháp nâng cao hiệu suất lò hơi tổ máy S1</h3>
+                    <p class="text-sm text-textGray">Tác giả: <span class="font-semibold text-textDark">Nguyễn Văn A</span> | Đơn vị: <span class="font-semibold text-textDark">Nhiệt điện Cần Thơ</span></p>
+                    <div class="mt-3 flex gap-3">
+                        <a href="#" class="text-xs font-semibold text-evnBlue bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Tải Thuyết minh (.docx)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bảng Điểm / Tiêu chí -->
+                <h4 class="font-bold text-textDark mb-3 border-l-4 border-evnRed pl-2">I. Bảng Tiêu chí đánh giá</h4>
+                <div class="border border-gray-200 rounded-xl overflow-hidden mb-6">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-4 py-3 font-semibold text-textDark w-1/2">Tiêu chí</th>
+                                <th class="px-4 py-3 font-semibold text-textDark text-center">Đạt / Không đạt</th>
+                                <th class="px-4 py-3 font-semibold text-textDark text-center">Điểm (0-10)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="px-4 py-3 text-textDark font-medium">1. Tính mới, tính sáng tạo</td>
+                                <td class="px-4 py-3 text-center">
+                                    <input type="checkbox" class="w-5 h-5 text-evnBlue rounded focus:ring-evnBlue cursor-pointer" checked>
+                                </td>
+                                <td class="px-4 py-3 text-center">
+                                    <input type="number" min="0" max="10" value="8" class="w-16 border border-gray-300 rounded text-center py-1 focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-textDark font-medium">2. Tính khả thi, khả năng áp dụng</td>
+                                <td class="px-4 py-3 text-center">
+                                    <input type="checkbox" class="w-5 h-5 text-evnBlue rounded focus:ring-evnBlue cursor-pointer" checked>
+                                </td>
+                                <td class="px-4 py-3 text-center">
+                                    <input type="number" min="0" max="10" value="9" class="w-16 border border-gray-300 rounded text-center py-1 focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-textDark font-medium">3. Hiệu quả kinh tế - kỹ thuật mang lại</td>
+                                <td class="px-4 py-3 text-center">
+                                    <input type="checkbox" class="w-5 h-5 text-evnBlue rounded focus:ring-evnBlue cursor-pointer" checked>
+                                </td>
+                                <td class="px-4 py-3 text-center">
+                                    <input type="number" min="0" max="10" value="8" class="w-16 border border-gray-300 rounded text-center py-1 focus:border-evnBlue focus:ring-1 focus:ring-evnBlue outline-none">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Nhận xét & Chỉ đạo -->
+                <h4 class="font-bold text-textDark mb-3 border-l-4 border-evnRed pl-2">II. Ý kiến chỉ đạo của Ban Lãnh Đạo</h4>
+                <div class="space-y-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-textDark mb-1">Ý kiến của Hội đồng chuyên môn:</label>
+                        <textarea rows="2" class="w-full border border-gray-300 rounded-xl p-3 text-sm bg-gray-50 focus:outline-none" readonly>Sáng kiến có tính khả thi cao, đề xuất triển khai thí điểm tại Nhiệt điện Cần Thơ trong Quý 3/2026.</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-evnBlue mb-1">Chỉ đạo của Tổng Giám đốc (Nguyễn Hữu Thịnh):</label>
+                        <textarea rows="3" class="w-full border border-evnBlue rounded-xl p-3 text-sm focus:ring-1 focus:ring-evnBlue outline-none resize-y" placeholder="Nhập ý kiến phê duyệt cuối cùng hoặc yêu cầu điều chỉnh..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Quản lý quy trình & Kết xuất văn bản -->
+                <h4 class="font-bold text-textDark mb-3 border-l-4 border-evnRed pl-2">III. Quyết định & Kết xuất văn bản</h4>
+                <div class="bg-gray-50 rounded-xl p-5 border border-gray-200">
+                    <div class="flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
+                        <div class="flex flex-wrap gap-3">
+                            <button class="px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg shadow-sm transition-colors flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Ký số Phê duyệt (TGĐ)
+                            </button>
+                            <button class="px-5 py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg shadow-sm transition-colors flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                Cần bổ sung hồ sơ
+                            </button>
+                        </div>
+                        
+                        <div class="border-l-2 border-gray-200 pl-6 w-full md:w-auto">
+                            <p class="text-[11px] text-textGray mb-2 font-bold uppercase tracking-wider text-center md:text-left">TẬP ĐOÀN ĐIỆN LỰC VIỆT NAM<br><span class="text-evnBlue">TỔNG CÔNG TY PHÁT ĐIỆN 2</span></p>
+                            <button class="w-full px-5 py-2 bg-white border-2 border-evnBlue text-evnBlue hover:bg-blue-50 font-bold rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                Tạo dự thảo Quyết định
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/council.js"></script>
+</body>
+
+</html>

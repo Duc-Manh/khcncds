@@ -48,11 +48,29 @@
       },
     };
   </script>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="bg-white font-sans x-hidden flex flex-col min-h-screen">
-  <header class="relative z-50 bg-white w-full flex-shrink-0 bg-no-repeat bg-right"
-    style="background-image: url('/images/header.png'); background-size: auto 100%;">
+  <header class="relative z-50 bg-white w-full flex-shrink-0 bg-no-repeat bg-right bg-none md:bg-[url('/images/motif.png')] md:bg-[length:auto_100%]">
     <div class="max-w-[85vw] mx-auto">
       <div class="flex justify-between items-center py-4 md:py-6 relative">
         <!-- Bên trái: Logo và 2 dòng chữ -->
@@ -63,8 +81,8 @@
             <h1
               class="text-evnRed text-sm sm:text-base md:text-2xl font-extrabold tracking-wide uppercase drop-shadow-sm leading-tight">
               CỔNG SÁNG KIẾN KHCN, ĐMST & CĐS</h1>
-            <p class="text-evnBlue text-xs md:text-xl font-bold md:mt-1 drop-shadow-sm">"Kết nối sáng tạo -
-              Kiến tạo tương lai"</p>
+            <p class="text-evnBlue text-xs md:text-xl font-bold md:mt-1 drop-shadow-sm">"Khơi nguồn sáng tạo - Mở
+              lối tương lai"</p>
           </div>
         </div>
 
@@ -82,23 +100,26 @@
 
     <div class="hidden lg:block w-full mt-2 shadow-sm bg-evnBlue">
       <div class="max-w-[85vw] mx-auto">
-        <div class="flex items-center justify-center py-3 w-full">
+        <div class="flex items-center justify-center w-full">
           <nav
-            class="hidden lg:flex justify-center items-center gap-20 w-full text-sm font-semibold uppercase tracking-wide text-white">
-            <a href="/" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Trang
+            class="hidden lg:flex justify-center items-stretch w-full text-sm font-semibold uppercase tracking-wide text-white">
+            <a href="/"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Trang
               chủ</a>
-            <a href="/news" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Tin
+            <a href="/news"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Tin
               tức</a>
-            <a href="/notice" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Thông
+            <a href="/notice"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Thông
               báo</a>
-            <div class="relative group">
+            <div class="relative group flex w-44">
               <button type="button"
-                class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
+                class="text-white group-hover:bg-evnRed hover:text-white w-full transition-all text-sm font-semibold uppercase tracking-wide flex items-center justify-center h-full cursor-pointer">
                 Nội bộ
               </button>
 
               <div
-                class="absolute right-0 mt-2 w-72 bg-white border border-evnRed shadow-xl rounded py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+                class="absolute left-1/2 -translate-x-1/2 top-full w-72 bg-white border border-evnRed shadow-xl rounded py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
                 <a href="https://doffice.evngenco2.vn/sign-in?redirectURL=%2Fproject" target="_blank"
                   rel="noopener noreferrer"
                   class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
@@ -146,14 +167,14 @@
                 </a>
               </div>
             </div>
-            <a href="/login" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">
+            <a href="/login"
+              class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">
               Đăng nhập
             </a>
           </nav>
         </div>
       </div>
     </div>
-
     <!-- Mobile Menu Dropdown -->
     <div id="mobile-menu"
       class="hidden lg:hidden w-full bg-white border-t border-b border-gray-200 shadow-xl absolute left-0 top-full z-40">
@@ -393,7 +414,7 @@
     </div>
   </div>
   <div
-    class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-4 p-2 bg-white/10 backdrop-blur-md border border-evnBlue rounded-l-2xl shadow-2xl">
+    class="fixed right-0 top-1/2 -translate-y-1/2 z-[100] hidden sm:flex flex-col gap-4 p-2 pl-4 bg-white/10 backdrop-blur-md border border-evnBlue rounded-l-2xl shadow-2xl translate-x-[calc(100%-16px)] hover:translate-x-0 transition-transform duration-300 ease-in-out">
     <a href="https://www.facebook.com/TongcongtyPhatdien2" target="_blank"
       class="w-10 h-10 flex items-center justify-center text-white rounded-xl hover:scale-110 transition-transform group relative">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -427,6 +448,33 @@
         class="absolute right-full mr-3 px-2 py-1 bg-evnBlue text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase font-bold">Tiktok</span>
     </a>
   </div>
+
+  <!-- Animated Assistant GIF with Hover Menu -->
+  <div class="fixed bottom-4 right-4 z-[90] flex flex-col items-end group pointer-events-auto">
+    <!-- Popup Menu -->
+    <div
+      class="flex flex-col gap-2 mb-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-4 group-hover:translate-y-0 origin-bottom">
+
+      <a href="#"
+        class="px-4 py-2.5 bg-white text-evnBlue text-sm font-semibold rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:bg-evnBlue hover:text-white transition-colors border border-blue-50 whitespace-nowrap text-center">
+        Liên hệ thành viên
+      </a>
+      <a href="#"
+        class="px-4 py-2.5 bg-white text-evnBlue text-sm font-semibold rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:bg-evnBlue hover:text-white transition-colors border border-blue-50 whitespace-nowrap text-center">
+        Góp ý trang web
+      </a>
+      <a href="#"
+        class="px-4 py-2.5 bg-white text-evnBlue text-sm font-semibold rounded-xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] hover:bg-evnBlue hover:text-white transition-colors border border-blue-50 whitespace-nowrap text-center">
+        Hướng dẫn sử dụng
+      </a>
+    </div>
+
+    <!-- Mascot -->
+    <div class="w-24 sm:w-26 hover:scale-105 transition-transform duration-300 cursor-pointer drop-shadow-xl">
+      <img src="/images/index.gif" alt="Assistant Mascot" class="w-full h-auto object-contain">
+    </div>
+  </div>
+
   <script src="/js/index.js"></script>
 </body>
 

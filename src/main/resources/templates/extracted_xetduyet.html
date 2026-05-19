@@ -1,0 +1,1692 @@
+                <!-- Main Content Box 5: Xét duyệt -->
+                <div id="content-xetduyet"
+                    class="tab-content mb-12 scroll-mt-[140px] relative border border-evnBlue rounded-xl p-6">
+
+
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold text-evnBlue">Xét duyệt Sáng kiến</h3>
+                        <div class="flex items-center gap-3 relative">
+                            <button onclick="document.getElementById('pendingFormsList').classList.toggle('hidden')"
+                                class="px-4 py-2 bg-blue-50 text-evnBlue border border-blue-200 rounded-lg font-semibold hover:bg-blue-100 transition shadow-sm flex items-center gap-2">
+                                <i class="fas fa-file-alt"></i> Số đơn đăng ký: <span class="text-evnRed text-lg"
+                                    th:text="${pendingFormsCount != null ? pendingFormsCount : 0}">0</span>
+                            </button>
+                            <button
+                                class="px-4 py-2 bg-green-50 text-green-700 border border-green-200 rounded-lg font-semibold hover:bg-green-100 transition shadow-sm flex items-center gap-2">
+                                <i class="fas fa-check-circle"></i> Số đơn đã xét duyệt: <span
+                                    class="text-green-700 text-lg">0</span>
+                            </button>
+
+                            <!-- Dropdown List of Pending Forms -->
+                            <div id="pendingFormsList"
+                                class="hidden absolute top-full right-0 mt-2 w-[700px] max-h-[350px] overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+                                <table class="w-full text-left text-sm text-gray-700">
+                                    <thead class="bg-gray-100 text-gray-700 font-semibold sticky top-0 shadow-sm">
+                                        <tr>
+                                            <th class="px-4 py-3 border-b">Thời gian</th>
+                                            <th class="px-4 py-3 border-b">Họ và tên</th>
+                                            <th class="px-4 py-3 border-b">Đơn vị</th>
+                                            <th class="px-4 py-3 border-b">Chức vụ</th>
+                                            <th class="px-4 py-3 border-b text-center">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="form : ${pendingFormsList}"
+                                            class="border-b hover:bg-gray-50 transition cursor-pointer"
+                                            th:onclick="'openRegistrationForm(' + ${form.id} + ')'">
+                                            <td class="px-4 py-3 whitespace-nowrap"
+                                                th:text="${form.time != null ? #temporals.format(form.time, 'dd/MM/yyyy HH:mm') : ''}">
+                                            </td>
+                                            <td class="px-4 py-3 font-bold text-evnBlue" th:text="${form.fullName}">
+                                            </td>
+                                            <td class="px-4 py-3" th:text="${form.department}"></td>
+                                            <td class="px-4 py-3" th:text="${form.position}"></td>
+                                            <td class="px-4 py-3 text-center">
+                                                <div class="flex items-center justify-center gap-2">
+                                                    <button type="button"
+                                                        class="px-3 py-1 bg-evnBlue text-white rounded text-xs font-bold hover:bg-blue-700 transition"
+                                                        th:onclick="'event.stopPropagation(); openRegistrationForm(' + ${form.id} + ')'">Hiện</button>
+                                                    <button type="button"
+                                                        class="px-3 py-1 bg-gray-200 text-gray-700 rounded text-xs font-bold hover:bg-gray-300 transition"
+                                                        onclick="event.stopPropagation(); const preview = document.getElementById('registration-form-preview'); if (!preview.classList.contains('hidden')) { preview.classList.add('hidden'); document.getElementById('pendingFormsList').classList.remove('hidden'); }">Ẩn</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr th:if="${pendingFormsList == null || pendingFormsList.empty}">
+                                            <td colspan="5" class="px-4 py-6 text-center text-gray-500 font-medium">
+                                                Không có đơn đăng ký nào chờ duyệt</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <script>
+                                async function openRegistrationForm(id) {
+                                    try {
+                                        const response = await fetch('/api/forms/' + id);
+                                        if (response.ok) {
+                                            const form = await response.json();
+                                            document.getElementById('registration-form-preview').classList.remove('hidden');
+
+                                            // Ẩn bảng danh sách pending form
+                                            document.getElementById('pendingFormsList').classList.add('hidden');
+
+                                            // Mapping default values
+                                            const defaultValues = {
+                                                'in1': '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+                                                'in2': '…..', 'in3': '…..', 'in4': '…..',
+                                                'in10': '………………………………………………………………………………..',
+                                                'in11': '…………………………………………………………………………………',
+                                                'in12': '',
+                                                'in13': '………………………………………………………………………………',
+                                                'in14': '…………………………………………………………………………',
+                                                'in15': '…………………………………………………………………………',
+                                                'in16': '……………………………………………………………………………',
+                                                'in17': '……………………………………………………………………………',
+                                                'in18': '……………………………………………………………………………',
+                                                'in19': '….……',
+                                                'in20': '….……',
+                                                'in21': '…..',
+                                                'in22': '………………………………………………………………………………',
+                                                'in23': '…………………………………………………………………………………….',
+                                                'in24': '……………………………………………………………………………………..',
+                                                'in31': '…..(Địa danh)',
+                                                'in32': '…', 'in33': '…', 'in34': '…',
+                                                'in36': '&nbsp;'
+                                            };
+
+                                            const arrayFields = ['in5', 'in6', 'in7', 'in8', 'in9', 'in25', 'in26', 'in27', 'in28', 'in29', 'in30'];
+
+                                            for (let i = 1; i <= 36; i++) {
+                                                const fieldName = 'in' + i;
+                                                if (arrayFields.includes(fieldName)) continue;
+
+                                                const rawValue = form[fieldName] || '';
+                                                const element = document.getElementById(fieldName);
+
+                                                if (element) {
+                                                    let displayValue = rawValue;
+                                                    if (rawValue.includes('||')) {
+                                                        const parts = rawValue.split('||');
+                                                        displayValue = parts[0];
+                                                    }
+
+                                                    if (fieldName === 'in35') {
+                                                        if (displayValue && displayValue.startsWith('data:image')) {
+                                                            element.src = displayValue;
+                                                            element.classList.remove('hidden');
+                                                        } else {
+                                                            element.src = '';
+                                                            element.classList.add('hidden');
+                                                        }
+                                                    } else {
+                                                        if (displayValue && displayValue.trim() !== '') {
+                                                            element.innerHTML = displayValue;
+                                                        } else {
+                                                            element.innerHTML = defaultValues[fieldName] || '&nbsp;';
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            // Table 1 (in5 to in9)
+                                            const tbody1 = document.getElementById('tbody1');
+                                            if (tbody1) {
+                                                const in5 = (form['in5'] || '').split('||');
+                                                const in6 = (form['in6'] || '').split('||');
+                                                const in7 = (form['in7'] || '').split('||');
+                                                const in8 = (form['in8'] || '').split('||');
+                                                const in9 = (form['in9'] || '').split('||');
+                                                const rowCount = Math.max(1, in5.length, in6.length, in7.length, in8.length, in9.length, 3);
+                                                tbody1.innerHTML = '';
+                                                for (let r = 0; r < rowCount; r++) {
+                                                    tbody1.innerHTML += `
+                                                        <tr>
+                                                            <td class="border border-black p-1 text-center align-top">${r + 1}</td>
+                                                            <td class="border border-black p-1 align-top">${in5[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in6[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in7[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in8[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in9[r] || '&nbsp;'}</td>
+                                                        </tr>
+                                                    `;
+                                                }
+                                            }
+
+                                            // List D (in25)
+                                            const listD = document.getElementById('listD');
+                                            if (listD) {
+                                                const in25 = (form['in25'] || '').split('||');
+                                                const rowCount = Math.max(2, in25.length);
+                                                listD.innerHTML = '';
+                                                for (let r = 0; r < rowCount; r++) {
+                                                    listD.innerHTML += `<p style="margin: 6pt 0; text-indent: 1cm;">[${r + 1}]- ${in25[r] || '………………………………………………………………………………'}</p>`;
+                                                }
+                                            }
+
+                                            // Table 2 (in26 to in30)
+                                            const tbody2 = document.getElementById('tbody2');
+                                            if (tbody2) {
+                                                const in26 = (form['in26'] || '').split('||');
+                                                const in27 = (form['in27'] || '').split('||');
+                                                const in28 = (form['in28'] || '').split('||');
+                                                const in29 = (form['in29'] || '').split('||');
+                                                const in30 = (form['in30'] || '').split('||');
+                                                const rowCount = Math.max(1, in26.length, in27.length, in28.length, in29.length, in30.length, 3);
+                                                tbody2.innerHTML = '';
+                                                for (let r = 0; r < rowCount; r++) {
+                                                    tbody2.innerHTML += `
+                                                        <tr>
+                                                            <td class="border border-black p-1 text-center align-top">${r + 1}</td>
+                                                            <td class="border border-black p-1 align-top">${in26[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in27[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in28[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in29[r] || '&nbsp;'}</td>
+                                                            <td class="border border-black p-1 align-top">${in30[r] || '&nbsp;'}</td>
+                                                        </tr>
+                                                    `;
+                                                }
+                                            }
+                                        } else {
+                                            alert('Không tìm thấy thông tin form.');
+                                        }
+                                    } catch (e) {
+                                        console.error(e);
+                                        alert('Lỗi tải dữ liệu form.');
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+
+                    <div
+                        class="relative bg-gray-50 border border-gray-200 rounded-xl p-4 flex items-start gap-4 overflow-auto max-h-[80vh]">
+
+                        <div class="p-2 sm:p-2 shrink-0 flex justify-center items-start bg-gray-50/50 rounded-xl h-fit">
+                            <!-- Floating Action Buttons -->
+                            <div class="sticky top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50 mr-4">
+                                <button title="Xem" onclick="openPreview()"
+                                    class="w-12 h-12 flex items-center justify-center bg-white text-orange-500 border border-orange-500 rounded-full shadow-lg hover:bg-orange-500 hover:text-white transition-colors group relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                    <span
+                                        class="absolute left-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Xem</span>
+                                </button>
+                                <div class="relative flex items-center">
+                                    <!-- Download Menu (Hidden by default) -->
+                                    <div id="downloadMenu"
+                                        class="absolute left-16 bg-white rounded-lg shadow-xl border border-gray-200 py-1 w-24 hidden flex-col z-50 transition-all">
+                                        <button type="button" onclick="downloadPDF()"
+                                            class="px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 font-bold text-left w-full transition-colors flex items-center gap-2">
+                                            PDF
+                                        </button>
+                                        <hr class="border-gray-100">
+                                        <button type="button" onclick="downloadWord()"
+                                            class="px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-bold text-left w-full transition-colors flex items-center gap-2">
+                                            WORD
+                                        </button>
+                                    </div>
+
+                                    <button title="Tải phiếu" type="button" onclick="toggleDownloadMenu(event)"
+                                        class="w-12 h-12 flex items-center justify-center bg-white text-evnBlue border border-evnBlue rounded-full shadow-lg hover:bg-evnBlue hover:text-white transition-colors group relative">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                        </svg>
+                                        <span id="tooltip-download"
+                                            class="absolute left-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Tải
+                                            phiếu</span>
+                                    </button>
+                                </div>
+                                <button title="Nộp phiếu" type="button" onclick="submitForm()"
+                                    class="w-12 h-12 flex items-center justify-center bg-evnBlue text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors group relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 pr-0.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6 12L3.269 3.125A59.769 59.769 0 0121.485 12 59.768 59.768 0 013.27 20.875L5.999 12Zm0 0h7.5" />
+                                    </svg>
+                                    <span
+                                        class="absolute left-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Nộp
+                                        phiếu</span>
+                                </button>
+                                <button title="Hướng dẫn"
+                                    class="w-12 h-12 flex items-center justify-center bg-evnRed text-white rounded-full shadow-lg hover:bg-red-700 transition-colors group relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span
+                                        class="absolute left-14 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Hướng
+                                        dẫn</span>
+                                </button>
+
+                                <div id="comment-history-list"
+                                    class="hidden absolute left-full top-1/2 -translate-y-1/2 ml-4 shrink-0 flex-col p-4 bg-white rounded-xl h-fit max-h-[600px] w-[500px] transition-all overflow-x-auto shadow-md border border-gray-200 z-50">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="font-bold text-evnBlue text-lg">Lịch sử đánh giá</h3>
+                                        <button type="button"
+                                            onclick="document.getElementById('comment-history-list').classList.add('hidden');"
+                                            class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 print:hidden z-10">×</button>
+                                    </div>
+                                    <div class="overflow-y-auto max-h-[600px]">
+                                        <table class="w-full text-sm text-left border-collapse">
+                                            <thead class="text-xs text-white uppercase bg-evnBlue sticky top-0">
+                                                <tr>
+                                                    <th scope="col" class="px-2 py-2 border border-gray-300 w-28">Thời
+                                                        gian</th>
+                                                    <th scope="col" class="px-2 py-2 border border-gray-300">Tiêu đề
+                                                        giải
+                                                        pháp</th>
+                                                    <th scope="col"
+                                                        class="px-2 py-2 border border-gray-300 w-16 text-center">Thao
+                                                        tác</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="c : ${myComments}"
+                                                    class="bg-white border-b hover:bg-orange-50 transition-colors">
+                                                    <td class="px-2 py-3 border border-gray-300 whitespace-nowrap text-center"
+                                                        th:text="${c.time != null ? #temporals.format(c.time, 'dd/MM/yyyy HH:mm') : ''}">
+                                                    </td>
+                                                    <td class="px-2 py-3 border border-gray-300 font-medium text-evnBlue max-w-[200px] break-words"
+                                                        th:text="${c.i1}"></td>
+                                                    <td class="px-2 py-3 border border-gray-300 text-center">
+                                                        <button type="button"
+                                                            th:onclick="'openCommentPreview(' + ${c.id} + ')'"
+                                                            class="text-white bg-orange-500 hover:bg-orange-600 font-medium rounded text-xs px-3 py-1.5 transition-colors shadow-sm whitespace-nowrap">Xem</button>
+                                                    </td>
+                                                </tr>
+                                                <tr th:if="${#lists.isEmpty(myComments)}">
+                                                    <td colspan="3" class="px-2 py-4 text-center text-gray-500">Chưa có
+                                                        phiếu đánh giá nào</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form class="bg-white shadow-xl text-black shrink-0 relative h-fit"
+                                style="width: 210mm; min-height: 297mm; padding: 10mm 20mm 10mm 30mm; font-family: 'Times New Roman', Times, serif; font-size: 13pt; line-height: 1.1; box-sizing: border-box;">
+                                <!-- Title -->
+                                <h3 class="font-bold text-center mb-6 uppercase" style="font-size: 14pt;">PHIẾU ĐÁNH GIÁ
+                                    CÔNG NHẬN SÁNG KIẾN</h3>
+
+                                <!-- 1. Các thông tin chính sáng kiến -->
+                                <div class="mb-4">
+                                    <p class="mb-2"><span class="font-bold">1. Các thông tin chính sáng kiến</span>
+                                        <span class="italic">(ghi theo Đơn yêu cầu công nhận sáng kiến)</span>:
+                                    </p>
+                                    <div class="relative mb-2">
+                                        <span class="absolute top-[5px] left-2 pointer-events-none">Tiêu đề giải
+                                            pháp:</span>
+                                        <textarea id="i1" rows="1"
+                                            class="w-full border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent resize-none overflow-hidden"
+                                            style="text-indent: 135px;"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </div>
+                                    <div class="relative mb-2">
+                                        <span class="absolute top-[5px] left-2 pointer-events-none">Tác giả/đồng tác giả
+                                            giải pháp:</span>
+                                        <textarea id="i2" rows="1"
+                                            class="w-full border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent resize-none overflow-hidden"
+                                            style="text-indent: 220px;"
+                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Người đánh giá -->
+                                <div class="mb-4">
+                                    <p class="font-bold mb-2">2. Người đánh giá:</p>
+                                    <div class="flex items-center mb-2 gap-2">
+                                        <span class="whitespace-nowrap">Họ và tên:</span>
+                                        <input id="i3" type="text"
+                                            class="flex-1 border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent">
+                                    </div>
+                                    <p class="mb-2 leading-relaxed">
+                                        Thời điểm nhận Đơn và Hồ sơ sáng kiến để đánh giá: ngày
+                                        <input id="i4" type="text"
+                                            class="w-[1.5em] inline-block border border-orange-500 rounded px-0.5 py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline ">
+                                        tháng
+                                        <input id="i5" type="text"
+                                            class="w-[1.5em] inline-block border border-orange-500 rounded px-0.5 py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline ">
+                                        năm
+                                        <input id="i6" type="text"
+                                            class="w-[2.5em] inline-block border border-orange-500 rounded px-0.5 py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline ">
+                                    </p>
+                                </div>
+
+                                <!-- 3. Các tiêu chí đánh giá giải pháp -->
+                                <div class="mb-4">
+                                    <p class="font-bold mb-2">3. Các tiêu chí đánh giá giải pháp</p>
+                                    <p class="mb-3">Phải đánh dấu vào 1 trong 2 ô của từng tiêu chí dưới đây</p>
+
+                                    <!-- 3.1 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.1. Về tình trạng kỹ thuật hoặc tổ chức sản
+                                            xuất
+                                            hiện
+                                            tại,
+                                            chỉ rõ
+                                            ưu khuyết điểm <span class="font-normal">(mục A.1 trong Đơn)</span>:</p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-20 ml-4">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i7" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i8').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0 checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Thông tin đầy đủ, chính xác</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i8" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i7').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0 checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Thông tin không đầy đủ hoặc không chính xác</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3.2 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.2. Về nội dung giải pháp <span
+                                                class="font-normal">(mục
+                                                A.2 trong
+                                                Đơn)</span></p>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1">3.2.1. Mục đích của giải pháp, các điều kiện cần
+                                                thiết:
+                                            </p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4 mb-1">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i9" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i10').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0 checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Khả thi</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i10" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i9').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0 checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Không khả thi</span>
+                                                </label>
+                                            </div>
+                                            <p class="text-[15px] italic">
+                                                (Nếu mục đích, điều kiện giải pháp là Không khả thi thì không tiếp tục
+                                                đánh
+                                                giá
+                                                các
+                                                mục bên
+                                                dưới và chuyển sang mục 4. Kết luận).
+                                            </p>
+                                        </div>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1">3.2.2. Mô tả chi tiết bản chất của giải pháp</p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-24 ml-4">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i11" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i12').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Đầy đủ, rõ ràng</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i12" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i11').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Không đầy đủ/rõ ràng</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1">3.2.3. Các bước thực hiện</p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i13" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i14').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Hợp lý</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i14" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i13').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Không hợp lý</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1 text-justify">3.2.4. Giải pháp có tính mới <span
+                                                    class="font-normal">(nếu
+                                                    đáp ứng đồng thời tất cả các điều kiện sau đây: i) Không trùng với
+                                                    nội
+                                                    dung
+                                                    của
+                                                    giải
+                                                    pháp đã được công nhận sáng kiến; ii) Chưa bị bộc lộ công khai trong
+                                                    các
+                                                    văn
+                                                    bản, sách
+                                                    báo, tài liệu kỹ thuật đến mức căn cứ vào đó có thể thực hiện ngay
+                                                    được;
+                                                    iii)
+                                                    Không
+                                                    trùng với giải pháp của người khác đã được áp dụng hoặc áp dụng thử,
+                                                    hoặc
+                                                    đưa
+                                                    vào kế
+                                                    hoạch áp dụng, phổ biến hoặc chuẩn bị các điều kiện để áp dụng, phổ
+                                                    biến;
+                                                    iv)
+                                                    Chưa được
+                                                    quy định thành tiêu chuẩn, quy trình, quy phạm bắt buộc phải thực
+                                                    hiện)</span>
+                                            </p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4 mb-1">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i15" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i16').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Có</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input id="i16" type="checkbox"
+                                                        onclick="if(this.checked) document.getElementById('i15').checked = false;"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Không</span>
+                                                </label>
+                                            </div>
+                                            <p class="text-[15px] italic">
+                                                (Nếu giải pháp được đánh giá là Không có tính mới thì không tiếp tục
+                                                đánh
+                                                giá
+                                                mục
+                                                3.3, 3.4
+                                                bên dưới và chuyển sang mục 4. Kết luận).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3.3 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.3. Về quá trình áp dụng giải pháp <span
+                                                class="font-normal">(mục
+                                                A.3 trong Đơn)</span></p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-24 ml-4 mb-1">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i17" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i18').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Đủ dài để đánh giá hiệu quả</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i18" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i17').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Không đủ dài để đánh giá hiệu quả</span>
+                                            </label>
+                                        </div>
+                                        <p class="text-[15px] italic ml-4">
+                                            1. (Nếu quá trình áp dụng giải pháp không đủ dài để đánh giá hiệu quả thì
+                                            không
+                                            tiếp
+                                            tục
+                                            đánh
+                                            giá mục 3.4 bên dưới và chuyển sang mục 4. Kết luận).
+                                        </p>
+                                    </div>
+
+                                    <!-- 3.4 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.4. Hiệu quả thực tế thu được khi áp dụng giải
+                                            pháp
+                                            <span class="font-normal">(mục A.4 trong Đơn)</span>
+                                        </p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i19" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i20').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Hiệu quả</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i20" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i19').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Không hiệu quả</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3.5 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2 text-justify leading-relaxed">3.5. Có khả năng
+                                            áp
+                                            dụng tại Đơn vị
+                                            khác trong <input id="i21" type="text" placeholder="(Đơn vị xét duyệt)"
+                                                class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-start font-normal placeholder-gray-600 align-baseline transition-all"
+                                                style="width: 16ch;"
+                                                oninput="this.style.width = Math.max(16, this.value.length + 1) + 'ch'">
+                                            hoặc có tính hiệu quả cao đủ
+                                            để
+                                            công
+                                            nhận ở
+                                            cấp <span class="font-normal"><input id="i22" type="text"
+                                                    placeholder="(chỉ dùng cho cấp EVN/EVNGENCO2)"
+                                                    class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-start font-normal placeholder-gray-600 align-baseline transition-all"
+                                                    style="width: 34ch;"
+                                                    oninput="this.style.width = Math.max(34, this.value.length + 1) + 'ch'"></span>
+                                        </p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i23" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i24').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Có</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input id="i24" type="checkbox"
+                                                    onclick="if(this.checked) document.getElementById('i23').checked = false;"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                <span>Không</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Kết luận -->
+                                <div class="mb-2">
+                                    <p class="font-bold mb-2">4. Kết luận</p>
+                                    <div class="ml-4">
+                                        <div class="flex items-start gap-2 mb-2">
+                                            <span class="font-bold whitespace-nowrap">4.1.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <input id="i25" type="checkbox"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                            </label>
+                                            <span class="font-bold italic text-justify">Không công nhận sáng kiến cấp
+                                                <input id="i26" type="text"
+                                                    class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-start font-normal placeholder-gray-600 align-baseline transition-all"
+                                                    style="width: 5ch;"
+                                                    oninput="this.style.width = Math.max(5, this.value.length * 1) + 'ch'">
+                                                tại <input id="i27" type="text" placeholder="(tuỳ theo cấp sáng kiến)"
+                                                    class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-start font-normal placeholder-gray-600 align-baseline transition-all"
+                                                    style="width: 21ch;"
+                                                    oninput="this.style.width = Math.max(21, this.value.length * 1) + 'ch'">
+                                                nếu đánh giá ở trên thuộc một trong các trường hợp:</span>
+                                        </div>
+
+                                        <div class="ml-10 mb-4 italic space-y-2">
+                                            <p>- Mục đích của giải pháp, các điều kiện cần thiết (mục 3.2.1) là Không
+                                                khả
+                                                thi,
+                                                hoặc
+                                            </p>
+                                            <p>- Giải pháp không có tính mới (mục 3.2.4); hoặc</p>
+                                            <p>- Quá trình áp dụng giải pháp (mục 3.3) là Không đủ dài để đánh giá hiệu
+                                                quả,
+                                                hoặc
+                                            </p>
+                                            <p>- Việc áp dụng giải pháp (mục 3.4) là Không hiệu quả hoặc</p>
+                                            <p>- Không có khả năng áp dụng tại đơn vị khác và không có tính hiệu quả cao
+                                                (mục
+                                                3.5)
+                                                (chỉ dùng
+                                                cho cấp EVN/EVNGENCO2).</p>
+                                        </div>
+
+                                        <div class="flex items-start gap-2 mb-2">
+                                            <span class="font-bold whitespace-nowrap">4.2.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <input id="i28" type="checkbox"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                            </label>
+                                            <span class="font-bold italic text-justify">Công nhận sáng kiến cấp <input
+                                                    id="i29" type="text"
+                                                    class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-start font-normal placeholder-gray-600 align-baseline transition-all"
+                                                    style="width: 5ch;"
+                                                    oninput="this.style.width = Math.max(5, this.value.length * 1) + 'ch'">
+                                                nhưng đề
+                                                nghị
+                                                hoàn thiện
+                                                hồ sơ sáng kiến trước khi công nhận sáng kiến nếu không có đánh giá
+                                                thuộc
+                                                một
+                                                trong
+                                                các
+                                                trường hợp nêu tại mục 4.1 ở trên và có ít nhất một trong các tiêu chí
+                                                tại
+                                                mục
+                                                3.1,
+                                                3.2.2,
+                                                3.2.3 được đánh giá là Không.</span>
+                                        </div>
+
+                                        <div class="ml-10 mb-4">
+                                            <p class="italic mb-2">Yêu cầu hoàn thiện (ghi rõ phạm vi cần bổ sung trong
+                                                đánh
+                                                giá
+                                                hiện trạng
+                                                và/hoặc mô tả chi tiết bản chất giải pháp và/hoặc thay đổi các bước thực
+                                                hiện
+                                                giải
+                                                pháp):
+                                            </p>
+                                            <p><textarea id="i30" rows="1"
+                                                    class="w-full border border-orange-600 rounded px-2 py-1 outline-none text-evnBlue bg-transparent resize-none overflow-hidden"
+                                                    oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                            </p>
+                                        </div>
+
+                                        <div class="flex items-start gap-2 mb-4">
+                                            <span class="font-bold whitespace-nowrap">4.3.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <input id="i31" type="checkbox"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                            </label>
+                                            <span class="font-bold italic text-justify">Công nhận sáng kiến cấp <input
+                                                    id="i32" type="text"
+                                                    class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-start font-normal placeholder-gray-600 align-baseline transition-all"
+                                                    style="width: 5ch;"
+                                                    oninput="this.style.width = Math.max(5, this.value.length * 1) + 'ch'">
+                                                tại <input id="i33" type="text"
+                                                    class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-start font-normal placeholder-gray-600 align-baseline transition-all"
+                                                    style="width: 5ch;"
+                                                    oninput="this.style.width = Math.max(5, this.value.length * 1) + 'ch'">
+                                                nếu
+                                                không
+                                                thuộc
+                                                các trường hợp nêu tại mục 4.1 và 4.2</span>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <p class="font-bold italic mb-2">4.4. Số tiền làm lợi <span
+                                                    class="font-normal">(nếu
+                                                    Công nhận
+                                                    sáng kiến tại mục 4.2 hoặc 4.3)</span></p>
+                                            <p class="mb-2 ml-4">Số tiền làm lợi trong năm đầu áp dụng sáng kiến là</p>
+                                            <div class="ml-4 space-y-3">
+                                                <label class="flex items-start gap-2 cursor-pointer">
+                                                    <input id="i34" type="checkbox"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0 mt-1  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Không tính được <span class="italic">(nếu mục B trong Đơn ghi
+                                                            là
+                                                            Không
+                                                            tính được
+                                                            hoặc người đánh giá cho rằng cách tính số tiền làm lợi ghi
+                                                            trong
+                                                            Đơn
+                                                            là
+                                                            không
+                                                            khả thi)</span></span>
+                                                </label>
+                                                <div>
+                                                    <label class="flex items-start gap-2 cursor-pointer mb-2">
+                                                        <input id="i35" type="checkbox"
+                                                            class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0 mt-1  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                        <span>Tính được theo cách tính ghi trong Đơn nhưng cần tính lại
+                                                            trên
+                                                            cơ
+                                                            sở
+                                                            cập nhật,
+                                                            bổ sung số liệu sau:</span>
+                                                    </label>
+                                                    <p class="ml-6">
+                                                        <textarea id="i36" rows="1"
+                                                            class="w-full border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent resize-none overflow-hidden"
+                                                            oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                                    </p>
+                                                </div>
+                                                <label class="flex items-start gap-2 cursor-pointer">
+                                                    <input id="i37" type="checkbox"
+                                                        class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0 mt-1  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                                    <span>Tính được và đồng ý với số tiền làm lợi theo cách tính ghi
+                                                        trong
+                                                        Đơn</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <p class="font-bold italic mb-2 text-justify">4.5. Đề xuất mức thù lao chung
+                                                cho
+                                                tác
+                                                giả/đồng
+                                                tác giả trong 01 năm <span class="font-normal">(mức tối thiểu là <input
+                                                        id="i38" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">%
+                                                    tối đa
+                                                    là
+                                                    <input id="i39" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">%
+                                                    nếu tính
+                                                    được hoặc tối thiểu là <input id="i40" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">
+                                                    mức lương cơ sở tối đa là <input id="i41" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">
+                                                    mức lương cơ sở
+                                                    nếu
+                                                    không tính
+                                                    được)<sup class="text-[11px]">1</sup></span></p>
+                                            <p class="mb-1">
+                                                <textarea id="i42" rows="1"
+                                                    class="w-full border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent resize-none overflow-hidden"
+                                                    oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                            </p>
+                                            <p class="italic text-[15px]">(người đánh giá ghi rõ số % nếu tính được hoặc
+                                                số
+                                                mức
+                                                lương cơ sở
+                                                nếu không tính được)</p>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <p class="font-bold italic mb-2 text-justify">4.6. Đề xuất mức thù lao chung
+                                                cho
+                                                những
+                                                người
+                                                tham gia tổ chức áp dụng sáng kiến lần đầu trong 01 năm <span
+                                                    class="font-normal">(mức tối
+                                                    thiểu <input id="i43" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">%
+                                                    tối đa là <input id="i44" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">%
+                                                    thù lao tác giả nêu tại mục 4.5)<sup
+                                                        class="text-[11px]">2</sup></span>
+                                            </p>
+                                            <p class="mb-1">
+                                                <textarea id="i45" rows="1"
+                                                    class="w-full border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent resize-none overflow-hidden"
+                                                    oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                            </p>
+                                            <p class="italic text-[15px]">(người đánh giá ghi rõ số %)</p>
+                                        </div>
+
+                                        <div class="flex items-start gap-2 mb-4">
+                                            <span class="font-bold whitespace-nowrap">4.7.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <input id="i46" type="checkbox"
+                                                    class="w-4 h-4 border-orange-500 rounded-none appearance-none border flex-shrink-0  checked:before:content-['✔'] checked:before:text-orange-500 checked:before:flex checked:before:justify-center checked:before:items-center checked:before:text-[12px]">
+                                            </label>
+                                            <span class="font-bold italic text-justify">Đề xuất đăng ký công nhận sáng
+                                                kiến
+                                                cấp
+                                                cao
+                                                hơn
+                                                <span class="font-normal">(đối với cấp cơ sở tại Đơn vị và cấp Tổng công
+                                                    ty)</span></span>
+                                        </div>
+
+                                        <div class="mb-8">
+                                            <p class="font-bold italic mb-2">4.8. Ý kiến khác</p>
+                                            <p><textarea id="i47" rows="1"
+                                                    class="w-full border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent resize-none overflow-hidden"
+                                                    oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+                                            </p>
+                                        </div>
+
+                                        <!-- Signatures -->
+                                        <div class="flex justify-end mt-8 mb-8 mr-12">
+                                            <div class="text-center">
+                                                <p class="italic mb-1"><input id="i48" type="text"
+                                                        class="border border-orange-500 rounded px-1 py-0.5 outline-none text-evnBlue bg-transparent text-end font-normal placeholder-gray-600 align-baseline transition-all"
+                                                        style="width: 10ch;"
+                                                        oninput="this.style.width = Math.max(10, this.value.length * 1.1) + 'ch'">,
+                                                    Ngày <input id="i49" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">
+                                                    tháng <input id="i50" type="text"
+                                                        class="w-[1.5em] inline-block border border-orange-500 rounded py-0.5 text-center outline-none text-evnBlue bg-transparent align-baseline">
+                                                    năm <input id="i51" type="text"
+                                                        class="w-[3em] inline-block border border-orange-500 rounded py-0.5 text-start outline-none text-evnBlue bg-transparent align-baseline">
+                                                </p>
+                                                <p class="font-bold text-[17px]">Người đánh giá</p>
+                                                <p class="italic text-[15px]">(Họ, tên và chữ ký)</p>
+                                                <div
+                                                    class="mt-4 aspect-[4/3] w-56 mx-auto border-2 border-orange-500 flex flex-col items-center justify-center rounded-lg bg-white relative overflow-hidden group">
+                                                    <button type="button"
+                                                        onclick="document.getElementById('signatureUpload').click()"
+                                                        class="text-orange-500 font-semibold px-4 py-2 border border-orange-500 rounded bg-white hover:bg-orange-500 hover:text-white transition-colors print:hidden shadow-sm z-10 relative">
+                                                        Tải ảnh chữ ký
+                                                    </button>
+                                                    <input type="file" id="signatureUpload" style="display:none;"
+                                                        accept="image/*" onchange="previewSignature(event)">
+                                                    <img id="signaturePreview"
+                                                        class="absolute inset-0 w-full h-full object-contain hidden z-0" />
+                                                </div>
+                                                <input id="i53" type="text" placeholder="Nhập họ tên"
+                                                    class="mt-4 w-56 mx-auto block text-center border border-orange-500 rounded px-2 py-1 outline-none text-evnBlue bg-transparent print:border-none print:placeholder-transparent">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Footnotes -->
+                                <div class="border-t border-black pt-2 mt-4 text-[14px]">
+                                    <p class="mb-1 text-justify"><sup class="text-[10px]">1</sup> Tuỳ từng cấp sáng kiến
+                                        EVNGENCO2/Cơ sở ghi
+                                        rõ định mức thù lao quy định tại Điều 32, 33 của Quy định này. Thư ký của Hội
+                                        đồng
+                                        chuẩn
+                                        bị
+                                        các
+                                        phiếu phù hợp trước khi họp.</p>
+                                    <p class="text-justify"><sup class="text-[10px]">2</sup> Tuỳ từng cấp sáng kiến
+                                        EVNGENCO2/Cơ
+                                        sở
+                                        ghi rõ
+                                        mức tối thiểu và tối đa quy định tại Điều 32, 33 của Quy định này. Thư ký của
+                                        Hội
+                                        đồng
+                                        chuẩn
+                                        bị các
+                                        phiếu phù hợp trước khi họp.</p>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="registration-form-preview"
+                            class="hidden shrink-0 flex-col items-center p-2 sm:p-2 bg-gray-50/50 rounded-xl h-fit w-[230mm] transition-all">
+                            <div class="bg-white shadow-xl text-black shrink-0 relative"
+                                style="width: 210mm; min-height: 297mm; padding: 10mm 20mm 10mm 30mm; font-family: 'Times New Roman', Times, serif; font-size: 13pt; line-height: 1.15; box-sizing: border-box;">
+
+                                <button type="button"
+                                    onclick="document.getElementById('registration-form-preview').classList.add('hidden'); document.getElementById('pendingFormsList').classList.remove('hidden');"
+                                    class="absolute top-4 right-4 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600 print:hidden z-10">×</button>
+                                <!-- Header -->
+                                <div class="text-center mb-6">
+                                    <p class="font-bold uppercase" style="font-size: 13pt;">Cộng hoà xã hội chủ nghĩa
+                                        Việt Nam</p>
+                                    <p class="font-bold" style="font-size: 14pt;">Độc lập - Tự do - Hạnh phúc</p>
+                                    <div class="mx-auto border-b-[1.5px] border-black mt-1 mb-8" style="width: 142px;">
+                                    </div>
+                                    <p class="font-bold uppercase" style="font-size: 13pt;">ĐƠN YÊU CẦU CÔNG NHẬN SÁNG
+                                        KIẾN</p>
+                                </div>
+
+                                <!-- Kính gửi -->
+                                <p style="margin: 6pt 0; text-indent: 1cm;"><span class="font-bold">Kính gửi:</span>
+                                    Tổng công ty
+                                    Phát điện 2 - Công ty cổ phần <i>(nếu đề nghị công nhận sáng kiến cấp EVNGENCO2)</i>
+                                    hoặc Đơn vị
+                                    <i>(đề nghị công nhận sáng kiến cấp cơ sở)</i>
+                                </p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">Căn cứ Quy định hoạt
+                                    động KHCN
+                                    trong Tổng công ty Phát điện 2 - CTCP ban hành kèm theo Quyết định số <span
+                                        id="in1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>/QĐ-EVNGENCO2
+                                    ngày <span id="in2">…..</span> tháng <span id="in3">…..</span> năm <span
+                                        id="in4">…..</span>
+                                    của Tổng giám đốc Tổng công ty Phát điện 2 - CTCP</p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">Tôi (chúng tôi) có tên dưới đây <i>(ghi tên
+                                        tác giả/các
+                                        đồng tác giả của giải pháp đề nghị công nhận sáng kiến)</i>:</p>
+
+                                <!-- Table 1 -->
+                                <div class="mb-4 mt-2">
+                                    <table class="w-full border-collapse border border-black" style="font-size: 12pt;">
+                                        <thead>
+                                            <tr>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 5.96%;">TT</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 21.64%;">Họ và tên</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 13.6%;">Năm sinh</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 16.92%;">Chức danh, nơi công tác (hoặc nơi ở)</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 18.8%;">Trình độ chuyên môn</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 23.08%;">Tỷ lệ % đóng góp vào việc tạo ra giải pháp
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody1">
+                                            <tr>
+                                                <td class="border border-black p-1 text-center align-top">1</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-black p-1 text-center align-top">2</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-black p-1 border-t-0 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">Đề nghị xét công nhận giải pháp sau đây là
+                                    sáng kiến
+                                    <i>(tiêu đề giải pháp cần thể hiện bản chất của giải pháp)</i>:
+                                </p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in10">………………………………………………………………………………..
+                                </p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">Chủ đầu tư tạo ra sáng
+                                    kiến <i>(ghi
+                                        tên tổ chức/cá nhân đã đầu tư kinh phí, phương tiện vật chất - kỹ thuật để tạo
+                                        điều kiện
+                                        triển khai giải pháp)</i></p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in11">…………………………………………………………………………………
+                                </p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">Lĩnh vực áp dụng: <span id="in12"></span>
+                                </p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;"><b>A. Mô tả giải pháp:</b></p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">1. Tình trạng kỹ thuật
+                                    hoặc tổ chức
+                                    sản xuất hiện tại (có thể kèm theo tài liệu tham khảo bản vẽ, biên bản thí nghiệm,
+                                    nghiệm
+                                    thu,…), chỉ rõ ưu khuyết điểm của giải pháp kỹ thuật, giải pháp tổ chức sản xuất
+                                    hiện đang được
+                                    áp dụng tại EVNGENCO2/Đơn vị</p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in13">………………………………………………………………………………</p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">2. Nội dung giải pháp
+                                    đề nghị công
+                                    nhận là sáng kiến <i>(Mục đích của giải pháp và các điều kiện cần thiết để đạt mục
+                                        đích, mô tả
+                                        chi tiết bản chất của giải pháp mới kèm theo minh họa bằng các bản vẽ, thiết kế,
+                                        sơ đồ, ảnh
+                                        chụp mẫu sản phẩm... nếu cần thiết, các bước thực hiện giải pháp, những nội dung
+                                        đã cải
+                                        tiến, sáng tạo để khắc phục nhược điểm của tình trạng hiện tại và đáp ứng quy
+                                        định về tính
+                                        mới theo Khoản 1 Điều 4 Điều lệ Sáng kiến)</i>:</p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">2.1. Mục đích của giải pháp</p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in14">…………………………………………………………………………</p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">2.2. Các điều kiện cần thiết để áp dụng giải
+                                    pháp</p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in15">…………………………………………………………………………</p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">2.3. Bản chất chi tiết
+                                    của giải
+                                    pháp <i>(kèm theo minh họa bằng các bản vẽ, thiết kế, sơ đồ, ảnh chụp mẫu sản
+                                        phẩm... nếu cần
+                                        thiết)</i></p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in16">……………………………………………………………………………</p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">2.4. Nội dung, các bước thực hiện giải pháp
+                                </p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in17">……………………………………………………………………………</p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">2.5. Những nội dung đã cải tiến, sáng tạo
+                                    khắc phục được
+                                    nhược điểm</p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in18">……………………………………………………………………………</p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">3. Quá trình áp dụng
+                                    giải pháp trên
+                                    thực tiễn hoặc áp dụng thử <i>(nêu rõ thời điểm bắt đầu áp dụng giải pháp, tình hình
+                                        áp dụng
+                                        giải pháp trong ít nhất 03 tháng tại phòng/ban/bộ phận thuộc EVNGENCO2/Đơn
+                                        vị</i>): </p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;">- Thời điểm bắt đầu áp dụng: Ngày <span
+                                        id="in19">….……</span> (theo tài liệu số <span id="in20">….……</span>(nếu có)).
+                                </p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;">- Đơn vị áp dụng: Áp dụng tại <span
+                                        id="in21">…..</span></p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;">4. Hiệu quả thực tế thu
+                                    được khi áp
+                                    dụng giải pháp <i>(So sánh lợi ích kinh tế, xã hội thu được khi áp dụng giải pháp
+                                        trong đơn so
+                                        với trường hợp không áp dụng giải pháp đó, hoặc so với những giải pháp tương tự
+                                        đã biết ở cơ
+                                        sở, cần nêu rõ giải pháp đem lại hiệu quả kinh tế, lợi ích xã hội cao hơn như
+                                        thế nào hoặc
+                                        khắc phục được đến mức độ nào những nhược điểm của giải pháp đã biết trước đó -
+                                        nếu là giải
+                                        pháp cải tiến giải pháp đã biết trước đó)</i>: </p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in22">………………………………………………………………………………</p>
+
+                                <p style="margin: 6pt 0; text-align: justify; text-indent: 1cm;"><b>B. Số tiền làm lợi
+                                        trong năm đầu
+                                        tiên áp dụng giải pháp</b><i> (nêu cách tính cụ thể nếu có thể tính được hoặc
+                                        ghi rõ Không
+                                        tính được)</i></p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in23">…………………………………………………………………………………….
+                                </p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;"><b>C. Khả năng áp dụng tại Đơn vị khác
+                                        (</b><i>nếu
+                                        có</i><b>)</b></p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;" id="in24">……………………………………………………………………………………..
+                                </p>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;"><b>D. Danh mục tài liệu nộp kèm Đơn yêu cầu
+                                        công nhận
+                                        sáng kiến:</b></p>
+                                <div id="listD">
+                                    <p style="margin: 6pt 0; text-indent: 1cm;">[1]- ………………………………………………………………………………</p>
+                                    <p style="margin: 6pt 0; text-indent: 1cm;">[2]- ………………………………………………………………………………</p>
+                                </div>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;"><b>E. Danh sách Những người tham gia tổ chức
+                                        áp dụng
+                                        sáng kiến lần đầu (nếu có)</b></p>
+                                <p style="margin: 6pt 0; text-indent: 1cm;">&nbsp;</p>
+
+                                <!-- Table 2 -->
+                                <div class="mb-4 mt-2">
+                                    <table class="w-full border-collapse border border-black" style="font-size: 12pt;">
+                                        <thead>
+                                            <tr>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 6.42%;">TT</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 23.36%;">Họ và tên</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 14.02%;">Năm sinh</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 18.58%;">Nơi công tác (hoặc nơi ở)</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 18.96%;">Trình độ chuyên môn</th>
+                                                <th class="border border-black p-1 font-bold text-center align-middle"
+                                                    style="width: 18.68%;">Nội dung tham gia</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody2">
+                                            <tr>
+                                                <td class="border border-black p-1 text-center align-top">1</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-black p-1 text-center align-top">2</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="border border-black p-1 border-t-0 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                                <td class="border border-black p-1 align-top">&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <p style="margin: 6pt 0; text-indent: 1cm;">Tôi (chúng tôi) cam đoan những điều khai
+                                    trong đơn là đúng sự thật.</p>
+
+                                <table class="w-full mt-6" style="border: none;">
+                                    <tr>
+                                        <td class="w-1/2 align-top"></td>
+                                        <td class="w-1/2 align-top text-center">
+                                            <p class="italic"><span id="in31">…..(Địa danh)</span>, ngày <span
+                                                    id="in32">…</span>tháng<span id="in33">…</span>năm<span
+                                                    id="in34">…</span></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-1/2 align-top"></td>
+                                        <td class="w-1/2 align-top text-center">
+                                            <p class="font-bold mt-1">Người/Những người nộp đơn</p>
+                                            <p><i>(Họ tên và chữ ký từng đồng tác giả)</i></p>
+                                            <div class="flex flex-col items-center justify-center mt-2">
+                                                <img id="in35" src="" class="hidden w-32 h-auto object-contain mb-2">
+                                                <p id="in36" class="font-bold">&nbsp;</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <p style="text-align: justify; text-indent: 1cm; margin-top: 1rem;">Xác nhận của
+                                    phòng/ban/bộ phận
+                                    thuộc EVNGENCO2/Đơn vị nơi đã áp dụng giải pháp được yêu cầu công nhận sáng kiến</p>
+                                <p style="text-indent: 1cm;">………………………………………………………………………………</p>
+                                <p style="text-indent: 1cm;">………………………………………………………………………………</p>
+
+                                <p style="text-align: justify; text-indent: 1cm;">Ghi chú: người nộp đơn cần gửi kèm bản
+                                    sao điện tử
+                                    của đơn và của các tài liệu liên quan.</p>
+                            </div>
+
+                        </div>
+
+                        <div id="evaluation-form-preview"
+                            class="hidden shrink-0 flex-col items-center p-2 sm:p-2 bg-gray-50/50 rounded-xl h-fit w-[230mm] transition-all">
+                            <form class="bg-white shadow-xl text-black shrink-0 relative h-fit"
+                                style="width: 210mm; min-height: 297mm; padding: 10mm 20mm 10mm 30mm; font-family: 'Times New Roman', Times, serif; font-size: 13pt; line-height: 1.1; box-sizing: border-box;">
+                                <button type="button"
+                                    onclick="document.getElementById('evaluation-form-preview').classList.add('hidden');"
+                                    class="absolute top-4 right-4 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600 print:hidden z-10">×</button>
+                                <!-- Title -->
+                                <h3 class="font-bold text-center mb-6 uppercase" style="font-size: 14pt;">PHIẾU ĐÁNH GIÁ
+                                    CÔNG NHẬN SÁNG KIẾN</h3>
+
+                                <!-- 1. Các thông tin chính sáng kiến -->
+                                <div class="mb-4">
+                                    <p class="mb-2"><span class="font-bold">1. Các thông tin chính sáng kiến</span>
+                                        <span class="italic">(ghi theo Đơn yêu cầu công nhận sáng kiến)</span>:
+                                    </p>
+                                    <div class="mb-2 pl-2 break-words">
+                                        <span>Tiêu đề giải pháp: </span>
+                                        <span id="preview-i1"></span>
+                                    </div>
+                                    <div class="mb-2 pl-2 break-words">
+                                        <span>Tác giả/đồng tác giả giải pháp: </span>
+                                        <span id="preview-i2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- 2. Người đánh giá -->
+                                <div class="mb-4">
+                                    <p class="font-bold mb-2">2. Người đánh giá:</p>
+                                    <div class="mb-2 break-words">
+                                        <span>Họ và tên: </span>
+                                        <span id="preview-i3"></span>
+                                    </div>
+                                    <p class="mb-2 leading-relaxed">
+                                        Thời điểm nhận Đơn và Hồ sơ sáng kiến để đánh giá: ngày
+                                        <span id="preview-i4"></span>
+                                        tháng
+                                        <span id="preview-i5"></span>
+                                        năm
+                                        <span id="preview-i6"></span>
+                                    </p>
+                                </div>
+
+                                <!-- 3. Các tiêu chí đánh giá giải pháp -->
+                                <div class="mb-4">
+                                    <p class="font-bold mb-2">3. Các tiêu chí đánh giá giải pháp</p>
+                                    <p class="mb-3">Phải đánh dấu vào 1 trong 2 ô của từng tiêu chí dưới đây</p>
+
+                                    <!-- 3.1 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.1. Về tình trạng kỹ thuật hoặc tổ chức sản
+                                            xuất
+                                            hiện
+                                            tại,
+                                            chỉ rõ
+                                            ưu khuyết điểm <span class="font-normal">(mục A.1 trong Đơn)</span>:</p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-20 ml-4">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i7"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Thông tin đầy đủ, chính xác</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i8"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Thông tin không đầy đủ hoặc không chính xác</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3.2 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.2. Về nội dung giải pháp <span
+                                                class="font-normal">(mục
+                                                A.2 trong
+                                                Đơn)</span></p>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1">3.2.1. Mục đích của giải pháp, các điều kiện cần
+                                                thiết:
+                                            </p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4 mb-1">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i9"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Khả thi</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i10"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Không khả thi</span>
+                                                </label>
+                                            </div>
+                                            <p class="text-[15px] italic">
+                                                (Nếu mục đích, điều kiện giải pháp là Không khả thi thì không tiếp tục
+                                                đánh
+                                                giá
+                                                các
+                                                mục bên
+                                                dưới và chuyển sang mục 4. Kết luận).
+                                            </p>
+                                        </div>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1">3.2.2. Mô tả chi tiết bản chất của giải pháp</p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-24 ml-4">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i11"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Đầy đủ, rõ ràng</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i12"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Không đầy đủ/rõ ràng</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1">3.2.3. Các bước thực hiện</p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i13"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Hợp lý</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i14"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Không hợp lý</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="ml-4 mb-3">
+                                            <p class="italic mb-1 text-justify">3.2.4. Giải pháp có tính mới <span
+                                                    class="font-normal">(nếu
+                                                    đáp ứng đồng thời tất cả các điều kiện sau đây: i) Không trùng với
+                                                    nội
+                                                    dung
+                                                    của
+                                                    giải
+                                                    pháp đã được công nhận sáng kiến; ii) Chưa bị bộc lộ công khai trong
+                                                    các
+                                                    văn
+                                                    bản, sách
+                                                    báo, tài liệu kỹ thuật đến mức căn cứ vào đó có thể thực hiện ngay
+                                                    được;
+                                                    iii)
+                                                    Không
+                                                    trùng với giải pháp của người khác đã được áp dụng hoặc áp dụng thử,
+                                                    hoặc
+                                                    đưa
+                                                    vào kế
+                                                    hoạch áp dụng, phổ biến hoặc chuẩn bị các điều kiện để áp dụng, phổ
+                                                    biến;
+                                                    iv)
+                                                    Chưa được
+                                                    quy định thành tiêu chuẩn, quy trình, quy phạm bắt buộc phải thực
+                                                    hiện)</span>
+                                            </p>
+                                            <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4 mb-1">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i15"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Có</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <span id="preview-i16"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Không</span>
+                                                </label>
+                                            </div>
+                                            <p class="text-[15px] italic">
+                                                (Nếu giải pháp được đánh giá là Không có tính mới thì không tiếp tục
+                                                đánh
+                                                giá
+                                                mục
+                                                3.3, 3.4
+                                                bên dưới và chuyển sang mục 4. Kết luận).
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3.3 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.3. Về quá trình áp dụng giải pháp <span
+                                                class="font-normal">(mục
+                                                A.3 trong Đơn)</span></p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-24 ml-4 mb-1">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i17"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Đủ dài để đánh giá hiệu quả</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i18"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Không đủ dài để đánh giá hiệu quả</span>
+                                            </label>
+                                        </div>
+                                        <p class="text-[15px] italic ml-4">
+                                            1. (Nếu quá trình áp dụng giải pháp không đủ dài để đánh giá hiệu quả thì
+                                            không
+                                            tiếp
+                                            tục
+                                            đánh
+                                            giá mục 3.4 bên dưới và chuyển sang mục 4. Kết luận).
+                                        </p>
+                                    </div>
+
+                                    <!-- 3.4 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2">3.4. Hiệu quả thực tế thu được khi áp dụng giải
+                                            pháp
+                                            <span class="font-normal">(mục A.4 trong Đơn)</span>
+                                        </p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i19"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Hiệu quả</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i20"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Không hiệu quả</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3.5 -->
+                                    <div class="mb-3 ml-4">
+                                        <p class="font-bold italic mb-2 text-justify leading-relaxed break-words">3.5.
+                                            Có khả năng
+                                            áp
+                                            dụng tại Đơn vị
+                                            khác trong <span id="preview-i21" class=" break-words"></span>
+                                            hoặc có tính hiệu quả cao đủ
+                                            để
+                                            công
+                                            nhận ở
+                                            cấp <span class="font-normal"><span id="preview-i22"
+                                                    class="break-words"></span></span>
+                                        </p>
+                                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-40 ml-4">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i23"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Có</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <span id="preview-i24"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                <span>Không</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Kết luận -->
+                                <div class="mb-2">
+                                    <p class="font-bold mb-2">4. Kết luận</p>
+                                    <div class="ml-4">
+                                        <div class="flex items-start gap-2 mb-2">
+                                            <span class="font-bold whitespace-nowrap">4.1.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <span id="preview-i25"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                            </label>
+                                            <span class="font-bold italic text-justify break-words flex-1 min-w-0">Không
+                                                công nhận sáng kiến cấp
+                                                <span id="preview-i26" class=" break-words"></span>
+                                                tại <span id="preview-i27" class=" break-words"></span>
+                                                nếu đánh giá ở trên thuộc một trong các trường hợp:</span>
+                                        </div>
+
+                                        <div class="ml-10 mb-4 italic space-y-2">
+                                            <p>- Mục đích của giải pháp, các điều kiện cần thiết (mục 3.2.1) là Không
+                                                khả
+                                                thi,
+                                                hoặc
+                                            </p>
+                                            <p>- Giải pháp không có tính mới (mục 3.2.4); hoặc</p>
+                                            <p>- Quá trình áp dụng giải pháp (mục 3.3) là Không đủ dài để đánh giá hiệu
+                                                quả,
+                                                hoặc
+                                            </p>
+                                            <p>- Việc áp dụng giải pháp (mục 3.4) là Không hiệu quả hoặc</p>
+                                            <p>- Không có khả năng áp dụng tại đơn vị khác và không có tính hiệu quả cao
+                                                (mục
+                                                3.5)
+                                                (chỉ dùng
+                                                cho cấp EVN/EVNGENCO2).</p>
+                                        </div>
+
+                                        <div class="flex items-start gap-2 mb-2">
+                                            <span class="font-bold whitespace-nowrap">4.2.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <span id="preview-i28"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                            </label>
+                                            <span class="font-bold italic text-justify break-words flex-1 min-w-0">Công
+                                                nhận sáng kiến cấp <span id="preview-i29" class=" break-words"></span>
+                                                nhưng đề
+                                                nghị
+                                                hoàn thiện
+                                                hồ sơ sáng kiến trước khi công nhận sáng kiến nếu không có đánh giá
+                                                thuộc
+                                                một
+                                                trong
+                                                các
+                                                trường hợp nêu tại mục 4.1 ở trên và có ít nhất một trong các tiêu chí
+                                                tại
+                                                mục
+                                                3.1,
+                                                3.2.2,
+                                                3.2.3 được đánh giá là Không.</span>
+                                        </div>
+
+                                        <div class="ml-10 mb-4">
+                                            <p class="italic mb-2">Yêu cầu hoàn thiện (ghi rõ phạm vi cần bổ sung trong
+                                                đánh
+                                                giá
+                                                hiện trạng
+                                                và/hoặc mô tả chi tiết bản chất giải pháp và/hoặc thay đổi các bước thực
+                                                hiện
+                                                giải
+                                                pháp):
+                                            </p>
+                                            <p><span id="preview-i30" class=" block w-full break-words"></span>
+                                            </p>
+                                        </div>
+
+                                        <div class="flex items-start gap-2 mb-4">
+                                            <span class="font-bold whitespace-nowrap">4.3.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <span id="preview-i31"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                            </label>
+                                            <span class="font-bold italic text-justify break-words flex-1 min-w-0">Công
+                                                nhận sáng kiến cấp <span id="preview-i32" class=" break-words"></span>
+                                                tại <span id="preview-i33" class=" break-words"></span>
+                                                nếu
+                                                không
+                                                thuộc
+                                                các trường hợp nêu tại mục 4.1 và 4.2</span>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <p class="font-bold italic mb-2">4.4. Số tiền làm lợi <span
+                                                    class="font-normal">(nếu
+                                                    Công nhận
+                                                    sáng kiến tại mục 4.2 hoặc 4.3)</span></p>
+                                            <p class="mb-2 ml-4">Số tiền làm lợi trong năm đầu áp dụng sáng kiến là</p>
+                                            <div class="ml-4 space-y-3">
+                                                <label class="flex items-start gap-2 cursor-pointer">
+                                                    <span id="preview-i34"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Không tính được <span class="italic">(nếu mục B trong Đơn ghi
+                                                            là
+                                                            Không
+                                                            tính được
+                                                            hoặc người đánh giá cho rằng cách tính số tiền làm lợi ghi
+                                                            trong
+                                                            Đơn
+                                                            là
+                                                            không
+                                                            khả thi)</span></span>
+                                                </label>
+                                                <div>
+                                                    <label class="flex items-start gap-2 cursor-pointer mb-2">
+                                                        <span id="preview-i35"
+                                                            class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                        <span>Tính được theo cách tính ghi trong Đơn nhưng cần tính lại
+                                                            trên
+                                                            cơ
+                                                            sở
+                                                            cập nhật,
+                                                            bổ sung số liệu sau:</span>
+                                                    </label>
+                                                    <p class="ml-6 w-full break-words">
+                                                        <span id="preview-i36"></span>
+                                                    </p>
+                                                </div>
+                                                <label class="flex items-start gap-2 cursor-pointer">
+                                                    <span id="preview-i37"
+                                                        class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                                    <span>Tính được và đồng ý với số tiền làm lợi theo cách tính ghi
+                                                        trong
+                                                        Đơn</span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <p class="font-bold italic mb-2 text-justify">4.5. Đề xuất mức thù lao chung
+                                                cho
+                                                tác
+                                                giả/đồng
+                                                tác giả trong 01 năm <span class="font-normal">(mức tối thiểu là <span
+                                                        id="preview-i38"></span>% tối đa
+                                                    là
+                                                    <span id="preview-i39"></span>%
+                                                    nếu tính
+                                                    được hoặc tối thiểu là <span id="preview-i40"></span>
+                                                    mức lương cơ sở tối đa là <span id="preview-i41"></span>
+                                                    mức lương cơ sở
+                                                    nếu
+                                                    không tính
+                                                    được)<sup class="text-[11px]">1</sup></span></p>
+                                            <p class="mb-1 w-full break-words">
+                                                <span id="preview-i42"></span>
+                                            </p>
+                                            <p class="italic text-[15px]">(người đánh giá ghi rõ số % nếu tính được hoặc
+                                                số
+                                                mức
+                                                lương cơ sở
+                                                nếu không tính được)</p>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <p class="font-bold italic mb-2 text-justify">4.6. Đề xuất mức thù lao chung
+                                                cho
+                                                những
+                                                người
+                                                tham gia tổ chức áp dụng sáng kiến lần đầu trong 01 năm <span
+                                                    class="font-normal">(mức tối
+                                                    thiểu <span id="preview-i43"></span>%
+                                                    tối đa là <span id="preview-i44"></span>%
+                                                    thù lao tác giả nêu tại mục 4.5)<sup
+                                                        class="text-[11px]">2</sup></span>
+                                            </p>
+                                            <p class="mb-1 w-full break-words">
+                                                <span id="preview-i45"></span>
+                                            </p>
+                                            <p class="italic text-[15px]">(người đánh giá ghi rõ số %)</p>
+                                        </div>
+
+                                        <div class="flex items-start gap-2 mb-4">
+                                            <span class="font-bold whitespace-nowrap">4.7.</span>
+                                            <label class="flex items-center gap-2 cursor-pointer mt-1">
+                                                <span id="preview-i46"
+                                                    class="inline-block w-4 h-4 border border-black flex-shrink-0 text-center leading-none text-[14px]"></span>
+                                            </label>
+                                            <span class="font-bold italic text-justify">Đề xuất đăng ký công nhận sáng
+                                                kiến
+                                                cấp
+                                                cao
+                                                hơn
+                                                <span class="font-normal">(đối với cấp cơ sở tại Đơn vị và cấp Tổng công
+                                                    ty)</span></span>
+                                        </div>
+
+                                        <div class="mb-8">
+                                            <p class="font-bold italic mb-2">4.8. Ý kiến khác</p>
+                                            <p class="w-full break-words"><span id="preview-i47"></span>
+                                            </p>
+                                        </div>
+
+                                        <!-- Signatures -->
+                                        <div class="flex justify-end mt-8 mb-8 mr-12">
+                                            <div class="text-center">
+                                                <p class="italic mb-1"><span id="preview-i48"></span>,
+                                                    Ngày <span id="preview-i49"></span>
+                                                    tháng <span id="preview-i50"></span>
+                                                    năm <span id="preview-i51"></span>
+                                                </p>
+                                                <p class="font-bold text-[17px]">Người đánh giá</p>
+                                                <p class="italic text-[15px]">(Họ, tên và chữ ký)</p>
+                                                <div
+                                                    class="mt-4 aspect-[4/3] w-56 mx-auto flex flex-col items-center justify-center relative overflow-hidden group">
+
+
+                                                    <img id="preview-signaturePreview"
+                                                        class="absolute inset-0 w-full h-full object-contain hidden z-0" />
+                                                </div>
+                                                <span id="preview-i53"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Footnotes -->
+                                <div class="border-t border-black pt-2 mt-4 text-[14px]">
+                                    <p class="mb-1 text-justify"><sup class="text-[10px]">1</sup> Tuỳ từng cấp sáng kiến
+                                        EVNGENCO2/Cơ sở ghi
+                                        rõ định mức thù lao quy định tại Điều 32, 33 của Quy định này. Thư ký của Hội
+                                        đồng
+                                        chuẩn
+                                        bị
+                                        các
+                                        phiếu phù hợp trước khi họp.</p>
+                                    <p class="text-justify"><sup class="text-[10px]">2</sup> Tuỳ từng cấp sáng kiến
+                                        EVNGENCO2/Cơ
+                                        sở
+                                        ghi rõ
+                                        mức tối thiểu và tối đa quy định tại Điều 32, 33 của Quy định này. Thư ký của
+                                        Hội
+                                        đồng
+                                        chuẩn
+                                        bị các
+                                        phiếu phù hợp trước khi họp.</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>

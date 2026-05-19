@@ -49,11 +49,30 @@
          },
       };
    </script>
+
+   <!-- Favicon -->
+   <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+   <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+   <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+   <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+   <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+   <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+   <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+   <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+   <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+   <link rel="manifest" href="/favicon/manifest.json">
+   <meta name="msapplication-TileColor" content="#ffffff">
+   <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+   <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="bg-white font-sans x-hidden flex flex-col min-h-screen">
    <header class="relative z-50 bg-white w-full flex-shrink-0 bg-no-repeat bg-right"
-      style="background-image: url('/images/header.png'); background-size: auto 100%;">
+      style="background-image: url('/images/motif.png'); background-size: auto 100%">
       <div class="max-w-[85vw] mx-auto">
          <div class="flex justify-between items-center py-4 md:py-6 relative">
             <!-- Bên trái: Logo và 2 dòng chữ -->
@@ -63,9 +82,11 @@
                <div class="flex flex-col justify-center">
                   <h1
                      class="text-evnRed text-sm sm:text-base md:text-2xl font-extrabold tracking-wide uppercase drop-shadow-sm leading-tight">
-                     CỔNG SÁNG KIẾN KHCN, ĐMST & CĐS</h1>
-                  <p class="text-evnBlue text-xs md:text-xl font-bold md:mt-1 drop-shadow-sm">"Kết nối sáng tạo -
-                     Kiến tạo tương lai"</p>
+                     CỔNG SÁNG KIẾN KHCN, ĐMST & CĐS
+                  </h1>
+                  <p class="text-evnBlue text-xs md:text-xl font-bold md:mt-1 drop-shadow-sm">
+                     "Khơi nguồn sáng tạo - Mở lối tương lai"
+                  </p>
                </div>
             </div>
 
@@ -83,25 +104,26 @@
 
       <div class="hidden lg:block w-full mt-2 shadow-sm bg-evnBlue">
          <div class="max-w-[85vw] mx-auto">
-            <div class="flex items-center justify-center py-3 w-full">
+            <div class="flex items-center justify-center w-full">
                <nav
-                  class="hidden lg:flex justify-center items-center gap-20 w-full text-sm font-semibold uppercase tracking-wide text-white">
-                  <a href="/" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Trang
+                  class="hidden lg:flex justify-center items-stretch w-full text-sm font-semibold uppercase tracking-wide text-white">
+                  <a href="/"
+                     class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Trang
                      chủ</a>
                   <a href="/news"
-                     class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Tin
+                     class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Tin
                      tức</a>
                   <a href="/notice"
-                     class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">Thông
+                     class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">Thông
                      báo</a>
-                  <div class="relative group">
+                  <div class="relative group flex w-44">
                      <button type="button"
-                        class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all text-sm font-semibold uppercase tracking-wide flex items-center">
+                        class="text-white group-hover:bg-evnRed hover:text-white w-full transition-all text-sm font-semibold uppercase tracking-wide flex items-center justify-center h-full cursor-pointer">
                         Nội bộ
                      </button>
 
                      <div
-                        class="absolute right-0 mt-2 w-72 bg-white border border-evnRed shadow-xl rounded py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+                        class="absolute left-1/2 -translate-x-1/2 top-full w-72 bg-white border border-evnRed shadow-xl rounded py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
                         <a href="https://doffice.evngenco2.vn/sign-in?redirectURL=%2Fproject" target="_blank"
                            rel="noopener noreferrer"
                            class="block px-4 py-3 text-xs font-bold text-evnBlue hover:bg-gray-50 hover:text-evnRed border-l-4 border-transparent hover:border-evnRed transition-all">
@@ -149,7 +171,8 @@
                         </a>
                      </div>
                   </div>
-                  <a href="/login" class="text-white hover:bg-evnRed hover:text-white px-4 py-2 rounded transition-all">
+                  <a href="/login"
+                     class="text-white hover:bg-evnRed hover:text-white w-44 py-4 transition-all flex items-center justify-center text-center">
                      Đăng nhập
                   </a>
                </nav>
@@ -179,411 +202,86 @@
 
          <div class="flex flex-wrap items-center gap-3 w-full">
 
-            <button onclick="toggleExpertRegistration()"
+            <a href="/login"
                class="bg-orange-500 text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all inline-block text-center">Đăng
                ký tham gia mạng lưới chuyên gia
-            </button>
+            </a>
 
          </div>
       </div>
 
       <!-- Search Tools -->
       <div id="expert-search-tools" class="flex flex-wrap items-center gap-3 w-full mb-8 pb-4 border-b border-gray-300">
-         <select class="border border-gray-300 rounded px-3 py-1.5 text-sm outline-none focus:border-evnBlue">
-            <option>Lĩnh vực chuyên môn</option>
-            <option>Công nghệ thông tin</option>
-            <option>Điện & Tự động hóa</option>
-            <option>Năng lượng</option>
+         <select name="field" onchange="window.location.href='/expert?field=' + encodeURIComponent(this.value)" class="border border-gray-300 rounded px-3 py-1.5 text-sm outline-none focus:border-evnBlue">
+            <option th:selected="${selectedField == 'Lĩnh vực chuyên môn' || selectedField == null}">Lĩnh vực chuyên môn</option>
+            <option th:selected="${selectedField == 'Công nghệ thông tin & Máy tính'}">Công nghệ thông tin & Máy tính</option>
+            <option th:selected="${selectedField == 'Điện - Điện tử - Viễn thông'}">Điện - Điện tử - Viễn thông</option>
+            <option th:selected="${selectedField == 'Cơ khí - Cơ điện tử'}">Cơ khí - Cơ điện tử</option>
+            <option th:selected="${selectedField == 'Kỹ thuật xây dựng - Giao thông'}">Kỹ thuật xây dựng - Giao thông</option>
+            <option th:selected="${selectedField == 'Kỹ thuật hoá học - vật liệu'}">Kỹ thuật hoá học - vật liệu</option>
+            <option th:selected="${selectedField == 'Khoa học ứng dụng'}">Khoa học ứng dụng</option>
+            <option th:selected="${selectedField == 'Kỹ thuật mới & đặc thù'}">Kỹ thuật mới & đặc thù</option>
          </select>
-         <select class="border border-gray-300 rounded px-3 py-1.5 text-sm outline-none focus:border-evnBlue">
-            <option>Khu vực</option>
-            <option>Hà Nội</option>
-            <option>Đà Nẵng</option>
-            <option>TP. Hồ Chí Minh</option>
-         </select>
-         <button
-            class="bg-evnBlue text-white px-4 py-1.5 rounded text-sm hover:bg-opacity-90 font-semibold shadow-sm transition-all">Tìm
-            kiếm</button>
+
       </div>
 
       <!-- Expert Grid -->
       <div id="expert-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-
-         <!-- CARD 1 -->
-         <div
+         <div th:each="exp : ${expertPage.content}"
             class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
+            
+            <div class="w-16 h-16 rounded-full bg-blue-50 text-evnBlue flex items-center justify-center shrink-0 border border-blue-100">
+               <i class="fas fa-user-tie text-2xl"></i>
             </div>
+
             <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">GS.TS Lê Quốc Cường</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Mạng máy tính và TT</p>
+               <h3 class="text-evnBlue text-lg font-bold"
+                  th:text="${(exp.rank != null ? exp.rank + ' ' : '') + exp.fullName}"></h3>
+               <p class="text-gray-600 text-sm font-semibold mb-1" th:text="${exp.field}"></p>
+               <p class="text-gray-600 text-sm font-semibold mb-1" th:if="${exp.major != null and !exp.major.isEmpty()}"
+                  th:text="${exp.major}"></p>
                <div class="flex text-yellow-400 text-xs mb-2 gap-1">
                   <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                      class="fas fa-star"></i><i class="fas fa-star"></i>
                </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Nghiên cứu khoa học, chuyển giao công nghệ trong các lĩnh vực: Mạng máy tính, Điện toán đám mây, An
-                  ninh mạng, Trí tuệ nhân tạo. Tham gia tư vấn và thiết kế các hệ thống thông tin quy mô lớn...
-               </p>
+               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3" th:text="${exp.trend}"></p>
             </div>
          </div>
-
-         <!-- CARD 2 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">PGS.TS Nguyễn Thanh Tùng</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Kỹ thuật Phần mềm</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="fas fa-star"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Phát triển các phương pháp luận Kỹ thuật phần mềm. Đảm bảo chất lượng phần mềm, phân tích dữ liệu lớn
-                  (Big Data). Ứng dụng kỹ thuật AI/ML trong tối ưu hóa quy trình nghiệp vụ...
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 3 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">PGS.TS Hoàng Vĩnh Diện</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Hệ thống điện</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Nghiên cứu về độ tin cậy và tối ưu hóa hệ thống điện, lưới điện thông minh (Smart Grid), và tích hợp
-                  năng lượng tái tạo. Tham gia tư vấn các dự án truyền tải điện cấp quốc gia.
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 4 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">TS Trần Lợi Cường</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Chuyển đổi số</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="fas fa-star"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Cố vấn chiến lược Chuyển đổi số cho các doanh nghiệp Nhà nước. Chuyên sâu về tái cấu trúc quy trình,
-                  tích hợp hệ thống ERP/EAM và xây dựng văn hóa đổi mới sáng tạo...
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 5 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">TS Nguyễn Bá Định</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Cơ điện & Tự động hóa</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="far fa-star"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Chuyên môn thiết kế, chế tạo máy và tự động hóa dây chuyền sản xuất. Ứng dụng robot công nghiệp và hệ
-                  thống SCADA trong quản lý vận hành nhà máy nhiệt điện...
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 6 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">TS Võ Hoàng Diên</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Khoa học Dữ liệu</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="fas fa-star"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Xây dựng mô hình Data Warehouse và Data Lake. Áp dụng các thuật toán dự báo rủi ro (Predictive
-                  Maintenance) dựa trên dữ liệu vận hành theo thời gian thực...
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 7 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">ThS Lê Văn Hùng</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Quản lý Dự án</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="far fa-star"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Tư vấn giám sát, quản lý đấu thầu và điều hành các dự án đầu tư xây dựng công trình năng lượng. Đạt
-                  chứng chỉ PMP quốc tế và có hơn 15 năm kinh nghiệm thực tiễn.
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 8 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">ThS Phạm Thu Thủy</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia An toàn thông tin</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Đánh giá rủi ro an ninh mạng, xây dựng chính sách ISMS theo tiêu chuẩn ISO 27001. Triển khai các giải
-                  pháp phòng chống tấn công mạng (SOC, SIEM) cho hệ thống trọng yếu.
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 9 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">PGS.TS Nguyễn Trung Dũng</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Tự động hóa điều khiển</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="fas fa-star"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Nghiên cứu về điều khiển thông minh, ứng dụng thuật toán di truyền, mạng nơ ron nhân tạo vào việc tinh
-                  chỉnh tham số bộ điều khiển PID trong nhà máy nhiệt điện...
-               </p>
-            </div>
-         </div>
-
-         <!-- CARD 10 -->
-         <div
-            class="bg-white border border-gray-200 rounded-lg shadow-sm p-5 flex items-start gap-5 hover:shadow-md transition-shadow">
-            <div
-               class="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center text-white shrink-0 shadow-inner">
-               <i class="fas fa-user-tie text-3xl"></i>
-            </div>
-            <div class="flex-1">
-               <h3 class="text-evnBlue text-lg font-bold">TS Đinh Văn Quyết</h3>
-               <p class="text-gray-600 text-sm font-semibold mb-1">Chuyên gia Đổi mới Sáng tạo</p>
-               <div class="flex text-yellow-400 text-xs mb-2 gap-1">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                     class="fas fa-star"></i><i class="fas fa-star"></i>
-               </div>
-               <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">
-                  Thiết kế mô hình quản trị sáng kiến từ cấp cơ sở đến cấp Tập đoàn. Đánh giá tính khả thi và tư vấn
-                  thương mại hóa các đề tài NCKH, sáng chế công nghệ...
-               </p>
-            </div>
-         </div>
-
       </div>
 
       <!-- Pagination -->
-      <div id="expert-pagination" class="flex justify-center items-center mt-8 gap-1">
-         <button
-            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 hover:bg-gray-100 transition-colors disabled:opacity-50"><i
-               class="fas fa-chevron-left text-xs"></i></button>
-         <button
-            class="w-8 h-8 flex items-center justify-center border border-evnBlue bg-evnBlue text-white rounded font-bold shadow-sm">1</button>
-         <button
-            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-600 hover:bg-gray-100 transition-colors font-semibold">2</button>
-         <button
-            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-600 hover:bg-gray-100 transition-colors font-semibold">3</button>
-         <span class="px-2 text-gray-500">...</span>
-         <button
-            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-600 hover:bg-gray-100 transition-colors font-semibold">9</button>
-         <button
-            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 hover:bg-gray-100 transition-colors"><i
-               class="fas fa-chevron-right text-xs"></i></button>
+      <div id="expert-pagination" class="flex justify-center items-center mt-8 gap-1"
+         th:if="${expertPage.totalPages > 1}">
+         <!-- Previous Page -->
+         <a th:if="${expertPage.hasPrevious()}" th:href="@{/expert(page=${expertPage.number}, field=${selectedField != 'Lĩnh vực chuyên môn' ? selectedField : null})}"
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 hover:bg-gray-100 transition-colors">
+            <i class="fas fa-chevron-left text-xs"></i>
+         </a>
+         <button th:unless="${expertPage.hasPrevious()}" disabled
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 transition-colors disabled:opacity-50">
+            <i class="fas fa-chevron-left text-xs"></i>
+         </button>
+
+         <!-- Page Numbers -->
+         <th:block th:each="i : ${#numbers.sequence(1, expertPage.totalPages)}">
+            <a th:if="${i != expertPage.number + 1}" th:href="@{/expert(page=${i}, field=${selectedField != 'Lĩnh vực chuyên môn' ? selectedField : null})}" th:text="${i}"
+               class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-600 hover:bg-gray-100 transition-colors font-semibold">
+            </a>
+            <button th:if="${i == expertPage.number + 1}" th:text="${i}"
+               class="w-8 h-8 flex items-center justify-center border border-evnBlue bg-evnBlue text-white rounded font-bold shadow-sm cursor-default">
+            </button>
+         </th:block>
+
+         <!-- Next Page -->
+         <a th:if="${expertPage.hasNext()}" th:href="@{/expert(page=${expertPage.number + 2}, field=${selectedField != 'Lĩnh vực chuyên môn' ? selectedField : null})}"
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 hover:bg-gray-100 transition-colors">
+            <i class="fas fa-chevron-right text-xs"></i>
+         </a>
+         <button th:unless="${expertPage.hasNext()}" disabled
+            class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-gray-500 transition-colors disabled:opacity-50">
+            <i class="fas fa-chevron-right text-xs"></i>
+         </button>
       </div>
-
-      <form id="expert-regis-form"
-         class="hidden bg-white border border-gray-200 rounded-lg shadow-sm p-8 max-w-4xl mx-auto mt-8">
-
-
-         <!-- Form grid -->
-         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-
-            <!-- Họ và tên -->
-            <div>
-               <label class="block text-evnBlue font-bold text-sm mb-2">Họ và tên <span
-                     class="text-red-500">*</span></label>
-               <input type="text" id="exp-fullName" placeholder="Nhập tên ..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
-            <!-- CCCD -->
-            <div>
-               <label class="block text-evnBlue font-bold text-sm mb-2">CCCD <span class="text-red-500">*</span></label>
-               <input type="text" id="exp-cccd" placeholder="Nhập số CCCD"
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
-            <!-- Email -->
-            <div>
-               <label class="block text-evnBlue font-bold text-sm mb-2">Số điện thoại <span
-                     class="text-red-500">*</span></label>
-               <input type="tel" id="exp-phone" placeholder="Nhập số điện thoại ..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
-            <!-- Email -->
-            <div>
-               <label class="block text-evnBlue font-bold text-sm mb-2">Email <span
-                     class="text-red-500">*</span></label>
-               <input type="email" id="exp-email" placeholder="Nhập email ..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
-
-            <!-- Học hàm/Học vị -->
-            <div>
-               <label class="block text-evnBlue font-bold text-sm mb-2">Học hàm/Học vị</label>
-               <select id="exp-rank"
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors">
-                  <option>Chọn</option>
-                  <option>Cử nhân/Kỹ sư</option>
-                  <option>Thạc sĩ</option>
-                  <option>Tiến sĩ</option>
-                  <option>Phó Giáo sư</option>
-                  <option>Giáo sư</option>
-               </select>
-            </div>
-
-            <!-- Cơ quan công tác (Full width) -->
-            <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">Cơ quan công tác <span
-                     class="text-red-500">*</span></label>
-               <input type="text" id="exp-department" placeholder="Nhập Cơ quan công tác ..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
-
-            <!-- Chuyên gia trong lĩnh vực (Full width) -->
-            <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">Chuyên gia trong lĩnh vực <span
-                     class="text-red-500">*</span></label>
-               <select id="exp-major"
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-                  <option>Chọn lĩnh vực</option>
-                  <option>Công nghệ thông tin</option>
-                  <option>Năng lượng</option>
-                  <option>Tự động hóa</option>
-                  <option>Kinh tế & Quản lý</option>
-               </select>
-            </div>
-
-            <!-- Lĩnh vực/Chuyên ngành (Full width) -->
-            <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">
-                  Lĩnh vực/Chuyên ngành
-               </label>
-               <input type="text" id="exp-field" placeholder="Nhập Lĩnh vực ..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
-
-            <!-- Hướng nghiên cứu -->
-            <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">
-                  Hướng nghiên cứu <span class="text-evnBlue/70 text-xs font-normal ml-1">(5 năm gần nhất)</span> <span
-                     class="text-red-500">*</span>
-               </label>
-               <textarea id="exp-trend" rows="4" placeholder="Nhập hướng nghiên cứu ..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors resize-none"
-                  required></textarea>
-            </div>
-
-            <!-- Google scholar -->
-            <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">Google scholar: <span
-                     class="text-red-500">*</span></label>
-               <input type="text" id="exp-google" placeholder="Nhập link Google scholar..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors"
-                  required>
-            </div>
-
-            <!-- Orcid -->
-            <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">ORCID:</label>
-               <input type="text" id="exp-orcid" placeholder="Nhập link ORCID..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors">
-            </div>
-
-            <!-- Research gate -->
-            <div class="md:col-span-2">
-               <label class="block text-evnBlue font-bold text-sm mb-2">Research gate:</label>
-               <input type="text" id="exp-gate" placeholder="Nhập link research_gate..."
-                  class="w-full border border-gray-300 rounded px-4 py-2.5 text-sm bg-gray-50 focus:bg-white focus:outline-none focus:border-evnBlue focus:ring-1 focus:ring-evnBlue transition-colors">
-            </div>
-
-         </div>
-
-         <!-- Cam kết -->
-         <div class="mt-8 flex items-start gap-3">
-            <input type="checkbox" id="camket"
-               class="mt-1 flex-shrink-0 w-4 h-4 text-evnBlue rounded border-gray-300 focus:ring-evnBlue cursor-pointer"
-               required>
-            <label for="camket"
-               class="text-xs md:text-[13px] text-evnBlue/80 font-bold leading-relaxed cursor-pointer select-none">
-               Tôi cam kết việc tham gia Mạng lưới Chuyên gia EVNGENCO2 là tự nguyện, vì mục đích phát triển mạng lưới;
-               cam kết các thông tin kê khai là trung thực, chính xác và chịu trách nhiệm về nội dung đã cung cấp.
-            </label>
-         </div>
-
-         <!-- Submit Button -->
-         <div class="mt-8 pt-6 border-t border-gray-200 text-center flex justify-center gap-4">
-            <button type="button" onclick="toggleExpertRegistration()"
-               class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2.5 px-8 rounded shadow-md transition-all active:scale-95">Hủy</button>
-            <button type="button" onclick="submitExpertForm(event)"
-               class="bg-evnBlue hover:bg-blue-900 text-white font-bold py-2.5 px-12 rounded shadow-md transition-all active:scale-95">Gửi</button>
-         </div>
-
-      </form>
 
 
 

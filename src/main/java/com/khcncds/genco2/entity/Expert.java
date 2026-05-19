@@ -12,6 +12,15 @@ public class Expert {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "position")
+    private String position;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
@@ -38,6 +47,9 @@ public class Expert {
 
     @Column(name = "trend", nullable = false)
     private String trend;
+
+    @Column(name = "accept")
+    private Integer accept = 0;
 
     @Column(name = "google", nullable = false)
     private String google;

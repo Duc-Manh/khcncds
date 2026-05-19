@@ -17,8 +17,7 @@ public class DynamicRegisterService {
     private JdbcTemplate jdbcTemplate;
 
     public void saveRegister(String department, String position, String fullName, String aim, String email, String phone) {
-        int currentYear = Year.now().getValue();
-        String tableName = "register" + currentYear;
+        String tableName = "register";
 
         ensureTableAndColumns(tableName);
 
@@ -28,8 +27,7 @@ public class DynamicRegisterService {
     }
 
     public List<RegisterEntity> findAllRegistersForCurrentYear() {
-        int currentYear = Year.now().getValue();
-        String tableName = "register" + currentYear;
+        String tableName = "register";
 
         ensureTableAndColumns(tableName);
 
@@ -53,6 +51,12 @@ public class DynamicRegisterService {
     }
 
     private void ensureTableAndColumns(String tableName) {
+        try {
+            jdbcTemplate.execute("RENAME TABLE register2026 TO register");
+        } catch (Exception e) {
+            // Ignore if table register2026 doesn't exist or register already exists
+        }
+
         String createTableSql = "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
                 "id BIGINT AUTO_INCREMENT PRIMARY KEY, " +
                 "aim VARCHAR(255), " +
